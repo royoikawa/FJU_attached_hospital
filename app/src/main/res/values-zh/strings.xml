@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">輔仁大學附設醫院</string>
+    <string name="text_name">姓名</string>
+    <string name="text_password">密碼</string>
+    <string name="text_bt">登入</string>
+</resources>
