@@ -78,7 +78,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
             android:background="#FF8888"
-            android:text="登入"
+            android:text="註冊"
             android:textColor="#FFFFFF"
             android:textSize="18dp" />
 
