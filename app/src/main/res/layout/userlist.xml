@@ -40,15 +40,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="178dp"
+        android:layout_width="213dp"
         android:layout_height="38dp"
         android:text="查詢及取消掛號"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="350dp" />
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="349dp" />
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="194dp"
@@ -67,8 +67,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="347dp" />
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="352dp" />
 
 
 
