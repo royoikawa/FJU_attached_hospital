@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="432dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/fju_hospital2"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="-21dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints"></LinearLayout>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="229dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="王冠文您好~~~"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        tools:ignore="Autofill,MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="34dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="108dp"
+        android:layout_height="72dp"
+        android:background="@color/colorPrimary"
+        android:text="登出"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="298dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="213dp"
+        android:layout_height="38dp"
+        android:text="查詢及取消掛號"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="349dp" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="194dp"
+        android:layout_height="210dp"
+        app:srcCompat="@drawable/register"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="129dp"
+        android:layout_height="36dp"
+        android:text="預約掛號"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="352dp" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="192dp"
+        android:layout_height="210dp"
+        app:srcCompat="@drawable/track"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="388dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="204dp"
+        android:layout_height="40dp"
+        android:text="查看目前掛號序號"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton9"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/discuss"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="617dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/aboutFju"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="617dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/data"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="617dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/information"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="203dp"
+        tools:layout_editor_absoluteY="617dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="194dp"
+        android:layout_height="210dp"
+        app:srcCompat="@drawable/record"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="388dp"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="歷史紀錄"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="254dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="194dp"
+        android:layout_height="212dp"
+        app:srcCompat="@drawable/inquiry"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="139dp"
+        tools:ignore="MissingConstraints" />
+
+
