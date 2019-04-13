@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="113dp"
-        android:layout_height="60dp"
-        android:text="上一頁"
-        android:visibility="visible"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="53dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -150,20 +141,6 @@
         tools:layout_editor_absoluteX="352dp"
         tools:layout_editor_absoluteY="580dp" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="407dp"
-        android:layout_height="54dp"
-        android:background="@color/colorAccent"
-        android:gravity="center_vertical"
-        android:text="FJU attached hospital"
-        android:textColor="@color/colorPrimary"
-        android:textDirection="inherit"
-        android:textSize="24sp"
-        android:visibility="visible"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="0dp" />
 
 
 
