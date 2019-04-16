@@ -12,7 +12,8 @@
         android:layout_height="38dp"
         android:text="預約"
         tools:layout_editor_absoluteX="311dp"
-        tools:layout_editor_absoluteY="375dp" />
+        tools:layout_editor_absoluteY="375dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView6"
