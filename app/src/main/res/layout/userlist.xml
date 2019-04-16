@@ -27,17 +27,6 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="34dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="108dp"
-        android:layout_height="72dp"
-        android:background="@color/colorPrimary"
-        android:text="登出"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="298dp"
-        tools:layout_editor_absoluteY="2dp" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="213dp"
@@ -48,38 +37,20 @@
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="208dp"
-        tools:layout_editor_absoluteY="349dp" />
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="194dp"
-        android:layout_height="210dp"
-        app:srcCompat="@drawable/register"
-        tools:ignore="ContentDescription,MissingConstraints"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="139dp" />
+        tools:layout_editor_absoluteY="320dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="129dp"
-        android:layout_height="36dp"
+        android:layout_height="39dp"
         android:text="預約掛號"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="352dp" />
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="322dp" />
 
-
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="192dp"
-        android:layout_height="210dp"
-        app:srcCompat="@drawable/track"
-        tools:ignore="ContentDescription,MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="388dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -90,8 +61,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="554dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="577dp" />
 
     <ImageButton
         android:id="@+id/imageButton9"
@@ -133,15 +104,6 @@
         tools:layout_editor_absoluteX="203dp"
         tools:layout_editor_absoluteY="617dp" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="194dp"
-        android:layout_height="210dp"
-        app:srcCompat="@drawable/record"
-        tools:layout_editor_absoluteX="208dp"
-        tools:layout_editor_absoluteY="388dp"
-        tools:ignore="ContentDescription,MissingConstraints" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -151,16 +113,44 @@
         android:textSize="24sp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="554dp" />
+        tools:layout_editor_absoluteX="245dp"
+        tools:layout_editor_absoluteY="577dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="183dp"
+        android:layout_height="198dp"
+        app:srcCompat="@drawable/register"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="110dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="194dp"
         android:layout_height="212dp"
         app:srcCompat="@drawable/inquiry"
         tools:layout_editor_absoluteX="208dp"
-        tools:layout_editor_absoluteY="139dp"
+        tools:layout_editor_absoluteY="108dp"
         tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="192dp"
+        android:layout_height="210dp"
+        app:srcCompat="@drawable/track"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="358dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="194dp"
+        android:layout_height="210dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/record"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="208dp"
+        tools:layout_editor_absoluteY="361dp" />
 
 </android.support.constraint.ConstraintLayout>

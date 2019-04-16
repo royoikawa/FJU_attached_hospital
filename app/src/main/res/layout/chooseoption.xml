@@ -6,6 +6,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="71dp"
+        android:layout_height="38dp"
+        android:text="預約"
+        tools:layout_editor_absoluteX="311dp"
+        tools:layout_editor_absoluteY="375dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/btn_round_blue"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="355dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="119dp"
+        android:layout_height="30dp"
+        android:text="星期五下午"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="229dp"
+        tools:layout_editor_absoluteY="357dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="119dp"
+        android:layout_height="30dp"
+        android:text="星期二上午"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="229dp"
+        tools:layout_editor_absoluteY="322dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/btn_round_blue"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="197dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="187dp"
+        android:layout_height="49dp"
+        android:text="醫生姓名:張章聖\n開診時段:"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="271dp" />
+
     <TextView
         android:id="@+id/textView13"
         android:layout_width="119dp"
@@ -73,7 +127,7 @@
         android:layout_height="30dp"
         app:srcCompat="@drawable/btn_round_blue"
         tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="194dp" />
+        tools:layout_editor_absoluteY="320dp" />
 
     <TextView
         android:id="@+id/textView12"
