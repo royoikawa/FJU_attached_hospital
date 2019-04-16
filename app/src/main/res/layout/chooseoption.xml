@@ -6,6 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="368dp"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/button6"
         android:layout_width="71dp"
@@ -15,61 +23,15 @@
         tools:layout_editor_absoluteY="375dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/btn_round_blue"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="355dp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="119dp"
-        android:layout_height="30dp"
-        android:text="星期五下午"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="357dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="119dp"
-        android:layout_height="30dp"
-        android:text="星期二上午"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="322dp" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/btn_round_blue"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="197dp" />
-
     <TextView
         android:id="@+id/textView14"
         android:layout_width="187dp"
         android:layout_height="49dp"
-        android:text="醫生姓名:張章聖\n開診時段:"
+        android:text="醫生姓名:張章聖\n開診日期:"
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="271dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="119dp"
-        android:layout_height="30dp"
-        android:text="星期一上午"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="162dp" />
+        tools:layout_editor_absoluteY="311dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -85,60 +47,55 @@
     <TextView
         android:id="@+id/textView11"
         android:layout_width="187dp"
-        android:layout_height="49dp"
-        android:text="醫生姓名:黃治國\n開診時段:"
+        android:layout_height="53dp"
+        android:text="醫生姓名:黃治國\n開診日期:"
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="111dp" />
+        tools:layout_editor_absoluteY="155dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="215dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="98dp"
+        tools:ignore="MissingConstraints" />
+
+    <SearchView
+        android:layout_width="271dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="93dp"
+        tools:ignore="MissingConstraints">
+
+    </SearchView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="85dp">
+        android:layout_marginTop="155dp">
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="120dp"
-            android:layout_height="167dp"
+            android:layout_height="157dp"
             app:srcCompat="@drawable/doc0" />
 
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="120dp"
-            android:layout_height="167dp"
+            android:layout_height="157dp"
             app:srcCompat="@drawable/doc1" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/btn_round_blue"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="157dp" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/btn_round_blue"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="320dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="119dp"
-        android:layout_height="30dp"
-        android:text="星期一下午"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="197dp" />
 
     <Button
         android:id="@+id/button2"
@@ -146,7 +103,16 @@
         android:layout_height="38dp"
         android:text="預約"
         tools:layout_editor_absoluteX="311dp"
-        tools:layout_editor_absoluteY="224dp" />
+        tools:layout_editor_absoluteY="224dp"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="215dp"
+        tools:ignore="MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>
