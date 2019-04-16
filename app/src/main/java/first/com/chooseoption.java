@@ -7,7 +7,7 @@ public class chooseoption extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chooseoption);
+        setContentView(R.layout.chooseoption);
 
     }
 }
