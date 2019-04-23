@@ -5,7 +5,8 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFF0F5">
 
     <Button
         android:id="@+id/button3"
@@ -34,6 +35,7 @@
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            app:srcCompat="@drawable/doctor"
              />
 
         <LinearLayout
@@ -71,7 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:text="診間 : XX間"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textStyle="italic" />
         </LinearLayout>
 
     </LinearLayout>
@@ -79,7 +82,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <TextView
@@ -92,14 +95,12 @@
             android:textSize="36sp"
             android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/editText"
+        <Spinner
+            android:id="@+id/spinner4"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="36sp" />
+            android:layout_height="50dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -167,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="就診者姓名 : "
+            android:text="出生年月日 : "
             android:textSize="36sp"
             android:textStyle="italic" />
 
@@ -177,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="例:2000/1/1"
             android:inputType="textPersonName"
             android:textSize="36sp" />
     </LinearLayout>
@@ -189,19 +191,23 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FF8888"
             android:text="清除"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#5599FF"
             android:text="預約"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
