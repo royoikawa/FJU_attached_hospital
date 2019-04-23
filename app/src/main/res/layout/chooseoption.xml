@@ -27,7 +27,7 @@
         android:id="@+id/textView14"
         android:layout_width="187dp"
         android:layout_height="49dp"
-        android:text="醫生姓名:張章聖\n開診日期:"
+        android:text="醫生姓名:張章聖\n開診時間:"
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="195dp"

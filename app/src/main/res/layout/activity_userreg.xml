@@ -15,13 +15,11 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="使用者登入"
+                android:text="使用者註冊"
                 android:textColor="#000000"
                 android:textSize="22dp" />
         </LinearLayout>
@@ -38,24 +36,48 @@
         android:layout_height="match_parent"
         android:background="#FFF0F5"
         android:orientation="vertical">
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:text="身分證字號"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="姓名"
             android:textColor="#AAAAAA" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:text="密碼"
+            android:layout_marginBottom="15dp"
+            android:hint="身分證字號"
             android:textColor="#AAAAAA" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="出生日期(xxxx/yy/zz)" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="手機號碼"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="密碼"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="確認密碼"/>
+
 
         <Button
             android:layout_width="match_parent"
@@ -63,7 +85,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
             android:background="#5599FF"
-            android:text="登入"
+            android:text="返回首頁"
             android:textColor="#FFFFFF"
             android:textSize="18dp" />
 
@@ -73,16 +95,10 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
             android:background="#FF8888"
-            android:text="註冊"
+            android:text="確定註冊"
             android:textColor="#FFFFFF"
             android:textSize="18dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="130dp"
-            android:layout_marginTop="20dp"
-            android:text="忘記密碼? 點擊發送簡訊" />
     </LinearLayout>
 
 </LinearLayout>
