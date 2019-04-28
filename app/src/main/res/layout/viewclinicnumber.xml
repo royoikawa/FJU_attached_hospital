@@ -38,7 +38,7 @@
             android:textSize="30dp" />
 
         <Spinner
-            android:id="@+id/clinic_spinner"
+            android:id="@+id/spinner"
             android:layout_width="185dp"
             android:layout_height="50dp"></Spinner>
 

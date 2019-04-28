@@ -11,9 +11,9 @@ public class viewclinicnumber extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
-        Spinner spinner = (Spinner)findViewById(R.id.clinic_spinner);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> clinicList = ArrayAdapter.createFromResource(viewclinicnumber.this,
-                R.array.clinic,
+                R.array.clinic_spinner,
                 android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(clinicList);
     }
