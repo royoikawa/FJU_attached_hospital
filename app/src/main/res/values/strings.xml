@@ -3,4 +3,10 @@
     <string name="text_name">Name</string>
     <string name="text_password">Password</string>
     <string name="text_bt">login</string>
+
+    <string-array name="clinic">
+        <item>泌尿科</item>
+        <item>骨科</item>
+        <item>皮膚科</item>
+    </string-array>
 </resources>
