@@ -157,25 +157,7 @@
         android:layout_height="80dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="出生年月日 : "
-            android:textSize="36sp"
-            android:textStyle="italic" />
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="例:2000/1/1"
-            android:inputType="textPersonName"
-            android:textSize="36sp" />
     </LinearLayout>
 
     <LinearLayout
