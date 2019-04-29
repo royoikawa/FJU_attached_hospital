@@ -136,8 +136,8 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="就診日期 : "
-                android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
+                android:textColor="#227700"
                 android:textStyle="italic" />
 
             <TextView
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:text="2019/4/30"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#227700"
                 android:textSize="30sp" />
 
         </LinearLayout>
@@ -167,8 +167,8 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="就診者姓名 : "
-                android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
+                android:textColor="#227700"
                 android:textStyle="italic" />
 
             <EditText
@@ -179,8 +179,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="林承鴻"
-                android:textColor="@color/colorPrimary"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:textColor="#227700"/>
         </LinearLayout>
 
         <LinearLayout
@@ -198,8 +198,8 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="身分證字號 : "
-                android:textColor="@color/colorPrimary"
                 android:textSize="30sp"
+                android:textColor="#227700"
                 android:textStyle="italic" />
 
             <EditText
@@ -210,8 +210,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="A123456789"
-                android:textColor="@color/colorPrimary"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="#227700"/>
 
         </LinearLayout>
 
