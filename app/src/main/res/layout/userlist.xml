@@ -8,6 +8,27 @@
     android:background="#FFF0F5">
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:background="#33CCFF"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginLeft="150dp"
+            android:text="主功能列表"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/ic_launcher_person"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/fju_logoforuser">
     </LinearLayout>
