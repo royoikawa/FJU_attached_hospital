@@ -115,8 +115,9 @@
     <LinearLayout
         android:id="@+id/linearLayout9"
         android:layout_width="match_parent"
-        android:layout_height="315dp"
+        android:layout_height="242dp"
         android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rectangle"
         android:orientation="vertical">
 
@@ -217,44 +218,32 @@
                 android:textColor="#227700"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout7"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="2dp"
-            android:background="#ffff">
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="60dp"
-                android:layout_marginVertical="10dp"
-                android:layout_weight="1"
-                android:background="#FF8888"
-                android:text="清除重填"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-        </LinearLayout>
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
+        android:layout_height="110dp"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="1dp"
+            android:background="#FF8888"
+            android:text="清除重填"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:background="#5599FF"
             android:text="確認預約"
             android:textColor="#FFFFFF"
