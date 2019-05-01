@@ -79,7 +79,8 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="185dp">
+        tools:layout_editor_absoluteY="185dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView"

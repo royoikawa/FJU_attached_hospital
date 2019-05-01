@@ -7,51 +7,57 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="	#00FFFF"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:background="#33CCFF"
         android:orientation="horizontal">
-
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_launcher_list"/>
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:text="查看門診號碼"
-            android:textColor="#ffffff"
-            android:textSize="40dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="100dp"
+            android:text="查看診間號碼"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_launcher_home"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="15dp"
+        android:layout_marginVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="40dp"
+        android:padding="2dp"
         android:orientation="horizontal">
+        <SearchView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="142dp"
-            android:layout_height="50dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:text="查看科別:"
-            android:textColor="#0000FF"
-            android:textSize="30dp" />
-
-        <Spinner
-            android:id="@+id/spinner01"
-            android:layout_width="185dp"
-            android:layout_height="50dp"></Spinner>
-
+        </SearchView>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:hint="查詢科別"
+            android:layout_height="match_parent" />
         <Button
-            android:id="@+id/button3"
-            android:layout_marginRight="10dp"
-            android:layout_width="65dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="50dp"
-            android:background="#5599FF"
-            android:text="更新"
-            android:textSize="20dp" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="查詢"
+            android:layout_weight="0.8"/>
+
+
+
 
     </LinearLayout>
 
@@ -60,141 +66,148 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TableLayout
-            android:layout_width="370dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/rectangle_blue">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="胸腔內科"
+                android:textSize="22dp"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:background="#000000"
-            android:stretchColumns="*">
-
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
+            android:layout_marginHorizontal="25dp"
+            android:gravity="center"
+            android:background="@drawable/rectangle"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_margin="1dp"
-                    android:background="#BBFFEE"
-                    android:text="看診時段 : "
-                    android:textColor="#000000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-
-                <TextView
+                    android:textSize="23dp"
                     android:layout_width="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:text="下午診"
-                    android:textColor="#0000FF"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
-                <TextView
-                    android:layout_width="159dp"
-                    android:layout_margin="1dp"
-                    android:background="#BBFFEE"
-                    android:text="您的看診號碼 : "
-                    android:textColor="#000000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="39"
-                    android:textColor="#0000FF"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_margin="1dp"
-                    android:background="#BBFFEE"
-                    android:text="看診醫師 : "
+                    android:layout_marginLeft="20dp"
                     android:textColor="#000000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-
+                    android:text="看診時段: "/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:text="將翰升"
-                    android:textColor="#0000FF"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
+                    android:layout_height="wrap_content"
+                    android:textSize="23dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="#008844"
+                    android:text="下午診"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_margin="1dp"
-                    android:background="#BBFFEE"
-                    android:text="門診位置 : "
-                    android:textColor="#000000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-
-                <TextView
+                    android:textSize="23dp"
                     android:layout_width="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
-                    android:text="B棟2樓 3診"
-                    android:textColor="#0000FF"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-            </TableRow>
-
-            <TableRow
-                android:layout_margin="1dp"
-                android:background="#000000">
-
-                <TextView
-                    android:layout_width="151dp"
-                    android:layout_margin="1dp"
-                    android:background="#BBFFEE"
-                    android:text="目前門診號碼 : "
-                    android:textColor="#000000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_margin="1dp"
-                    android:background="#ffffff"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="24"
-                    android:textColor="#FF0000"
-                    android:textSize="28dp"
-                    android:textStyle="normal" />
-            </TableRow>
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    android:text="掛號號碼:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="23dp"
+                    android:layout_marginLeft="42dp"
+                    android:textColor="#008844"
+                    android:text="39"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#000000"
+                    android:text="看診醫師: "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="23dp"
+                    android:textColor="#008844"
+                    android:layout_marginLeft="40dp"
+                    android:text="江漢聲"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    android:text="門診位置:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="23dp"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="#008844"
+                    android:text="b 棟2F三診"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:padding="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    android:text="目前門診號碼:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="23dp"
+                    android:textColor="#FF3333"
+                    android:layout_marginLeft="40dp"
+                    android:text="24"/>
+            </LinearLayout>
 
-        </TableLayout>
+        </LinearLayout>
+
 
         <Switch
             android:id="@+id/switch3"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="370dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:textColor="#0000FF"
             android:text="開始跳號後通知我"
             android:textSize="24dp"/>
 
