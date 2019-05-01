@@ -1,55 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:background="#FFF0F5">
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="開診時段:"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="281dp" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="開診時段:"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="415dp" />
-
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="71dp"
-        android:layout_height="38dp"
-        android:background="@color/colorPrimary"
-        android:text="預約"
-        android:textColor="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="445dp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="開診時段:"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="555dp" />
-
     <LinearLayout
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="#33CCFF"
         android:gravity="center_vertical"
@@ -64,13 +22,73 @@
             android:id="@+id/textView9"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="125dp"
+            android:layout_marginHorizontal="115dp"
             android:text="預約掛號"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_launcher_home"
+            android:layout_marginRight="15dp"
+            tools:ignore="MissingConstraints" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#FFF0F5"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+            <SearchView
+                android:layout_width="26dp"
+                android:layout_height="46dp"
+                tools:ignore="MissingConstraints"
+                android:layout_marginLeft="50dp" />
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="182dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="醫師查詢"
+            android:inputType="textPersonName"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dp"
+            tools:ignore="MissingConstraints"
+            />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="60dp"
+            android:text="查詢" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="當週(4/22~4/27)"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
@@ -78,9 +96,9 @@
         android:background="@drawable/rectangle_blue"
         android:gravity="center"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="185dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="185dp">
 
         <TextView
             android:id="@+id/textView"
@@ -90,207 +108,206 @@
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
-        android:text="醫生姓名:蕭揚惟"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="524dp" />
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="415dp" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
-        android:text="醫生姓名:張章聖"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="385dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="187dp"
-        android:layout_height="29dp"
-        android:text="醫生姓名:黃治國"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="250dp" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="182dp"
-        android:layout_height="45dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:gravity="start"
-        android:hint="醫師查詢"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="88dp" />
-
-    <SearchView
-        android:layout_width="226dp"
-        android:layout_height="46dp"
-        android:gravity="center"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="87dp">
-
-    </SearchView>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="71dp"
-        android:layout_height="38dp"
-        android:background="@color/colorPrimary"
-        android:text="預約"
-        android:textColor="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="316dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="71dp"
-        android:layout_height="38dp"
-        android:text="預約"
-        android:textColor="#FFFFFF"
-        android:background="@color/colorPrimary"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="585dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_launcher_home"
-        tools:layout_editor_absoluteX="347dp"
-        tools:layout_editor_absoluteY="7dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="70dp"
-        android:layout_height="43dp"
-        android:background="@color/colorAccent"
-        android:text="查詢"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="88dp"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spinner5"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:dropDownWidth="wrap_content"
-        android:gravity="center"
-        android:text="當週(4/22~4/27)"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="149dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="90dp"
-        android:layout_height="95dp"
-        app:srcCompat="@drawable/doctor0"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="259dp"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spinner6"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="285dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="90dp"
-        android:layout_height="95dp"
-        app:srcCompat="@drawable/doctor1"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="395dp"
-        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="382dp"
         android:layout_height="450dp"
+        android:layout_marginLeft="15dp"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="230dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="230dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@drawable/rectangle"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-          ></LinearLayout>
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="85dp"
+                android:layout_height="105dp"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/doctor0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="187dp"
+                    android:layout_height="29dp"
+                    android:text="醫生姓名:黃治國"
+                    android:textSize="18sp"
+                    tools:ignore="MissingConstraints"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="50dp"
+                     />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="開診時段:"
+                        android:textSize="18sp"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="10dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinner6"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="71dp"
+                    android:layout_height="38dp"
+                    android:background="@color/colorPrimary"
+                    android:text="預約"
+                    android:textColor="#FFFFFF"
+                    tools:ignore="MissingConstraints"
+                    android:layout_marginLeft="70dp" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@drawable/rectangle"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            ></LinearLayout>
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="85dp"
+                android:layout_height="105dp"
+                android:background="@drawable/doctor1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:text="醫生姓名:張章聖"
+                android:textSize="18sp"
+                tools:ignore="MissingConstraints"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="開診時段:"
+                        android:textSize="18sp"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="10dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="71dp"
+                    android:layout_height="38dp"
+                    android:background="@color/colorPrimary"
+                    android:text="預約"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="70dp"
+                     />
+
+
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@drawable/rectangle"
+            android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="85dp"
+            android:layout_height="105dp"
+            android:background="@drawable/doctor2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:orientation="vertical"
-            tools:ignore="MissingConstraints"
-            ></LinearLayout>
+            >
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:text="醫生姓名:蕭揚惟"
+                android:textSize="18sp"
+                tools:ignore="MissingConstraints"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                >
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="開診時段:"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    />
+                <Spinner
+                    android:id="@+id/spinner8"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"></Spinner>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="71dp"
+                android:layout_height="38dp"
+                android:text="預約"
+                android:textColor="#FFFFFF"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="70dp"
+                />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="90dp"
-        android:layout_height="95dp"
-        app:srcCompat="@drawable/doctor2"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="535dp"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="260dp"
-        tools:layout_editor_absoluteY="555dp"
-        tools:ignore="MissingConstraints" /><![CDATA[
-
-
-
-
-
-
-
-    " />
-
-
-
-
-
-]]>
-</android.support.constraint.ConstraintLayout>
+   </LinearLayout>
+ </LinearLayout>
