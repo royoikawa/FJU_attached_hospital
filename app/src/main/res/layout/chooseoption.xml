@@ -59,7 +59,7 @@
             android:layout_width="35dp"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_launcher_list"/>
+            android:background="@drawable/ic_launcher_lastpage"/>
         <TextView
             android:id="@+id/textView9"
             android:layout_width="90dp"
