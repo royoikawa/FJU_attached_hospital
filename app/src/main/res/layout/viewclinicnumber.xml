@@ -200,17 +200,6 @@
 
         </LinearLayout>
 
-
-        <Switch
-            android:id="@+id/switch3"
-            android:layout_marginTop="50dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:textColor="#0000FF"
-            android:text="開始跳號後通知我"
-            android:textSize="24dp"/>
-
     </LinearLayout>
 
 </LinearLayout>
