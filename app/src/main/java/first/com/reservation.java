@@ -13,7 +13,7 @@ public class reservation extends AppCompatActivity{
         //setContentView(R.layout.reservationimformation);
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(reservation.this,android.R.layout.simple_list_item_1,data);
-        ListView listview=(ListView)findViewById(R.id.frank);
+        ListView listview=(ListView)findViewById(R.id.branch);
         listview.setAdapter(adapter);
 
     }
