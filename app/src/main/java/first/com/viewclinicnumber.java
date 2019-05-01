@@ -2,20 +2,31 @@ package first.com;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+/*import android.widget.ArrayAdapter;
+import android.widget.Spinner;*/
 
 
 public class viewclinicnumber extends AppCompatActivity {
+    /*private  Spinner spinner;
+    private ArrayAdapter<String> adapter;
+    private static final String[] Clinic={"泌尿科","骨科","皮膚科"};*/
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> clinicList = ArrayAdapter.createFromResource(viewclinicnumber.this,
-                R.array.clinic_spinner,
-                android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(clinicList);
+
+
+       /* try{
+            spinner = (Spinner) findViewById(R.id.spinner);
+            //將可選内容與ArrayAdapter連接起來
+            adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,Clinic);
+            //設置下拉列表的風格
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            //将adapter 添加到spinner中
+            spinner.setAdapter(adapter);
+        }catch(Exception e){
+            e.printStackTrace();
+        }*/
     }
 }
 
