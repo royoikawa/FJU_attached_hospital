@@ -117,7 +117,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rectangle"
         android:orientation="vertical">
 
@@ -126,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="2dp"
+            android:layout_marginTop="2dp"
             android:background="#ffff"
             android:orientation="horizontal">
 
@@ -159,6 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="2dp"
+            android:layout_marginBottom="2dp"
             android:background="#ffff"
             android:orientation="horizontal">
 
@@ -192,12 +195,12 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="320dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:background="#5599FF"
-            android:text="確認預約"
+            android:layout_marginTop="6dp"
+            android:background="#FF8888"
+            android:text="完成掛號"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />

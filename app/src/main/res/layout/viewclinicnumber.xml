@@ -101,13 +101,14 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="#000000"
                     android:text="看診時段: "/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="23dp"
                     android:layout_marginLeft="40dp"
+                    android:text="下午診"
                     android:textColor="#008844"
-                    android:text="下午診"/>
+                    android:textSize="23dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
