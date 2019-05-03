@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".userlogin"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".userreg"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
