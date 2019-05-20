@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="#FFF0F5">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:gravity="center_vertical"
+    android:background="#33CCFF"
+    android:orientation="horizontal">
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ic_launcher_list"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="110dp"
+        android:text="調整班表"
+        android:textStyle="bold"/>
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/ic_launcher_home"/>
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="400dp"
+        android:orientation="horizontal"
+        android:layout_height="80dp">
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="請選擇請假日期:"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="35dp"
+            android:textSize="22dp"/>
+
+        <Spinner
+            android:id="@+id/spinner10"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"></Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="400dp"
+        android:orientation="horizontal"
+        android:layout_height="80dp">
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:text="請假原因:"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="35dp"
+            android:textSize="22dp"/>
+
+        <EditText
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="400dp"
+        android:orientation="horizontal"
+        android:layout_height="80dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="送出"
+            android:background="@drawable/button_round"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
