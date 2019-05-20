@@ -3,9 +3,11 @@ package first.com;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.data_test);
-        loadData();
+        setContentView(R.layout.adminregistered);
+        //loadData();
+
         //Button nextPageBtn = (Button)findViewById(R.id.button12);
         //nextPageBtn.setOnClickListener(new View.OnClickListener() {
          //   @Override
