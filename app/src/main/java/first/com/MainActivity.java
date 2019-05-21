@@ -22,7 +22,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class MainActivity extends AppCompatActivity {
-    private void loadData(){
+    /*private void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -54,21 +54,21 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("Hot Text:", statusCode + " " + e.getMessage());
             }
         });
-    }
+    }*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminregistered);
+        setContentView(R.layout.activity_main);
         //loadData();
 
-        //Button nextPageBtn = (Button)findViewById(R.id.button12);
-        //nextPageBtn.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-          //  public void onClick(View v) {
-           //     Intent intent = new Intent();
-            //    intent.setClass(MainActivity.this , userlogin.class);
-             //   startActivity(intent);
-            //}
-        //});
+        Button nextPageBtn = (Button)findViewById(R.id.button12);
+        nextPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this , userlogin.class);
+                startActivity(intent);
+            }
+        });
         }
 
     }
