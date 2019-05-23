@@ -104,7 +104,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="病史紀錄"
+                android:text="親友資料"
                 android:textSize="24dp"
                 android:textColor="#555555"
                 android:textStyle="bold"
