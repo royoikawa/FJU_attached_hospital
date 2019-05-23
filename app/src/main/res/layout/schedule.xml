@@ -40,24 +40,20 @@
             android:layout_width="400dp"
             android:orientation="horizontal"
             android:layout_height="150dp">
-            <TextView
-                android:layout_width="210dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginLeft="15dp"
-                android:text="Notice:"
-                android:textSize="28dp"/>
 
-            <EditText
-                android:layout_width="160dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="35dp" />
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="35dp"
+                android:text="Notice:注意各醫生請假天數上限，請假時需附上請假理由或證明。"
+                android:textSize="28dp" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="400dp"
             android:orientation="horizontal"
-            android:layout_height="150dp">
+            android:layout_height="120dp">
             <TextView
                 android:layout_width="210dp"
                 android:layout_height="40dp"
