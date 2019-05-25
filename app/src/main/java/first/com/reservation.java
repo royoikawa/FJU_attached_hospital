@@ -17,10 +17,55 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.widget.ListView;
-
+import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class reservation extends AppCompatActivity{
+    private ArrayList  data = new ArrayList<String>();
+    private void loadData(){
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keyKStB2L0gi9sY2B";
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlString, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
+               // Toast.makeText(getApplicationContext(),
+                      //  "Success!", Toast.LENGTH_LONG).show();
+                Log.d("Hot Text:", response.toString());
+                ListView kindview =(ListView)findViewById(R.id.kindview);
+                TextView tview =(TextView)findViewById(R.id.tview);
+                String Json = response.toString();
+                try {
+                    JSONArray Array = response.getJSONArray("records");
+                    for(int i = 0; i<Array.length();i++){
+                        JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject fields=userdata.getJSONObject("fields");
+                        String id = fields.getString("Divisions_name");
+                        data.add(id);
+                        ArrayAdapter<String> adapter=new ArrayAdapter<String>(reservation.this,android.R.layout.simple_list_item_1,data);
+                        ListView listview=(ListView)findViewById(R.id.kindview);
+                        listview.setAdapter(adapter);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
+                Toast.makeText(getApplicationContext(),
+                        "Error: " + statusCode + " " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                // Log error message
+                Log.e("Hot Text:", statusCode + " " + e.getMessage());
+            }
+        });
+    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.reservation);
+        loadData();
+    }
+    /*單純匯資料
     private String[] data;
     private void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keyKStB2L0gi9sY2B";
@@ -57,8 +102,11 @@ public class reservation extends AppCompatActivity{
             }
         });
     }
-
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.reservation);
+    }
+    */
     //private String[] data={"胸腔內科","心臟內科","老年醫學科","神經內科","血液腫瘤科","腎臟內科","一般外科","神經外科","小兒科","整形外科","骨科","泌尿科"};
     /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
