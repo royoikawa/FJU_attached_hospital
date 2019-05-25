@@ -17,11 +17,56 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private ArrayList  data = new ArrayList<String>();
+    private void loadData(){
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keyKStB2L0gi9sY2B";
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlString, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
+                Toast.makeText(getApplicationContext(),
+                        "Success!", Toast.LENGTH_LONG).show();
+                Log.d("Hot Text:", response.toString());
+                ListView kindview =(ListView)findViewById(R.id.kindview);
+                TextView tview =(TextView)findViewById(R.id.tview);
+                String Json = response.toString();
+                try {
+                    JSONArray Array = response.getJSONArray("records");
+                    for(int i = 0; i<Array.length();i++){
+                        JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject fields=userdata.getJSONObject("fields");
+                        String id = fields.getString("Divisions_name");
+                        data.add(id);
+                        ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,data);
+                        ListView listview=(ListView)findViewById(R.id.kindview);
+                        listview.setAdapter(adapter);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
+                Toast.makeText(getApplicationContext(),
+                        "Error: " + statusCode + " " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                // Log error message
+                Log.e("Hot Text:", statusCode + " " + e.getMessage());
+            }
+        });
+    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.reservation);
+        loadData();
+    }
     /*private void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
         AsyncHttpClient client = new AsyncHttpClient();
@@ -31,12 +76,13 @@ public class MainActivity extends AppCompatActivity {
                         "Success!", Toast.LENGTH_LONG).show();
                 Log.d("Hot Text:", response.toString());
                 TextView dataview =(TextView)findViewById(R.id.dataview);
-                //String Json = response.toString();
+                String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
                     for(int i = 0; i<Array.length();i++){
                         JSONObject userdata = Array.getJSONObject(i);
                         String id = userdata.getString("id");
+
                         dataview.append(id+"\n");
                     }
                 } catch (JSONException e) {
@@ -55,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
-    protected void onCreate(Bundle savedInstanceState) {
+    /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //loadData();
 
-        Button nextPageBtn = (Button)findViewById(R.id.button12);
+      / Button nextPageBtn = (Button)findViewById(R.id.button12);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this , userlogin.class);
                 startActivity(intent);
             }
-        });
-        }
+        });*/
+}
 
-    }
+
 
