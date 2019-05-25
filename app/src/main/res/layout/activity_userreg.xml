@@ -37,6 +37,7 @@
         android:background="#FFF0F5"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -46,6 +47,7 @@
             android:textColor="#AAAAAA" />
 
         <EditText
+            android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -53,12 +55,14 @@
             android:hint="身分證字號"
             android:textColor="#AAAAAA" />
         <EditText
+            android:id="@+id/bir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="15dp"
             android:hint="出生日期(xxxx/yy/zz)" />
         <EditText
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -66,12 +70,14 @@
             android:hint="手機號碼"/>
 
         <EditText
+            android:id="@+id/passWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="15dp"
             android:hint="密碼"/>
         <EditText
+            android:id="@+id/checkPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -90,6 +96,7 @@
             android:textSize="18dp" />
 
         <Button
+            android:id="@+id/reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"

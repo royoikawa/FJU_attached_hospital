@@ -13,7 +13,7 @@ public class userlogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
-        Button nextPageBtn = (Button)findViewById(R.id.button5);
+        Button nextPageBtn = (Button)findViewById(R.id.register);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
