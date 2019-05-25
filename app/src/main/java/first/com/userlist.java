@@ -9,7 +9,7 @@ import android.widget.Button;
 public class userlist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reservation);
+        setContentView(R.layout.userlist);
 
         Button nextPageBtn = (Button)findViewById(R.id.reservation);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {

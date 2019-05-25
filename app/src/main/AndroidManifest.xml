@@ -28,6 +28,10 @@
             android:name=".reservation"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".userlist"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

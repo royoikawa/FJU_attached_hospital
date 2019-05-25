@@ -24,14 +24,14 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.userlist);
+        setContentView(R.layout.activity_main);
 
-        Button nextPageBtn = (Button)findViewById(R.id.reservation);
+        Button nextPageBtn = (Button)findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , reservation.class);
+                intent.setClass(MainActivity.this , userlogin.class);
                 startActivity(intent);
             }
         });
