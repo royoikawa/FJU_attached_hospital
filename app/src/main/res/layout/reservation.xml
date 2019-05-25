@@ -76,8 +76,4 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="15dp"
         android:background="#ffffff"/>
-    <TextView
-        android:id="@+id/tview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

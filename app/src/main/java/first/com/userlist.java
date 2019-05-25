@@ -20,5 +20,15 @@ public class userlist extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button nextPageBtn1 = (Button)findViewById(R.id.viewclinicnumber);
+        nextPageBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlist.this , viewclinicnumber.class);
+                startActivity(intent);
+            }
+        });
     }
 }
