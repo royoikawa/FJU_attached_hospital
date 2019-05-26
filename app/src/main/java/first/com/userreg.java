@@ -78,7 +78,11 @@ public class userreg extends AppCompatActivity {
                 passWord = (EditText) findViewById(R.id.passWord);
                 checkPass = (EditText) findViewById(R.id.checkPass);
                 if (!("".equals(name.getText().toString())
-                        || "".equals(id.getText().toString()))) {
+                        || "".equals(id.getText().toString())
+                        || "".equals(bir.getText().toString())
+                        || "".equals(phone.getText().toString())
+                        || "".equals(passWord.getText().toString())
+                        || "".equals(checkPass.getText().toString()))) {
                     Toast.makeText(getApplicationContext(),
                             "Success!", Toast.LENGTH_LONG).show();
                 }
