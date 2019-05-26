@@ -23,15 +23,15 @@ import cz.msebera.android.httpclient.Header;
 public class reservation extends AppCompatActivity{
     private ArrayList  data = new ArrayList<String>();
     private void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keyKStB2L0gi9sY2B";
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keygkXy0a4GuCXh7p";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
                // Toast.makeText(getApplicationContext(),
                       //  "Success!", Toast.LENGTH_LONG).show();
                 Log.d("Hot Text:", response.toString());
-                ListView kindview =(ListView)findViewById(R.id.kindview);
-                TextView tview =(TextView)findViewById(R.id.tview);
+                //ListView kindview =(ListView)findViewById(R.id.kindview);
+                //TextView tview =(TextView)findViewById(R.id.tview);
                 String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
