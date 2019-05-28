@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +25,10 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class viewclinicnumber extends AppCompatActivity {
+    private Button btn1; //宣告Button
+    private EditText txt1; //宣告EditText
     private ArrayList r_data = new ArrayList<String>();
+
     private void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
         AsyncHttpClient client = new AsyncHttpClient();
@@ -110,7 +114,30 @@ public class viewclinicnumber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
         loadData();
+        btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
+        txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
+        btn1.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                //取得EditText的輸入內容
+                String content = txt1.getText().toString();
+
+                boolean isIn = r_data.contains(content);
+                if(isIn==true){
+                    Toast.makeText(viewclinicnumber.this, content, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(viewclinicnumber.this, "error", Toast.LENGTH_SHORT).show();
+                }
+
+
+                //顯示在Debug Console
+                Log.d("debug", "button click");
+                //使用Toast顯示在螢幕上
+                //Toast.makeText(viewclinicnumber.this, content, Toast.LENGTH_SHORT).show();
+            }
+        });
 
        /* try{
             spinner = (Spinner) findViewById(R.id.spinner);

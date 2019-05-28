@@ -39,18 +39,20 @@
         android:layout_marginHorizontal="40dp"
         android:padding="2dp"
         android:orientation="horizontal">
+
         <SearchView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5">
-
         </SearchView>
         <EditText
+            android:id="@+id/searchbar"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:hint="查詢科別"
             android:layout_height="match_parent" />
         <Button
+            android:id="@+id/searchbtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="查詢"
