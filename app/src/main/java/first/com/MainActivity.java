@@ -28,32 +28,11 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    Date currentd = new Date();
-
-    //當周
-    Date nextweek=new Date(new Date().getTime()+6*24*60*60*1000);
-    SimpleDateFormat takeinidate= new SimpleDateFormat("yyyyMMdd");
-    SimpleDateFormat takeenddate= new SimpleDateFormat("yyyyMMdd");
-    String ini = takeinidate.format(currentd).substring(4);
-    String end = takeenddate.format(nextweek).substring(4);
-    String option1="當週("+ini+"~"+end+")";
-
-    //第二周
-    Date nextweek2=new Date(new Date().getTime()+7*24*60*60*1000);
-    Date nextweek3=new Date(new Date().getTime()+13*24*60*60*1000);
-    String ini2 = takeinidate.format(nextweek2).substring(4);
-    String end2 = takeenddate.format(nextweek3).substring(4);
-    String option2="下週("+ini2+"~"+end2+")";
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chooseoption);
-        String[] datedata={option1,option2};
-        Spinner spinner = findViewById(R.id.week);
-        ArrayAdapter<String> dateList = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_spinner_dropdown_item,datedata);
-        spinner.setAdapter(dateList);
+        setContentView(R.layout.activity_main);
 
-        /*跳頁按鈕Button nextPageBtn = (Button)findViewById(R.id.userlogin);
+        Button nextPageBtn = (Button)findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this , userlogin.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
     /*
     //reservation

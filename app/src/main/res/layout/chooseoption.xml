@@ -101,10 +101,10 @@
         tools:layout_editor_absoluteY="185dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/selectnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="胸腔內科醫生列表"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
     </LinearLayout>

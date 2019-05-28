@@ -36,6 +36,10 @@
             android:name=".viewclinicnumber"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".chooseoption"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
