@@ -13,13 +13,24 @@ public class userlogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
-        Button nextPageBtn = (Button)findViewById(R.id.button5);
+        Button nextPageBtn = (Button)findViewById(R.id.register);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(userlogin.this , userreg.class);
                 startActivity(intent);
+
+            }
+        });
+        Button nextPageBtn1 = (Button)findViewById(R.id.userlist1);
+        nextPageBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlogin.this , userlist.class);
+                startActivity(intent);
+
             }
         });
     }

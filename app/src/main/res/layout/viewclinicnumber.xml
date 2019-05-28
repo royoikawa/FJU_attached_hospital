@@ -125,12 +125,12 @@
                     android:textColor="#000000"
                     android:text="掛號號碼:"/>
                 <TextView
+                    android:id="@+id/numview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="23dp"
                     android:layout_marginLeft="42dp"
-                    android:textColor="#008844"
-                    android:text="39"/>
+                    android:textColor="#008844" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,12 +147,12 @@
                     android:textColor="#000000"
                     android:text="看診醫師: "/>
                 <TextView
+                    android:id="@+id/docview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="23dp"
                     android:textColor="#008844"
-                    android:layout_marginLeft="40dp"
-                    android:text="江漢聲"/>
+                    android:layout_marginLeft="40dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,12 +169,12 @@
                     android:textColor="#000000"
                     android:text="門診位置:"/>
                 <TextView
+                    android:id="@+id/locview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="23dp"
                     android:layout_marginLeft="40dp"
-                    android:textColor="#008844"
-                    android:text="b 棟2F三診"/>
+                    android:textColor="#008844"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

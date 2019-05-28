@@ -23,7 +23,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     /*private void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
@@ -36,8 +36,17 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray Array = response.getJSONArray("records");
                     for(int i = 0; i<Array.length();i++){
                         JSONObject userdata = Array.getJSONObject(i);
-                        String id = userdata.getString("id");
-                        dataview.append(id+"\n");
+                        JSONObject fields = userdata.getJSONObject("fields");
+                        JSONArray itemsArray=fields.getJSONArray("r_patient");
+                        //String itemitem=fields.getString("r_location");
+                        //String itemitem= (String) itemsArray.get(0);
+                        for (int j = 0; j < itemsArray.length(); j++) {
+                            JSONObject item = itemsArray.getJSONObject(j);
+                            dataview.append(item.length()+"\n");
+                        }
+                        //dataview.append(item+"\n");
+                        //dataview.append(item+"\n");
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -58,9 +67,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //loadData();
-
-        Button nextPageBtn = (Button)findViewById(R.id.button12);
+       //loadData();
+      Button nextPageBtn = (Button)findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
