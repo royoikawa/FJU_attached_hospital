@@ -30,23 +30,24 @@ public class userreg extends AppCompatActivity {
     EditText passWord;
     EditText checkPass;
 
-    private void loadData() {
+    private void loadData(final String name, final String id, final String bir, final String phone, final String passWord) {
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Toast.makeText(getApplicationContext(),
-                        "Success!", Toast.LENGTH_LONG).show();
-                Log.d("Hot Text:", response.toString());
-                TextView dataview = (TextView) findViewById(R.id.dataview);
-                //String Json = response.toString();
                 try {
-                    JSONArray Array = response.getJSONArray("records");
-                    for (int i = 0; i < Array.length(); i++) {
-                        JSONObject userdata = Array.getJSONObject(i);
-                        String id = userdata.getString("id");
-                        dataview.append(id + "\n");
-                    }
+                    JSONArray records = response.getJSONArray("records");
+                    JSONObject userData = new JSONObject();
+                    userData.put("Borned",bir);
+                    userData.put("Name",name);
+                    userData.put("Phone_number",phone);
+                    userData.put("ID",id);
+                    userData.put("Password",passWord);
+                    JSONObject user = new JSONObject();
+                    user.put("fields",userData);
+                    records.put(records.length(),user);
+                    Toast.makeText(getApplicationContext(),
+                            "Success", Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -83,8 +84,7 @@ public class userreg extends AppCompatActivity {
                         || "".equals(phone.getText().toString())
                         || "".equals(passWord.getText().toString())
                         || "".equals(checkPass.getText().toString()))) {
-                    Toast.makeText(getApplicationContext(),
-                            "Success!", Toast.LENGTH_LONG).show();
+                    loadData(name.getText().toString(), id.getText().toString(), bir.getText().toString(), phone.getText().toString(), passWord.getText().toString());
                 }
             }
         });
