@@ -41,6 +41,7 @@ public class reservation extends AppCompatActivity{
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields=userdata.getJSONObject("fields");
                         String id = fields.getString("Divisions_name");
+                        int sortid = fields.getInt("Divisions_number");
                         data.add(id);
                         ArrayAdapter<String> adapter=new ArrayAdapter<String>(reservation.this,android.R.layout.simple_list_item_1,data);
                         ListView listview=(ListView)findViewById(R.id.kindview);
@@ -53,8 +54,9 @@ public class reservation extends AppCompatActivity{
                                 Intent intent = new Intent();
                                 intent.setClass(reservation.this , chooseoption.class);
                                 Bundle bundle = new Bundle();
-                                String test = data.get(position).toString();
-                                bundle.putString("name",test);
+                                String divname = data.get(position).toString();
+                                bundle.putString("name",divname);
+                                bundle.putString("order",position+1+"");
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }

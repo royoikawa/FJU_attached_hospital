@@ -138,10 +138,9 @@
                 android:orientation="vertical"
                 >
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/docname"
                     android:layout_width="187dp"
                     android:layout_height="29dp"
-                    android:text="醫生姓名:黃治國"
                     android:textSize="18sp"
                     tools:ignore="MissingConstraints"
                     android:layout_marginTop="20dp"
@@ -154,7 +153,6 @@
                         android:id="@+id/textView10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="開診時段:"
                         android:textSize="18sp"
                         tools:ignore="MissingConstraints"
                         android:layout_marginLeft="50dp"

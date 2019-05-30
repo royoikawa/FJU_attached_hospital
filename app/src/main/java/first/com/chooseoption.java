@@ -1,14 +1,30 @@
 package first.com;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.JsonReader;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import cz.msebera.android.httpclient.Header;
 
 public class chooseoption extends AppCompatActivity {
     //要先知道醫生上班日期,才能顯示選項
@@ -29,21 +45,83 @@ public class chooseoption extends AppCompatActivity {
     String ini2 = takeinidate.format(nextweek2).substring(4);
     String end2 = takeenddate.format(nextweek3).substring(4);
     String option2="下週("+ini2+"~"+end2+")";
+    //顯示醫生姓名
+    private ArrayList data = new ArrayList<String>();
+   private  String selected_num;
+    private void loadData(){
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?api_key=keygkXy0a4GuCXh7p";
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlString, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.d("Hot Text:", response.toString());
+                //ListView kindview =(ListView)findViewById(R.id.kindview);
+                //TextView tview =(TextView)findViewById(R.id.tview);
+                String Json = response.toString();
+                try {
+                    JSONArray Array = response.getJSONArray("records");
+                    for (int i = 0; i < Array.length(); i++) {
+                        JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject fields = userdata.getJSONObject("fields");
+                        String id = fields.getString("Divisions_number");
+                        //Toast.makeText(getApplicationContext(),
+                               // id, Toast.LENGTH_LONG).show();
+                        /*if(selected_num.equals(id)){
+                            String docname = fields.getString("Doctor_name");
+                            Toast.makeText(getApplicationContext(),
+                                   docname, Toast.LENGTH_LONG).show();
+                        }*/
+                        //Toast.makeText(getApplicationContext(),
+                               // id, Toast.LENGTH_LONG).show();
+                        //data.add(id);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
+                Toast.makeText(getApplicationContext(),
+                        "Error: " + statusCode + " " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                // Log error message
+                Log.e("Hot Text:", statusCode + " " + e.getMessage());
+            }
+        });
+        }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chooseoption);
-        String[] datedata={option1,option2};
+        final String[] datedata={option1,option2};
         Spinner spinner = findViewById(R.id.week);
-        ArrayAdapter<String> dateList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,datedata);
+        final ArrayAdapter<String> dateList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,datedata);
         spinner.setAdapter(dateList);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         //顯示所選擇科別
         TextView selectnum = (TextView)findViewById(R.id.selectnum);
         Bundle bundle = getIntent().getExtras();
         String selected_type = bundle.getString("name");
         selectnum.setText(selected_type+"醫生列表");
+        //接所選order
+        String selected_num = bundle.getString("order");
+        loadData();
+
+
+
 
         /*ArrayAdapter<String> adapter=new ArrayAdapter<String>(chooseoption.this,android.R.layout.simple_list_item_1,data);
         ListView listview=(ListView)findViewById(R.id.frank);
         listview.setAdapter(adapter);  */
     }
-}
+        }
