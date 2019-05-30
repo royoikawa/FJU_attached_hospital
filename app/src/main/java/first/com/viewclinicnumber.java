@@ -7,8 +7,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,16 +32,17 @@ public class viewclinicnumber extends AppCompatActivity {
     private Button btn1; //宣告Button
     private EditText txt1; //宣告EditText
     private ArrayList r_data = new ArrayList<String>();
+    private RadioGroup rg;
 
-    private void loadData(){
+    private void loadData() {
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Toast.makeText(getApplicationContext(),
                         "Success!", Toast.LENGTH_LONG).show();
                 Log.d("Hot Text:", response.toString());
-                TextView dataview =(TextView)findViewById(R.id.dataview);
+                TextView dataview = (TextView) findViewById(R.id.dataview);
                 //String Json = response.toString();
                 try {
                    /* JSONArray Array = response.getJSONArray("records");
@@ -52,45 +57,51 @@ public class viewclinicnumber extends AppCompatActivity {
                             dataview.append(item.length()+"\n");
                         }*//*
                         r_data.add(itemitem);
-                    }
-                    for(int i=0;i<r_data.size();i++){
-                        dataview.append((CharSequence) r_data.get(i)+"\n");
-                    }
-                    dataview.append((CharSequence) r_data.get(2)+"\n");*/
-
-                    JSONArray Array = response.getJSONArray("records");
-                    for(int  i=0;i<Array.length();i++){
-                        JSONObject userdata = Array.getJSONObject(i);
-                        JSONObject fields = userdata.getJSONObject("fields");
-                        JSONArray itemdoctor=fields.getJSONArray("r_doctor");
-                        String item1= (String) itemdoctor.get(0);
-                        r_data.add(item1);
-                        String item2= fields.getString("r_id");
-                        r_data.add(item2);
-                        JSONArray itemlocation=fields.getJSONArray("r_location");
-                        String item3= (String) itemlocation.get(0);
-                        r_data.add(item3);
-                        JSONArray itempatient=fields.getJSONArray("r_patient");
-                        String item4= (String) itempatient.get(0);
-                        r_data.add(item4);
-                        String item5= fields.getString("r_number");
-                        r_data.add(item5);
-                    }
-
+                    }*/
                     /*for(int i=0;i<r_data.size();i++){
                         dataview.append((CharSequence) r_data.get(i)+"\n");
                     }*/
+                    //dataview.append((CharSequence) r_data.get(2)+"\n");
 
-                    TextView numText = (TextView)findViewById(R.id.numview);
+                    JSONArray Array = response.getJSONArray("records");
+                    for (int i = 0; i < Array.length(); i++) {
+                        JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject fields = userdata.getJSONObject("fields");
+
+                        JSONArray itemdoctor = fields.getJSONArray("r_doctor");
+                        String item1 = (String) itemdoctor.get(0);
+                        r_data.add(item1);
+
+                        JSONArray itemtime = fields.getJSONArray("r_time");
+                        String item2 = (String) itemtime.get(0);
+                        r_data.add(item1);
+
+                        JSONArray itemlocation = fields.getJSONArray("r_location");
+                        String item3 = (String) itemlocation.get(0);
+                        r_data.add(item3);
+
+                        JSONArray itempatient = fields.getJSONArray("r_patient");
+                        String item4 = (String) itempatient.get(0);
+                        r_data.add(item4);
+
+                        String item5 = fields.getString("r_number");
+                        r_data.add(item5);
+                    }
+
+                    TextView timeText = (TextView) findViewById(R.id.timeview);
+                    String time = r_data.get(1).toString();
+                    timeText.setText(time);
+
+                    TextView numText = (TextView) findViewById(R.id.numview);
                     String number = r_data.get(4).toString();
                     numText.setText(number);
 
-                    TextView docText = (TextView)findViewById(R.id.docview);
+                    TextView docText = (TextView) findViewById(R.id.docview);
                     String doctor = r_data.get(0).toString();
                     docText.setText(doctor);
 
-                    TextView locText = (TextView)findViewById(R.id.locview);
-                    String location = r_data.get(1).toString();
+                    TextView locText = (TextView) findViewById(R.id.locview);
+                    String location = r_data.get(2).toString();
                     locText.setText(location);
 
                 } catch (JSONException e) {
@@ -98,7 +109,6 @@ public class viewclinicnumber extends AppCompatActivity {
                 }
 
             }
-
 
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
                 Toast.makeText(getApplicationContext(),
@@ -109,12 +119,16 @@ public class viewclinicnumber extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
         loadData();
+
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
+        txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
+       /* btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
         txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
         btn1.setOnClickListener(new View.OnClickListener() {
 
@@ -122,34 +136,75 @@ public class viewclinicnumber extends AppCompatActivity {
             public void onClick(View v) {
                 //取得EditText的輸入內容
                 String content = txt1.getText().toString();
-
+                int index=-1;
                 boolean isIn = r_data.contains(content);
                 if(isIn==true){
-                    Toast.makeText(viewclinicnumber.this, content, Toast.LENGTH_SHORT).show();
+                    index=r_data.indexOf(content);
+                    Toast.makeText(viewclinicnumber.this, content+" "+index, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(viewclinicnumber.this, index, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(viewclinicnumber.this, "error", Toast.LENGTH_SHORT).show();
                 }
-
-
                 //顯示在Debug Console
                 Log.d("debug", "button click");
-                //使用Toast顯示在螢幕上
-                //Toast.makeText(viewclinicnumber.this, content, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
-       /* try{
-            spinner = (Spinner) findViewById(R.id.spinner);
-            //將可選内容與ArrayAdapter連接起來
-            adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,Clinic);
-            //設置下拉列表的風格
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            //将adapter 添加到spinner中
-            spinner.setAdapter(adapter);
-        }catch(Exception e){
-            e.printStackTrace();
-        }*/
+        RadioGroup rg = (RadioGroup) findViewById(R.id.searchoption);
+        // 为 RadioGroup 设置一个监听器 setOnCheckedChanged()
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton btn = (RadioButton) findViewById(checkedId);
+                String option = (String) btn.getText();
+                Toast.makeText(getApplicationContext(), option, Toast.LENGTH_LONG).show();
+
+                switch (option) {
+                    case "科別":
+                        btn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //取得EditText的輸入內容
+                                String content = txt1.getText().toString();
+                                int index = -1;
+                                boolean isIn = r_data.contains(content);
+                                if (isIn == true) {
+                                    index = r_data.indexOf(content);
+                                    Toast.makeText(viewclinicnumber.this, content + " " + index, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(viewclinicnumber.this, index, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(viewclinicnumber.this, "error", Toast.LENGTH_SHORT).show();
+                                }
+                                //顯示在Debug Console
+                                Log.d("debug", "button click");
+                            }
+                        });
+                        break;
+                    case "病人姓名":
+                        btn1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //取得EditText的輸入內容
+                                String content = txt1.getText().toString();
+                                int index = -1;
+                                boolean isIn = r_data.contains(content);
+                                if (isIn == true) {
+                                    index = r_data.indexOf(content);
+                                    Toast.makeText(viewclinicnumber.this,  " hello" , Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(viewclinicnumber.this, index, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(viewclinicnumber.this, "wrong", Toast.LENGTH_SHORT).show();
+                                }
+                                //顯示在Debug Console
+                                Log.d("debug", "button click");
+                            }
+                        });
+                        break;
+                }
+            }
+
+        });
     }
 }
 
