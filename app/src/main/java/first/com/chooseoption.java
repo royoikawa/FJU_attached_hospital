@@ -1,6 +1,7 @@
 package first.com;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.JsonReader;
@@ -47,10 +48,9 @@ public class chooseoption extends AppCompatActivity {
     String end2 = takeenddate.format(nextweek3).substring(4);
     String option2="下週("+ini2+"~"+end2+")";
     //顯示醫生姓名
-    private ArrayList data = new ArrayList<String>();
-    public  String selected_num;
+    ArrayList data = new ArrayList<String>();
     public void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?api_key=keygkXy0a4GuCXh7p";
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -59,7 +59,17 @@ public class chooseoption extends AppCompatActivity {
                 //TextView tview =(TextView)findViewById(R.id.tview);
                 String Json = response.toString();
                 try {
+
+                    //顯示所選擇科別
+                    TextView selectnum = (TextView)findViewById(R.id.selectnum);
+                    Bundle bundle = getIntent().getExtras();
+                    String selected_type = bundle.getString("name");
+                    selectnum.setText(selected_type+"醫生列表");
+                    //接所選order
+                    String selected_num = bundle.getString("order");
+
                     JSONArray Array = response.getJSONArray("records");
+
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
@@ -74,17 +84,27 @@ public class chooseoption extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(),
                                // id, Toast.LENGTH_LONG).show();
                          //data.add(id);
-                        LinearLayout lltest = findViewById(R.id.testll);
-                        TextView test = findViewById(R.id.docname);
-                        test.setWidth(200); test.setHeight(100);
-                        test.setText("12345");
 
 
+                        //列出所選擇科別的醫生
+                        if(selected_num.equals(id)) {
+                            LinearLayout ll = findViewById(R.id.testll);
+                            LinearLayout ll2 = new LinearLayout(chooseoption.this);
+                            //取得風格
+                            Resources res = getResources();
+                            ll2.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
+                            TextView tt = new TextView(chooseoption.this);
+
+                            tt.setWidth(400);
+                            tt.setHeight(100);
+                            tt.setText("醫生姓名:"+name);
+                            ll2.addView(tt);
+                            ll.addView(ll2);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
                 Toast.makeText(getApplicationContext(),
@@ -113,13 +133,6 @@ public class chooseoption extends AppCompatActivity {
 
             }
         });
-        //顯示所選擇科別
-        TextView selectnum = (TextView)findViewById(R.id.selectnum);
-        Bundle bundle = getIntent().getExtras();
-        String selected_type = bundle.getString("name");
-        selectnum.setText(selected_type+"醫生列表");
-        //接所選order
-        String selected_num = bundle.getString("order");
         loadData();
 
 
