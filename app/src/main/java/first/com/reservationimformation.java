@@ -11,7 +11,7 @@ public class reservationimformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.reservationimformation);
         LinearLayout infor = findViewById(R.id.printinfor);
         TextView printname=new TextView(this);
         printname.setWidth(600);printname.setHeight(150);

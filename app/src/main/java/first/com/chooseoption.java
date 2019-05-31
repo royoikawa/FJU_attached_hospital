@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -47,8 +48,8 @@ public class chooseoption extends AppCompatActivity {
     String option2="下週("+ini2+"~"+end2+")";
     //顯示醫生姓名
     private ArrayList data = new ArrayList<String>();
-   private  String selected_num;
-    private void loadData(){
+    public  String selected_num;
+    public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?api_key=keygkXy0a4GuCXh7p";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -63,8 +64,8 @@ public class chooseoption extends AppCompatActivity {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
                         String id = fields.getString("Divisions_number");
-                        //Toast.makeText(getApplicationContext(),
-                               // id, Toast.LENGTH_LONG).show();
+                        String name = fields.getString("Doctor_name");
+                        String nmaeoftiome = fields.getString("Name_of_time");
                         /*if(selected_num.equals(id)){
                             String docname = fields.getString("Doctor_name");
                             Toast.makeText(getApplicationContext(),
@@ -72,7 +73,12 @@ public class chooseoption extends AppCompatActivity {
                         }*/
                         //Toast.makeText(getApplicationContext(),
                                // id, Toast.LENGTH_LONG).show();
-                        //data.add(id);
+                         //data.add(id);
+                        LinearLayout lltest = findViewById(R.id.testll);
+                        TextView test = findViewById(R.id.docname);
+                        test.setWidth(200); test.setHeight(100);
+                        test.setText("12345");
+
 
                     }
                 } catch (JSONException e) {
@@ -99,7 +105,7 @@ public class chooseoption extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -107,7 +113,6 @@ public class chooseoption extends AppCompatActivity {
 
             }
         });
-
         //顯示所選擇科別
         TextView selectnum = (TextView)findViewById(R.id.selectnum);
         Bundle bundle = getIntent().getExtras();

@@ -27,33 +27,31 @@ import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 public class MainActivity extends AppCompatActivity {
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
     }
-}
+}*/
 
 
+    /*public class MainActivity extends AppCompatActivity {
 
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-/*public class MainActivity extends AppCompatActivity {
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button nextPageBtn = (Button)findViewById(R.id.userlogin);
-        nextPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , userlogin.class);
-                startActivity(intent);
-            }
-        });
-    } */
+            Button nextPageBtn = (Button)findViewById(R.id.userlogin);
+            nextPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this , userlogin.class);
+                    startActivity(intent);
+                }
+            });
+        } */
     /*
     //reservation
 
@@ -94,21 +92,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
-    /*protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //loadData();
 
-      / Button nextPageBtn = (Button)findViewById(R.id.button12);
+      Button nextPageBtn = (Button) findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , userlogin.class);
+                intent.setClass(MainActivity.this, userlogin.class);
                 startActivity(intent);
             }
-        });*/
-
+        });
+    }
+}
 
 
 

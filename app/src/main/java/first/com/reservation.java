@@ -25,7 +25,7 @@ public class reservation extends AppCompatActivity{
 
     private ArrayList  data = new ArrayList<String>();
     private void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?api_key=keygkXy0a4GuCXh7p";
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
