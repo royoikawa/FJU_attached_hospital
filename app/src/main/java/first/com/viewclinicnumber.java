@@ -32,6 +32,8 @@ public class viewclinicnumber extends AppCompatActivity {
     private Button btn1; //宣告Button
     private EditText txt1; //宣告EditText
     private ArrayList r_data = new ArrayList<String>();
+    private ArrayList division = new ArrayList<String>();
+
     private RadioGroup rg;
 
     private void loadData() {
@@ -42,67 +44,98 @@ public class viewclinicnumber extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         "Success!", Toast.LENGTH_LONG).show();
                 Log.d("Hot Text:", response.toString());
-                TextView dataview = (TextView) findViewById(R.id.dataview);
-                //String Json = response.toString();
                 try {
-                   /* JSONArray Array = response.getJSONArray("records");
-                    for(int i = 0; i<Array.length();i++){
-                        JSONObject userdata = Array.getJSONObject(i);
-                        JSONObject fields = userdata.getJSONObject("fields");
-                        JSONArray itemsArray=fields.getJSONArray("r_patient");
-                        //String itemitem=fields.getString("r_location");
-                        String itemitem= (String) itemsArray.get(0);
-                        *//*for (int j = 0; j < itemsArray.length(); j++) {
-                            JSONObject item = itemsArray.getJSONObject(j);
-                            dataview.append(item.length()+"\n");
-                        }*//*
-                        r_data.add(itemitem);
-                    }*/
-                    /*for(int i=0;i<r_data.size();i++){
-                        dataview.append((CharSequence) r_data.get(i)+"\n");
-                    }*/
-                    //dataview.append((CharSequence) r_data.get(2)+"\n");
-
                     JSONArray Array = response.getJSONArray("records");
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
 
-                        JSONArray itemdoctor = fields.getJSONArray("r_doctor");
-                        String item1 = (String) itemdoctor.get(0);
+                        JSONArray itemTime= fields.getJSONArray("time");
+                        String item1 = (String) itemTime.get(0);
                         r_data.add(item1);
 
-                        JSONArray itemtime = fields.getJSONArray("r_time");
-                        String item2 = (String) itemtime.get(0);
-                        r_data.add(item1);
+                        JSONArray itemPatient = fields.getJSONArray("patient");
+                        String item2 = (String) itemPatient.get(0);
+                        r_data.add(item2);
 
-                        JSONArray itemlocation = fields.getJSONArray("r_location");
-                        String item3 = (String) itemlocation.get(0);
+                        String item3 = fields.getString("r_number");
                         r_data.add(item3);
 
-                        JSONArray itempatient = fields.getJSONArray("r_patient");
-                        String item4 = (String) itempatient.get(0);
+                        JSONArray itemDoctor = fields.getJSONArray("doctor");
+                        String item4 = (String) itemDoctor.get(0);
                         r_data.add(item4);
 
-                        String item5 = fields.getString("r_number");
+                        JSONArray itemLocation = fields.getJSONArray("location");
+                        String item5 = (String) itemLocation.get(0);
                         r_data.add(item5);
                     }
 
+                    loadDivision();
+
                     TextView timeText = (TextView) findViewById(R.id.timeview);
-                    String time = r_data.get(1).toString();
-                    timeText.setText(time);
+                    String time = r_data.get(0).toString().substring(3,8);
+                    switch(time){
+                        case "9:00~":
+                            timeText.setText("早上診");
+                        case "13:30":
+                            timeText.setText("下午診");
+                        case "18:00":
+                            timeText.setText("夜間診");
+                    }
+
+                    TextView patientText = (TextView) findViewById(R.id.patientview);
+                    String number = r_data.get(1).toString();
+                    patientText.setText(number);
 
                     TextView numText = (TextView) findViewById(R.id.numview);
-                    String number = r_data.get(4).toString();
-                    numText.setText(number);
+                    String patient = r_data.get(2).toString();
+                    numText.setText(patient);
 
                     TextView docText = (TextView) findViewById(R.id.docview);
-                    String doctor = r_data.get(0).toString();
+                    String doctor = r_data.get(3).toString();
                     docText.setText(doctor);
 
                     TextView locText = (TextView) findViewById(R.id.locview);
-                    String location = r_data.get(2).toString();
+                    String location = r_data.get(4).toString();
                     locText.setText(location);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
+                Toast.makeText(getApplicationContext(),
+                        "Error: " + statusCode + " " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                // Log error message
+                Log.e("Hot Text:", statusCode + " " + e.getMessage());
+            }
+        });
+    }
+
+    private void loadDivision(){
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?view=Grid%20view&api_key=keycNoUjTn05xspUe";
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlString, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Toast.makeText(getApplicationContext(),
+                        "Success!", Toast.LENGTH_LONG).show();
+                Log.d("Hot Text:", response.toString());
+                try {
+                    JSONArray Array = response.getJSONArray("records");
+                    for (int i = 0; i < Array.length(); i++) {
+                        JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject fields = userdata.getJSONObject("fields");
+
+                        String item = fields.getString("Divisions_name");
+                        division.add(item);
+                    }
+
+                    TextView titleText = (TextView) findViewById(R.id.titleview);
+                    String title = division.get(0).toString();
+                    titleText.setText(title);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -128,28 +161,6 @@ public class viewclinicnumber extends AppCompatActivity {
 
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
         txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
-       /* btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
-        txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
-        btn1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //取得EditText的輸入內容
-                String content = txt1.getText().toString();
-                int index=-1;
-                boolean isIn = r_data.contains(content);
-                if(isIn==true){
-                    index=r_data.indexOf(content);
-                    Toast.makeText(viewclinicnumber.this, content+" "+index, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(viewclinicnumber.this, index, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(viewclinicnumber.this, "error", Toast.LENGTH_SHORT).show();
-                }
-                //顯示在Debug Console
-                Log.d("debug", "button click");
-            }
-        });*/
 
         RadioGroup rg = (RadioGroup) findViewById(R.id.searchoption);
         // 为 RadioGroup 设置一个监听器 setOnCheckedChanged()
@@ -168,9 +179,9 @@ public class viewclinicnumber extends AppCompatActivity {
                                 //取得EditText的輸入內容
                                 String content = txt1.getText().toString();
                                 int index = -1;
-                                boolean isIn = r_data.contains(content);
+                                boolean isIn = division.contains(content);
                                 if (isIn == true) {
-                                    index = r_data.indexOf(content);
+                                    index = division.indexOf(content);
                                     Toast.makeText(viewclinicnumber.this, content + " " + index, Toast.LENGTH_SHORT).show();
                                     //Toast.makeText(viewclinicnumber.this, index, Toast.LENGTH_SHORT).show();
                                 } else {
