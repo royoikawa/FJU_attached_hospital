@@ -2,6 +2,7 @@ package first.com;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.JsonReader;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -49,9 +51,11 @@ public class chooseoption extends AppCompatActivity {
     String option2="下週("+ini2+"~"+end2+")";
     //顯示醫生姓名
     ArrayList data = new ArrayList<String>();
+    String[] opening;
+    String open="";
     public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
-        AsyncHttpClient client = new AsyncHttpClient();
+        final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("Hot Text:", response.toString());
@@ -75,7 +79,7 @@ public class chooseoption extends AppCompatActivity {
                         JSONObject fields = userdata.getJSONObject("fields");
                         String id = fields.getString("Divisions_number");
                         String name = fields.getString("Doctor_name");
-                        String nmaeoftiome = fields.getString("Name_of_time");
+                        String nameoftime = fields.getString("Name_of_time");
                         /*if(selected_num.equals(id)){
                             String docname = fields.getString("Doctor_name");
                             Toast.makeText(getApplicationContext(),
@@ -89,17 +93,102 @@ public class chooseoption extends AppCompatActivity {
                         //列出所選擇科別的醫生
                         if(selected_num.equals(id)) {
                             LinearLayout ll = findViewById(R.id.testll);
-                            LinearLayout ll2 = new LinearLayout(chooseoption.this);
-                            //取得風格
+                            LinearLayout ll1 = new LinearLayout(chooseoption.this);
+                            ll1.setOrientation(LinearLayout.HORIZONTAL);
                             Resources res = getResources();
-                            ll2.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
+                            ll1.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
+                            ll1.setMinimumHeight(450);
+                           // ll2.setDividerPadding(350);
+                            //取得風格
+                            //樣式
+                            //ll2放圖
+                            LinearLayout ll2 = new LinearLayout(chooseoption.this);
+                            ll2.setOrientation(LinearLayout.HORIZONTAL);
+                            ll2.setMinimumWidth(200);ll2.setMinimumHeight(350);
+                           //ll2.addView(tt);ll.addView(ll2);
+                            //適當排版印出資料
+                            LinearLayout ll3=new LinearLayout(chooseoption.this);
+                            ll3.setOrientation(LinearLayout.VERTICAL);
+                            ll3.setMinimumWidth(400);
+                            ll3.setMinimumHeight(350);
+                            LinearLayout ll4=new LinearLayout(chooseoption.this);
+                            ll4.setOrientation(LinearLayout.VERTICAL);
+                            ll4.setMinimumWidth(300);
+                            ll4.setMinimumHeight(150);
+                            ll4.setPadding(450,0,0,0);
+                            //TextView tt = new TextView(chooseoption.this);
+                            //tt.setWidth(300);tt.setHeight(80);
+                            //tt.setPadding(450,10,0,0);
+                           // tt.setText("醫生姓名:"+name);
                             TextView tt = new TextView(chooseoption.this);
-
-                            tt.setWidth(400);
-                            tt.setHeight(100);
+                            tt.setWidth(300);tt.setHeight(130);
+                            tt.setPadding(20,40,0,0);
                             tt.setText("醫生姓名:"+name);
-                            ll2.addView(tt);
-                            ll.addView(ll2);
+                            tt.setTextSize(17);
+                            ll4.addView(tt);ll3.addView(ll4);
+                            open+= nameoftime;
+                            opening=open.split(",");
+                            LinearLayout ll5=new LinearLayout(chooseoption.this);
+                            ll5.setOrientation(LinearLayout.VERTICAL);
+                            ll5.setMinimumWidth(1000);
+                            ll5.setMinimumHeight(140);
+                            ll5.setPadding(450,10,0,0);
+                            TextView time = new TextView(chooseoption.this);
+                            time.setWidth(200);time.setHeight(140);
+                            time.setPadding(20,0,0,0);
+                            time.setText("開診時段:");
+                            time.setTextSize(17);
+                            Spinner choosetime=new Spinner(chooseoption.this);
+                            choosetime.setMinimumWidth(20);choosetime.setMinimumHeight(70);
+                            choosetime.setPadding(250,0,0,0);
+                            final ArrayAdapter<String> timeList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,opening);
+                            choosetime.setAdapter(timeList);
+                            ll5.addView(time);ll5.addView(choosetime);ll3.addView(ll5);
+                            LinearLayout ll6=new LinearLayout(chooseoption.this);
+                            ll6.setOrientation(LinearLayout.VERTICAL);
+                           ll6.setMinimumWidth(260); ll6.setMinimumHeight(100);
+                           ll6.setPadding(510,0,0,0);
+                            Button getoption=new Button(chooseoption.this);
+                            getoption.setMinimumWidth(230);getoption.setMinimumHeight(100);
+                            getoption.setBackgroundColor(Color.RED);
+                            getoption.setPadding(10,0,0,0);
+                            getoption.setText("預約");
+                            getoption.setTextSize(16);
+                            getoption.setTextColor(Color.WHITE);
+                            ll6.addView(getoption);
+                            ll3.addView(ll6);ll1.addView(ll3);ll.addView(ll1);
+                           /* LinearLayout ll4=new LinearLayout(chooseoption.this);
+                            ll4.setOrientation(LinearLayout.HORIZONTAL);
+                            ll4.setMinimumHeight(100);
+                            TextView timetext = new TextView(chooseoption.this);
+                            timetext.setWidth(300);timetext.setHeight(100);
+                            timetext.setPadding(450,0,0,0);
+                            timetext.setText("開診時段:");
+                            Spinner choosetime=new Spinner(chooseoption.this);
+                            choosetime.setPadding(30,0,0,0);
+                            final ArrayAdapter<String> timeList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,opening);
+                            choosetime.setAdapter(timeList);
+                            ll4.addView(timetext);ll4.addView(choosetime);ll2.addView(ll4);
+                            LinearLayout ll5=new LinearLayout(chooseoption.this);
+                            ll5.setOrientation(LinearLayout.HORIZONTAL);
+                            ll5.setMinimumHeight(100);
+                            Button getoption=new Button(chooseoption.this);
+                            getoption.setMinimumWidth(150);getoption.setMinimumHeight(100);
+                            getoption.setBackgroundColor(Color.WHITE);
+                            getoption.setPadding(470,0,0,0);
+                            getoption.setText("預約");
+                            ll5.addView(getoption);
+                            ll2.addView(ll5);*/
+
+
+                            //LinearLayout ll3=new LinearLayout(chooseoption.this);
+                            //ll3.setOrientation(LinearLayout.HORIZONTAL);
+                           /* TextView timetext = new TextView(chooseoption.this);
+                            timetext.setWidth(1200);timetext.setHeight(100);
+                            timetext.setPadding(500,30,0,0);
+                            timetext.setText("開診時段:");
+                            ll3.addView(timetext);
+                            ll.addView(ll3);*/
                         }
                     }
                 } catch (JSONException e) {
