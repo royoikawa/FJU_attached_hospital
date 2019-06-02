@@ -127,7 +127,13 @@ public class chooseoption extends AppCompatActivity {
                             tt.setTextSize(17);
                             ll4.addView(tt);ll3.addView(ll4);
                             open+= nameoftime;
-                            opening=open.split(",");
+                            //刪掉" "
+                            String open2 = open.replace("\"","");
+                            //刪掉[
+                            String open3 = open2.replace("[","");
+                            //刪掉]
+                            String open4 = open3.replace("]","");
+                            opening=open4.split(",");
                             LinearLayout ll5=new LinearLayout(chooseoption.this);
                             ll5.setOrientation(LinearLayout.VERTICAL);
                             ll5.setMinimumWidth(1000);
