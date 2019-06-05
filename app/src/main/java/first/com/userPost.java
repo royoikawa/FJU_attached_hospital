@@ -8,4 +8,15 @@ public class userPost {
         this.fields = fields;
 
     }
+    public fields getFields() {
+
+        return fields;
+
+    }
+
+    public void setFields(first.com.fields fields) {
+
+        this.fields = fields;
+
+    }
 }

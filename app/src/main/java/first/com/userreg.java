@@ -3,25 +3,20 @@ package first.com;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class userreg extends AppCompatActivity {
+    MyAPIService myAPIService;
+    ArrayList<records> array = new ArrayList<>();
 
     EditText name;
     EditText id;
@@ -30,40 +25,6 @@ public class userreg extends AppCompatActivity {
     EditText passWord;
     EditText checkPass;
 
-    private void loadData(final String name, final String id, final String bir, final String phone, final String passWord) {
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    JSONArray records = response.getJSONArray("records");
-                    JSONObject userData = new JSONObject();
-                    userData.put("Borned",bir);
-                    userData.put("Name",name);
-                    userData.put("Phone_number",phone);
-                    userData.put("ID",id);
-                    userData.put("Password",passWord);
-                    JSONObject user = new JSONObject();
-                    user.put("fields",userData);
-                    records.put(records.length(),user);
-                    Toast.makeText(getApplicationContext(),
-                            "Success", Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + statusCode + " " + e.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                // Log error message
-                Log.e("Hot Text:", statusCode + " " + e.getMessage());
-            }
-        });
-    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +45,45 @@ public class userreg extends AppCompatActivity {
                         || "".equals(phone.getText().toString())
                         || "".equals(passWord.getText().toString())
                         || "".equals(checkPass.getText().toString()))) {
-                    loadData(name.getText().toString(), id.getText().toString(), bir.getText().toString(), phone.getText().toString(), passWord.getText().toString());
+                    try {
+                        String sname = name.getText().toString();
+                        String sbir = bir.getText().toString();
+                        String sphone = phone.getText().toString();
+                        String spassWord = passWord.getText().toString();
+                        String sid = id.getText().toString();
+                        postUser(sbir, sname, spassWord, sphone, sid);
+
+                    } catch (Exception e) {
+
+                        Log.e("MainActivity", e.getMessage());
+
+                    }
                 }
+            }
+        });
+    }
+
+    public void postUser(String bir, String name, String passWord, String phone, String id){
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        Call<records> call= myAPIService.postRecords(new userPost(new fields(bir, name, passWord, phone, id)));
+        call.enqueue(new Callback<records>(){
+
+            @Override
+            public void onResponse(Call<records> call, Response<records> response) {
+                //利用Toast的靜態函式makeText來建立Toast物件
+                Toast toast = Toast.makeText(userreg.this,
+                        "Success", Toast.LENGTH_LONG);
+                //顯示Toast
+                toast.show();
+            }
+
+            @Override
+            public void onFailure(Call<records> call, Throwable t) {
+                //利用Toast的靜態函式makeText來建立Toast物件
+                Toast toast = Toast.makeText(userreg.this,
+                        "Failed", Toast.LENGTH_LONG);
+                //顯示Toast
+                toast.show();
             }
         });
     }
