@@ -40,40 +40,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="35dp"
         android:background="#FFF0F5"
         android:gravity="center"
         android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-            <SearchView
-                android:layout_width="26dp"
-                android:layout_height="46dp"
-                tools:ignore="MissingConstraints"
-                android:layout_marginLeft="50dp" />
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="182dp"
-            android:layout_height="45dp"
-            android:ems="10"
-            android:gravity="start"
-            android:hint="醫師查詢"
-            android:inputType="textPersonName"
-            android:textSize="18sp"
-            android:layout_marginLeft="5dp"
-            tools:ignore="MissingConstraints"
-            />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="10dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="60dp"
-            android:text="查詢" />
-
-    </LinearLayout>
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -118,5 +89,58 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="230dp" />
+        tools:layout_editor_absoluteY="230dp" >
+        <LinearLayout
+            android:layout_width="382dp"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="請選擇醫生:"
+                android:textSize="28dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"/>
+            <Spinner
+                android:id="@+id/select_doc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"> </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="382dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/timetext"
+                android:layout_width="382dp"
+                android:layout_height="60dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="請選擇時間:"
+                    android:textSize="28dp"
+                    android:layout_marginLeft="34dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="382dp"
+                android:layout_height="match_parent">
+                <ListView
+                    android:id="@+id/timelist"
+                    android:layout_width="400dp"
+                    android:layout_height="match_parent"
+                    >
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
 </LinearLayout>

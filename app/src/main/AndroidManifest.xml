@@ -40,6 +40,10 @@
             android:name=".chooseoption"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".reservationimformation"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
