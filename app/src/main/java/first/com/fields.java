@@ -1,6 +1,5 @@
 package first.com;
 
-import android.widget.EditText;
 
 public class fields {
     private String Borned;

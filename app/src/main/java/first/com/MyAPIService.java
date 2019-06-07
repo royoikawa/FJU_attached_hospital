@@ -12,7 +12,6 @@ public interface MyAPIService {
     @GET("User?api_key=keyUwcLvTO51TNEHV")
     Call<records> getRecords();
 
-
     @POST("User?api_key=keyUwcLvTO51TNEHV")
         // 用@Body表示要傳送Body資料
     Call<records> postRecords(@Body userPost fields);

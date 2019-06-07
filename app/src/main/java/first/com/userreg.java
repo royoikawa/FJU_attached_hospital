@@ -51,6 +51,7 @@ public class userreg extends AppCompatActivity {
                         String sphone = phone.getText().toString();
                         String spassWord = passWord.getText().toString();
                         String sid = id.getText().toString();
+                        //getUser(sid);
                         postUser(sbir, sname, spassWord, sphone, sid);
                         //intent();
 
@@ -92,6 +93,25 @@ public class userreg extends AppCompatActivity {
             }
         });
     }
+    /*public void getUser(String id){
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        Call<records> call = myAPIService.getRecords();
+        call.enqueue(new Callback<records>() {
+
+            @Override
+            public void onResponse(Call<records> call, Response<records> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<records> call, Throwable t) {
+                Toast toast = Toast.makeText(userreg.this,
+                        "驗證資料失敗", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
+*/
     public void intent(){
         Intent intent = new Intent();
         intent.setClass(userreg.this,reservation.class); //告訴它從哪邊切換到哪邊
