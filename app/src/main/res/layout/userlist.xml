@@ -85,6 +85,7 @@
             android:layout_height="180dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/viewclinicnumber"
                 android:layout_width="0dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="12dp"

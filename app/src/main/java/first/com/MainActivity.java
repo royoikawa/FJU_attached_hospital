@@ -1,5 +1,6 @@
 package first.com;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.util.Log;
@@ -7,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,25 +20,38 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
-
-
 public class MainActivity extends AppCompatActivity {
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button nextPageBtn = (Button)findViewById(R.id.userlogin);
-        nextPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , userlogin.class);
-                startActivity(intent);
-            }
-        });
     }
+}*/
+
+
+    /*public class MainActivity extends AppCompatActivity {
+
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            Button nextPageBtn = (Button)findViewById(R.id.userlogin);
+            nextPageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this , userlogin.class);
+                    startActivity(intent);
+                }
+            });
+        } */
     /*
     //reservation
 
@@ -76,20 +92,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }*/
-    /*protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //loadData();
 
-      / Button nextPageBtn = (Button)findViewById(R.id.button12);
+      Button nextPageBtn = (Button) findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this , userlogin.class);
+                intent.setClass(MainActivity.this, userlogin.class);
                 startActivity(intent);
             }
-        });*/
+        });
+    }
 }
 
 
