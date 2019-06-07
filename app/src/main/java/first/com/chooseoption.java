@@ -57,6 +57,7 @@ public class chooseoption extends AppCompatActivity {
     ListView timeview;
     String[] opening;
     String nameoftime=null;
+    String selected_type="";
     String open="";
     int clicknum=0;
     public void loadData(){
@@ -73,7 +74,7 @@ public class chooseoption extends AppCompatActivity {
                     //顯示所選擇科別
                     TextView selectnum = (TextView)findViewById(R.id.selectnum);
                     Bundle bundle = getIntent().getExtras();
-                    String selected_type = bundle.getString("name");
+                    selected_type = bundle.getString("name");
                     selectnum.setText(selected_type);
                     //接所選order
                     String selected_num = bundle.getString("order");
@@ -200,6 +201,13 @@ public class chooseoption extends AppCompatActivity {
                         String name = fields.getString("Doctor_name");
                         if(getname.equals(name)){
                             nameoftime = fields.getString("Name_of_time");
+                            final String clinicnum1=fields.getString("Name_of_clinic");
+                            //刪掉" "
+                            String clinic =clinicnum1.replace("\"", "");
+                            //刪掉[
+                            String clinic1 = clinic.replace("[", "");
+                            //刪掉]
+                            final String clinicnum= clinic1.replace("]", "");
                             open = nameoftime;
                             //刪掉" "
                             String open2 = open.replace("\"", "");
@@ -220,6 +228,8 @@ public class chooseoption extends AppCompatActivity {
                                     String decided = opening[position];
                                     String docname = getname;
                                     bundle.putString("name", docname);
+                                    bundle.putString("type",selected_type);
+                                    bundle.putString("clinic",clinicnum);
                                     bundle.putString("time", decided);
                                    // bundle.putString("order", position + 1 + "");
                                     intent.putExtras(bundle);

@@ -8,33 +8,39 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class reservationimformation extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservationimformation);
         LinearLayout infor = findViewById(R.id.printinfor);
+        Bundle bundle = getIntent().getExtras();
+        String docname = bundle.getString("name");
+        String Select_type=bundle.getString("type");
+        String clinic=bundle.getString("clinic");
+        String decidetime=bundle.getString("time");
         TextView printname=new TextView(this);
         printname.setWidth(600);printname.setHeight(150);
         printname.setPadding(5,5,0,0);
-        printname.setText(" 醫生姓名:");
+        printname.setText(" 醫生姓名:"+docname);
         printname.setTextSize(24);
         infor.addView(printname);
         TextView printdiv=new TextView(this);
         printdiv.setWidth(500);printname.setHeight(150);
         printdiv.setPadding(5,30,0,0);
-        printdiv.setText(" 所屬科別:");
+        printdiv.setText(" 所屬科別:"+Select_type);
         printdiv.setTextSize(24);
         infor.addView(printdiv);
         TextView printtime=new TextView(this);
         printtime.setWidth(500);printname.setHeight(150);
         printtime.setPadding(5,30,0,0);
-        printtime.setText(" 看診時間:");
+        printtime.setText(" 看診時間:"+decidetime);
         printtime.setTextSize(24);
         infor.addView(printtime);
         TextView printloc=new TextView(this);
         printloc.setWidth(500);printname.setHeight(100);
         printloc.setPadding(5,30,0,0);
-        printloc.setText("   診間:");
+        printloc.setText("   診間:"+clinic);
         printloc.setTextSize(24);
         infor.addView(printloc);
         LinearLayout infor1= findViewById(R.id.printdate);
