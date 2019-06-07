@@ -1,16 +1,12 @@
 package first.com;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -24,7 +20,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -154,9 +149,9 @@ public class chooseoption extends AppCompatActivity {
                                 @Override
                                 public void onItemSelected(AdapterView parent, View v, int position, long id) {
                                     String n1=doctorname.get(position).toString();
-                                    Toast.makeText(getApplicationContext(),
-                                            "選"+n1,
-                                            Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(getApplicationContext(),
+                                         //  "選"+n1,
+                                           // Toast.LENGTH_LONG).show();
                                     timeData(n1);
 
 

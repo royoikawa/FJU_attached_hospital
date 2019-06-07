@@ -121,7 +121,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/complete"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
