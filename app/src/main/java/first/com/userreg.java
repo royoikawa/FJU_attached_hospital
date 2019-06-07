@@ -52,12 +52,17 @@ public class userreg extends AppCompatActivity {
                         String spassWord = passWord.getText().toString();
                         String sid = id.getText().toString();
                         postUser(sbir, sname, spassWord, sphone, sid);
+                        //intent();
 
                     } catch (Exception e) {
 
                         Log.e("MainActivity", e.getMessage());
 
                     }
+                }
+                else{
+                    Toast toast = Toast.makeText(userreg.this,
+                            "請填寫完整資訊", Toast.LENGTH_LONG);
                 }
             }
         });
@@ -72,7 +77,7 @@ public class userreg extends AppCompatActivity {
             public void onResponse(Call<records> call, Response<records> response) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(userreg.this,
-                        "Success", Toast.LENGTH_LONG);
+                        "註冊成功", Toast.LENGTH_LONG);
                 //顯示Toast
                 toast.show();
             }
@@ -81,10 +86,15 @@ public class userreg extends AppCompatActivity {
             public void onFailure(Call<records> call, Throwable t) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(userreg.this,
-                        "Failed", Toast.LENGTH_LONG);
+                        "註冊失敗", Toast.LENGTH_LONG);
                 //顯示Toast
                 toast.show();
             }
         });
+    }
+    public void intent(){
+        Intent intent = new Intent();
+        intent.setClass(userreg.this,reservation.class); //告訴它從哪邊切換到哪邊
+        startActivity(intent);//切換
     }
 }
