@@ -53,7 +53,7 @@ public class userreg extends AppCompatActivity {
                         String sid = id.getText().toString();
                         //getUser(sid);
                         postUser(sbir, sname, spassWord, sphone, sid);
-                        //intent();
+                        intent();
 
                     } catch (Exception e) {
 
@@ -114,7 +114,7 @@ public class userreg extends AppCompatActivity {
 */
     public void intent(){
         Intent intent = new Intent();
-        intent.setClass(userreg.this,reservation.class); //告訴它從哪邊切換到哪邊
+        intent.setClass(userreg.this,userlogin.class); //告訴它從哪邊切換到哪邊
         startActivity(intent);//切換
     }
 }
