@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class userreg extends AppCompatActivity {
     MyAPIService myAPIService;
@@ -114,7 +119,7 @@ public class userreg extends AppCompatActivity {
 */
     public void intent(){
         Intent intent = new Intent();
-        intent.setClass(userreg.this,userlogin.class); //告訴它從哪邊切換到哪邊
+        intent.setClass(userreg.this,userlist.class); //告訴它從哪邊切換到哪邊
         startActivity(intent);//切換
     }
 }

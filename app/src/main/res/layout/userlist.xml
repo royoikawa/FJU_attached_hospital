@@ -50,6 +50,7 @@
             android:layout_height="180dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/reservation"
                 android:layout_width="0dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="12dp"
@@ -84,6 +85,7 @@
             android:layout_height="180dp"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/viewclinicnumber"
                 android:layout_width="0dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="12dp"
@@ -104,7 +106,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="病史紀錄"
+                android:text="親友資料"
                 android:textSize="24dp"
                 android:textColor="#555555"
                 android:textStyle="bold"
