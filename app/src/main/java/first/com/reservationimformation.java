@@ -17,7 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
@@ -26,6 +28,75 @@ import retrofit2.Response;
 
 
 public class reservationimformation extends AppCompatActivity {
+
+    //取得明天(當天不能網路掛號)是星期幾
+     Date currentday = new Date(new Date().getTime()+1*24*60*60*1000);;
+    SimpleDateFormat whatday= new SimpleDateFormat("EEEE");
+    String dayresult=whatday.format(currentday);
+    Date gotodoc;
+    //創陣列與dayresult比對
+    String[] day_of_week ={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    //用 inferdate推就診日期
+    public String inferdate(String decide){
+        int dayindex=0;int godocindex;
+        String compare=decide.substring(0,3);
+        for(int i=0;i<day_of_week.length;i++){
+            if(dayresult.equals(day_of_week[i])){dayindex=i;}
+        }
+           if(compare.equals("星期一")){
+               godocindex = 1;
+               if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);}
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+           }
+         else if(compare.equals("星期二")){
+             godocindex = 2;
+               if(dayindex<=godocindex)
+              gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+          }
+           else if(compare.equals("星期三")){
+               godocindex = 3;
+               if(dayindex<=godocindex)
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+           }
+           else if(compare.equals("星期四")){
+               godocindex = 4;
+               if(dayindex<=godocindex)
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+           }
+           else if(compare.equals("星期五")){
+               godocindex = 5;
+               if(dayindex<=godocindex)
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+           }
+           else if(compare.equals("星期六")){
+               godocindex = 6;
+               if(dayindex<=godocindex)
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+               else {
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+               }
+           }
+        SimpleDateFormat day= new SimpleDateFormat("MMdd");
+           String get_go_doc_day=day.format(gotodoc);
+        return get_go_doc_day ;
+    }
+
+
+
     MyAPIServiceres myAPIService;
     ArrayList<resrecords> array = new ArrayList<>();
     String getId="";
@@ -47,8 +118,8 @@ public class reservationimformation extends AppCompatActivity {
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
-                        getId = fields.getString("ID");
-                        String Name = "K265487159";
+                        String Name = fields.getString("ID");
+                        getId = "K265487159";
                         if (Name.equals(getId)) {
                             //Toast.makeText(getApplicationContext(),
                                     //getId ,Toast.LENGTH_LONG).show();
@@ -130,9 +201,9 @@ public class reservationimformation extends AppCompatActivity {
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
-                        getNUM=fields.getString("Clinic_number");
                         String getloc= fields.getString("Location_of_clinic");
                         if (clinic.equals(getloc)) {
+                            getNUM=fields.getString("Clinic_number");
                            // Toast.makeText(getApplicationContext(),
                                    // getNUM ,Toast.LENGTH_LONG).show();
                         }
@@ -171,8 +242,8 @@ public class reservationimformation extends AppCompatActivity {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
                         String getTime = fields.getString("Name_of_time");
-                        gettimeid=fields.getString("Number_of_time");
                         if (decided.equals(getTime)) {
+                            gettimeid=fields.getString("Number_of_time");
                             //Toast.makeText(getApplicationContext(),
                                    // gettimeid ,Toast.LENGTH_LONG).show();
                         }
@@ -202,6 +273,7 @@ public class reservationimformation extends AppCompatActivity {
         String Select_type=bundle.getString("type");
         final String clinic=bundle.getString("clinic");
         String decidetime=bundle.getString("time");
+        //inferdate(decidetime);
         TextView printname=new TextView(this);
         printname.setWidth(600);printname.setHeight(150);
         printname.setPadding(5,5,0,0);
@@ -230,7 +302,8 @@ public class reservationimformation extends AppCompatActivity {
         TextView gotodoc=new TextView(this);
         gotodoc.setWidth(1000);gotodoc.setHeight(280);
         gotodoc.setPadding(5,100,0,0);
-        gotodoc.setText("   就診日期:");
+        String Date_of_visit =inferdate(decidetime);
+        gotodoc.setText("   就診日期:  "+Date_of_visit);
         gotodoc.setTextSize(28);
         infor1.addView(gotodoc);
         LinearLayout infor2= findViewById(R.id.printperson);
@@ -310,7 +383,7 @@ public class reservationimformation extends AppCompatActivity {
 
 
 
-    public void postUser(String userid, String docid, String location, String timesery){
+    public void postUser(final String userid, final String docid, final String location, final String timesery){
         myAPIService = Manager.getInstance().getAPI();
         Call<resrecords> call= myAPIService.postRecords(new patientpost(new resfields(userid, docid,location,timesery)));
         call.enqueue(new Callback<resrecords>(){
@@ -318,10 +391,10 @@ public class reservationimformation extends AppCompatActivity {
             @Override
             public void onResponse(Call<resrecords> call, Response<resrecords> response) {
                 //利用Toast的靜態函式makeText來建立Toast物件
-                Toast toast = Toast.makeText(reservationimformation.this,
-                        "Success", Toast.LENGTH_LONG);
+               // Toast toast = Toast.makeText(reservationimformation.this,
+                       // "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);
                 //顯示Toast
-                toast.show();
+                //toast.show();
             }
 
             @Override
