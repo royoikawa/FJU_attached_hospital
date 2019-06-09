@@ -54,6 +54,7 @@ public class chooseoption extends AppCompatActivity {
     String nameoftime=null;
     String selected_type="";
     String open="";
+    String sellweek="";
     int clicknum=0;
     public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
@@ -224,6 +225,7 @@ public class chooseoption extends AppCompatActivity {
                                     String docname = getname;
                                     bundle.putString("name", docname);
                                     bundle.putString("type",selected_type);
+                                    bundle.putString("week",sellweek);
                                     bundle.putString("clinic",clinicnum);
                                     bundle.putString("time", decided);
                                    // bundle.putString("order", position + 1 + "");
@@ -261,6 +263,7 @@ public class chooseoption extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                sellweek=dateList.getItem(position);
                 //Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
             }
 

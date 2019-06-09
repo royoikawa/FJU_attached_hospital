@@ -37,57 +37,61 @@ public class reservationimformation extends AppCompatActivity {
     //創陣列與dayresult比對
     String[] day_of_week ={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
     //用 inferdate推就診日期
-    public String inferdate(String decide){
-        int dayindex=0;int godocindex;
+    public String inferdate(String decide,String week){
+        int dayindex=0;int godocindex,next;
         String compare=decide.substring(0,3);
+        if(week.equals("下週")){
+            next=7;
+        }
+        else {next=0;}
         for(int i=0;i<day_of_week.length;i++){
             if(dayresult.equals(day_of_week[i])){dayindex=i;}
         }
            if(compare.equals("星期一")){
                godocindex = 1;
-               if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);}
+               if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);}
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
            }
          else if(compare.equals("星期二")){
              godocindex = 2;
                if(dayindex<=godocindex)
-              gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+              gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
           }
            else if(compare.equals("星期三")){
                godocindex = 3;
                if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
            }
            else if(compare.equals("星期四")){
                godocindex = 4;
                if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
            }
            else if(compare.equals("星期五")){
                godocindex = 5;
                if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
            }
            else if(compare.equals("星期六")){
                godocindex = 6;
                if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
                else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1)*24*60*60*1000);
+                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
                }
            }
         SimpleDateFormat day= new SimpleDateFormat("MMdd");
@@ -273,6 +277,7 @@ public class reservationimformation extends AppCompatActivity {
         String Select_type=bundle.getString("type");
         final String clinic=bundle.getString("clinic");
         String decidetime=bundle.getString("time");
+        String getweek=bundle.getString("week").substring(0,2);
         //inferdate(decidetime);
         TextView printname=new TextView(this);
         printname.setWidth(600);printname.setHeight(150);
@@ -302,7 +307,7 @@ public class reservationimformation extends AppCompatActivity {
         TextView gotodoc=new TextView(this);
         gotodoc.setWidth(1000);gotodoc.setHeight(280);
         gotodoc.setPadding(5,100,0,0);
-        String Date_of_visit =inferdate(decidetime);
+        String Date_of_visit =inferdate(decidetime, getweek);
         gotodoc.setText("   就診日期:  "+Date_of_visit);
         gotodoc.setTextSize(28);
         infor1.addView(gotodoc);
