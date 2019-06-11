@@ -29,13 +29,25 @@ public class records {
 
     }
 
-
-
-    public String getFieldsName(){
-
-        return fields.getName();
-
+    public String getFieldsID(int i){
+        return records[i].getFields().getID();
     }
+    public String getFieldsName(int i){
+        return records[i].getFields().getName();
+    }
+    public String getFieldsPhone(int i){
+        return records[i].getFields().getPhone();
+    }
+    public String getFieldsBorned(int i){
+        return records[i].getFields().getBorned();
+    }
+    public String getFieldsPass(int i){
+        return records[i].getFields().getPass();
+    }
+    /*
+    public String getFieldsName(){
+        return fields.getName();
+    }*/
     public String getFieldsPhone(){
 
         return fields.getPhone();

@@ -56,9 +56,16 @@ public class userreg extends AppCompatActivity {
                         String sphone = phone.getText().toString();
                         String spassWord = passWord.getText().toString();
                         String sid = id.getText().toString();
-                        //getUser(sid);
-                        postUser(sbir, sname, spassWord, sphone, sid);
-                        intent();
+                        //boolean haveData = checkUser(sid);
+                        if(true){
+                             Toast toast = Toast.makeText(userreg.this,
+                                    "此身分證已有帳號", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                        else{
+                            postUser(sbir, sname, spassWord, sphone, sid);
+                            intent();
+                        }
 
                     } catch (Exception e) {
 
@@ -69,6 +76,7 @@ public class userreg extends AppCompatActivity {
                 else{
                     Toast toast = Toast.makeText(userreg.this,
                             "請填寫完整資訊", Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
         });
@@ -98,14 +106,19 @@ public class userreg extends AppCompatActivity {
             }
         });
     }
-    /*public void getUser(String id){
+    public String checkUser(final String id){
+
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<records> call = myAPIService.getRecords();
         call.enqueue(new Callback<records>() {
-
             @Override
             public void onResponse(Call<records> call, Response<records> response) {
+                for(int i=0; i < response.body().getRecords().length; i++){
+                    if(id.equals(response.body().getFieldsID(i))){
 
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -115,11 +128,14 @@ public class userreg extends AppCompatActivity {
                 toast.show();
             }
         });
+        return "1";
     }
-*/
+
     public void intent(){
         Intent intent = new Intent();
         intent.setClass(userreg.this,userlist.class); //告訴它從哪邊切換到哪邊
         startActivity(intent);//切換
     }
+
+
 }
