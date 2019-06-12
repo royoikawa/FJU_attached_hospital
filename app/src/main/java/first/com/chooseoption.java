@@ -82,6 +82,14 @@ public class chooseoption extends AppCompatActivity {
                         JSONObject fields = userdata.getJSONObject("fields");
                         String id = fields.getString("Divisions_number");
                         String name = fields.getString("Doctor_name");
+                        String name_of_div=fields.getString("Name_of_div");
+                        //刪掉" "
+                        String open2 = name_of_div.replace("\"", "");
+                        //刪掉[
+                        String open3 = open2.replace("[", "");
+                        //刪掉]
+                        String open4 = open3.replace("]", "");
+
                        // nameoftime = fields.getString("Name_of_time");
                         /*if(selected_num.equals(id)){
                             String docname = fields.getString("Doctor_name");
@@ -94,7 +102,7 @@ public class chooseoption extends AppCompatActivity {
 
 
                         //列出所選擇科別的醫生
-                        if(selected_num.equals(id)) {
+                        if(selected_type.equals(open4)) {
                             LinearLayout ll = findViewById(R.id.testll);
                            /* LinearLayout ll1 = new LinearLayout(chooseoption.this);
                             ll1.setOrientation(LinearLayout.HORIZONTAL);

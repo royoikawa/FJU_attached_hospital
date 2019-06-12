@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class reservationimformation extends AppCompatActivity {
 
     //取得明天(當天不能網路掛號)是星期幾
-     Date currentday = new Date(new Date().getTime()+1*24*60*60*1000);;
+    Date currentday = new Date(new Date().getTime()+1*24*60*60*1000);;
     SimpleDateFormat whatday= new SimpleDateFormat("EEEE");
     String dayresult=whatday.format(currentday);
     Date gotodoc;
@@ -101,8 +101,8 @@ public class reservationimformation extends AppCompatActivity {
 
 
 
-    MyAPIServiceres myAPIService;
-    ArrayList<resrecords> array = new ArrayList<>();
+    MyAPIService myAPIService;
+    ArrayList<records> array = new ArrayList<>();
     String getId="";
     String getdocId="";
     String getNUM="";
@@ -121,10 +121,12 @@ public class reservationimformation extends AppCompatActivity {
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
+                        JSONObject id=userdata.getJSONObject("id");
                         JSONObject fields = userdata.getJSONObject("fields");
                         String Name = fields.getString("ID");
-                        getId = "K265487159";
+                        getId = "recBDTGG9VTzJ45i0";
                         if (Name.equals(getId)) {
+
                             //Toast.makeText(getApplicationContext(),
                                     //getId ,Toast.LENGTH_LONG).show();
                         }
@@ -162,10 +164,12 @@ public class reservationimformation extends AppCompatActivity {
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
+                        String id=userdata.getString("id");
                         JSONObject fields = userdata.getJSONObject("fields");
                         String docn=fields.getString("Doctor_name");
                         if (name.equals(docn)){
-                            getdocId = fields.getString("Doctor_number");
+                            getdocId = id;
+                            break;
                             //Toast.makeText(getApplicationContext(),
                                     //getdocId,Toast.LENGTH_LONG).show();
                         }
@@ -204,10 +208,12 @@ public class reservationimformation extends AppCompatActivity {
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
+                        String id=userdata.getString("id");
                         JSONObject fields = userdata.getJSONObject("fields");
                         String getloc= fields.getString("Location_of_clinic");
                         if (clinic.equals(getloc)) {
-                            getNUM=fields.getString("Clinic_number");
+                            getNUM=id;
+                            break;
                            // Toast.makeText(getApplicationContext(),
                                    // getNUM ,Toast.LENGTH_LONG).show();
                         }
@@ -244,10 +250,12 @@ public class reservationimformation extends AppCompatActivity {
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
+                        String id=userdata.getString("id");
                         JSONObject fields = userdata.getJSONObject("fields");
                         String getTime = fields.getString("Name_of_time");
                         if (decided.equals(getTime)) {
-                            gettimeid=fields.getString("Number_of_time");
+                            gettimeid=id;
+                            break;
                             //Toast.makeText(getApplicationContext(),
                                    // gettimeid ,Toast.LENGTH_LONG).show();
                         }
@@ -333,17 +341,25 @@ public class reservationimformation extends AppCompatActivity {
         loadData4(decidetime);
 
 
+        final ArrayList<String> patinfor=new ArrayList<String>();
+        final ArrayList<String> docinfor=new ArrayList<String>();
+        final ArrayList<String> locinfor=new ArrayList<String>();
+        final ArrayList<String> timeinfor=new ArrayList<String>();
 
         Button submit=findViewById(R.id.complete);
         submit.setOnClickListener(new  Button.OnClickListener(){
             public void onClick(View v) {
-               String userid = getId;
-                String  docid=  getdocId;
-                String location = getNUM;
-                String timesery = gettimeid;
+                patinfor.add("recBDTGG9VTzJ45i0");
+                docinfor.add(getdocId);
+                locinfor.add(getNUM);
+                timeinfor.add(gettimeid);
+                //String userid = getId;
+                //String  docid=  getdocId;
+                //String location = getNUM;
+                //String timesery = gettimeid;
 
                     try {
-                        postUser(userid, docid,location,timesery);
+                        postUser(patinfor, docinfor,locinfor,timeinfor);
 
                     } catch (Exception e) {
 
@@ -388,22 +404,25 @@ public class reservationimformation extends AppCompatActivity {
 
 
 
-    public void postUser(final String userid, final String docid, final String location, final String timesery){
-        myAPIService = Manager.getInstance().getAPI();
-        Call<resrecords> call= myAPIService.postRecords(new patientpost(new resfields(userid, docid,location,timesery)));
-        call.enqueue(new Callback<resrecords>(){
+    public void postUser(final ArrayList<String> userid, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        //myAPIService = RetrofitManager.getInstance().getAPI()
+        Call<records> call= myAPIService.postRecords(new userPost(new fields(userid, docid,location,timesery)));
+        call.enqueue(new Callback<records>(){
 
             @Override
-            public void onResponse(Call<resrecords> call, Response<resrecords> response) {
+            public void onResponse(Call<records> call, Response<records> response) {
                 //利用Toast的靜態函式makeText來建立Toast物件
-               // Toast toast = Toast.makeText(reservationimformation.this,
-                       // "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(reservationimformation.this,
+                        "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);
                 //顯示Toast
-                //toast.show();
+                toast.show();
+
+
             }
 
             @Override
-            public void onFailure(Call<resrecords> call, Throwable t) {
+            public void onFailure(Call<records> call, Throwable t) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(reservationimformation.this,
                         "Failed", Toast.LENGTH_LONG);
