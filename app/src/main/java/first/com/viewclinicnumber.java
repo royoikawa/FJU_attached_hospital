@@ -38,7 +38,7 @@ public class viewclinicnumber extends AppCompatActivity {
     private RadioGroup rg;
     static String person;
 
-    private void loadData() {
+    private void loadResData() {
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -76,7 +76,7 @@ public class viewclinicnumber extends AppCompatActivity {
                     }
 
                     //loadDivision();
-                    //printData(person);
+                    printResData(person);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -125,7 +125,7 @@ public class viewclinicnumber extends AppCompatActivity {
         });
     }*/
 
-    private void printData(String person){
+    private void printResData(String person){
         /*division.add("胸腔內科");
         division.add("腎臟內科");
         division.add("眼科");
@@ -351,17 +351,17 @@ public class viewclinicnumber extends AppCompatActivity {
          }
          else
              Toast.makeText(viewclinicnumber.this, "無掛號紀錄!", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
+        r_data.clear();
         person="周捷倫";
-        loadData();
+        loadResData();
         //loadDivision();
-        printData(person);
+        //printData(person);
 
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
         txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
@@ -386,16 +386,16 @@ public class viewclinicnumber extends AppCompatActivity {
                                 linearLayout.removeAllViews();//清空布局
 
                                if(!content.isEmpty()){
-                                    ArrayList<Integer> in_p=new ArrayList<>();
+                                    ArrayList<Integer> in_d=new ArrayList<>();
                                     //int d=r_data.indexOf(content);
                                     for(int i=0;i<r_data.size();i+=6){
                                         if(r_data.get(i).equals(content))
-                                            in_p.add(i);
+                                            in_d.add(i);
                                     }
 
-                                    if(in_p.size()>0){
-                                       for(int i=0;i<in_p.size();i++){
-                                           int index=in_p.get(i);
+                                    if(in_d.size()>0){
+                                       for(int i=0;i<in_d.size();i++){
+                                           int index=in_d.get(i);
                                            Resources res=getResources();
                                            if(r_data.get(index+2).equals(person)){
                                                LinearLayout ll0=new LinearLayout(viewclinicnumber.this);
@@ -601,6 +601,7 @@ public class viewclinicnumber extends AppCompatActivity {
                                                linearLayout.addView(ll1);
                                            }
                                        }
+
                                     }
                                     else
                                         Toast.makeText(viewclinicnumber.this, "查無此筆資料!", Toast.LENGTH_SHORT).show();
@@ -624,15 +625,15 @@ public class viewclinicnumber extends AppCompatActivity {
                                 linearLayout.removeAllViews();//清空布局
 
                                 if(!content.isEmpty()){
-                                    ArrayList<Integer> in_d=new ArrayList<>();
+                                    ArrayList<Integer> in_p=new ArrayList<>();
                                     for(int i=0;i<r_data.size();i++){
                                         if(r_data.get(i).equals(content))
-                                            in_d.add(i);
+                                            in_p.add(i);
                                     }
 
-                                    if(in_d.size()>0){
-                                        for(int i=0;i<in_d.size();i++){
-                                            int index=in_d.get(i);
+                                    if(in_p.size()>0){
+                                        for(int i=0;i<in_p.size();i++){
+                                            int index=in_p.get(i);
                                             int n=index-2;
                                             Resources res=getResources();
                                             LinearLayout ll0=new LinearLayout(viewclinicnumber.this);
