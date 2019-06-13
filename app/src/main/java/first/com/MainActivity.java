@@ -1,6 +1,5 @@
 package first.com;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.util.Log;
@@ -8,9 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,45 +18,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
 import cz.msebera.android.httpclient.Header;
+
+
 public class MainActivity extends AppCompatActivity {
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-    }
-}*/
-
-
-    /*public class MainActivity extends AppCompatActivity {
-
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            Button nextPageBtn = (Button)findViewById(R.id.userlogin);
-            nextPageBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.setClass(MainActivity.this , userlogin.class);
-                    startActivity(intent);
-                }
-            });
-        } */
-    /*
-    //reservation
-
-
-    */
-    //activity_main
     /*private void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?api_key=keyUwcLvTO51TNEHV";
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode,Header[] headers, JSONObject response) {
@@ -67,14 +31,22 @@ public class MainActivity extends AppCompatActivity {
                         "Success!", Toast.LENGTH_LONG).show();
                 Log.d("Hot Text:", response.toString());
                 TextView dataview =(TextView)findViewById(R.id.dataview);
-                String Json = response.toString();
+                //String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
                     for(int i = 0; i<Array.length();i++){
                         JSONObject userdata = Array.getJSONObject(i);
-                        String id = userdata.getString("id");
+                        JSONObject fields = userdata.getJSONObject("fields");
+                        JSONArray itemsArray=fields.getJSONArray("r_patient");
+                        //String itemitem=fields.getString("r_location");
+                        //String itemitem= (String) itemsArray.get(0);
+                        for (int j = 0; j < itemsArray.length(); j++) {
+                            JSONObject item = itemsArray.getJSONObject(j);
+                            dataview.append(item.length()+"\n");
+                        }
+                        //dataview.append(item+"\n");
+                        //dataview.append(item+"\n");
 
-                        dataview.append(id+"\n");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -95,20 +67,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //loadData();
-
-      Button nextPageBtn = (Button) findViewById(R.id.userlogin);
+       //loadData();
+      Button nextPageBtn = (Button)findViewById(R.id.userlogin);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this, userlogin.class);
+                intent.setClass(MainActivity.this , userlogin.class);
                 startActivity(intent);
             }
         });
+        }
+
     }
-}
-
-
 

@@ -20,6 +20,17 @@ public class userlogin extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(userlogin.this , userreg.class);
                 startActivity(intent);
+
+            }
+        });
+        Button nextPageBtn1 = (Button)findViewById(R.id.userlist1);
+        nextPageBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlogin.this , userlist.class);
+                startActivity(intent);
+
             }
         });
     }

@@ -24,6 +24,7 @@
             android:name=".userreg"
             android:theme="@style/AppTheme">
         </activity>
+
         <activity
             android:name=".reservation"
             android:theme="@style/AppTheme">
