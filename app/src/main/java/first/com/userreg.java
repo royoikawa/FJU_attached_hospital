@@ -56,10 +56,11 @@ public class userreg extends AppCompatActivity {
                         String sphone = phone.getText().toString();
                         String spassWord = passWord.getText().toString();
                         String sid = id.getText().toString();
-                        //boolean haveData = checkUser(sid);
+                        String haveData = checkUser(sid);
+
                         if(true){
                              Toast toast = Toast.makeText(userreg.this,
-                                    "此身分證已有帳號", Toast.LENGTH_LONG);
+                                    haveData, Toast.LENGTH_LONG);
                             toast.show();
                         }
                         else{
@@ -107,15 +108,18 @@ public class userreg extends AppCompatActivity {
         });
     }
     public String checkUser(final String id){
-
+        final String[] haveData = {"F"};
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<records> call = myAPIService.getRecords();
         call.enqueue(new Callback<records>() {
             @Override
             public void onResponse(Call<records> call, Response<records> response) {
                 for(int i=0; i < response.body().getRecords().length; i++){
-                    if(id.equals(response.body().getFieldsID(i))){
-
+                    String chkId = response.body().getFieldsID(i);
+                    if(id.equals(chkId)){
+                        Log.d(chkId, "1111111111111111111111111: ");
+                        haveData[0] = "T";
+                        Log.d(haveData[0], "2222222222222222222222222: ");
                         break;
                     }
                 }
@@ -127,8 +131,10 @@ public class userreg extends AppCompatActivity {
                         "驗證資料失敗", Toast.LENGTH_LONG);
                 toast.show();
             }
+
         });
-        return "1";
+        Log.d(haveData[0], "333333333333333333333333: ");
+        return haveData[0];
     }
 
     public void intent(){
