@@ -31,90 +31,76 @@
             android:textAlignment="center" />
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF0F5">
-
-        <LinearLayout
+        android:background="#FFF0F5"
+        android:orientation="vertical">
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFF0F5"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:hint="姓名"
+            android:textColor="#AAAAAA" />
 
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:hint="姓名"
-                android:textColor="#AAAAAA" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="身分證字號"
+            android:textColor="#AAAAAA" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="出生日期(xxxx/yy/zz)" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="手機號碼"/>
 
-            <EditText
-                android:id="@+id/id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="15dp"
-                android:hint="身分證字號"
-                android:textColor="#AAAAAA" />
-
-            <EditText
-                android:id="@+id/bir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="15dp"
-                android:hint="出生日期(xxxx/yy/zz)" />
-
-            <EditText
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="15dp"
-                android:hint="手機號碼" />
-
-            <EditText
-                android:id="@+id/passWord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="15dp"
-                android:hint="密碼" />
-
-            <EditText
-                android:id="@+id/checkPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginBottom="15dp"
-                android:hint="確認密碼" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="密碼"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="15dp"
+            android:hint="確認密碼"/>
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:background="#5599FF"
-                android:text="返回首頁"
-                android:textColor="#FFFFFF"
-                android:textSize="18dp" />
+        <Button
+            android:id="@+id/backuserlogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#5599FF"
+            android:text="返回首頁"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
 
-            <Button
-                android:id="@+id/reg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:background="#FF8888"
-                android:text="確定註冊"
-                android:textColor="#FFFFFF"
-                android:textSize="18dp" />
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="20dp"
+            android:background="#FF8888"
+            android:text="確定註冊"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
 </LinearLayout>
