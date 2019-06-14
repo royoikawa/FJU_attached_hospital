@@ -122,7 +122,11 @@ public class userreg extends AppCompatActivity {
                         Log.d(haveData[0], "2222222222222222222222222: ");
                         break;
                     }
+                    else{
+                        haveData[0] = "F";
+                    }
                 }
+                int check= 1;
             }
 
             @Override
@@ -133,8 +137,12 @@ public class userreg extends AppCompatActivity {
             }
 
         });
-        Log.d(haveData[0], "333333333333333333333333: ");
-        return haveData[0];
+
+        while(haveData[0]=="1"){
+            return haveData[0];
+
+        }
+        return "1";
     }
 
     public void intent(){
