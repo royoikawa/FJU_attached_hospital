@@ -360,7 +360,6 @@ public class reservationimformation extends AppCompatActivity {
 
         getId = "recBDTGG9VTzJ45i0";
 
-        final boolean isre=isoverlimit();
         //使用者
         //loadData();
 
@@ -394,8 +393,33 @@ public class reservationimformation extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 // 按鈕方法
                                 try {
-                                    //把資料加到資料庫
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    //把資料加到資料庫
+                                    final boolean isre=isoverlimit();
                                     if(isre==true){
                                         postUser(patinfor, docinfor,locinfor,timeinfor);
                                     }
@@ -476,6 +500,8 @@ public class reservationimformation extends AppCompatActivity {
                         String loc=alter(r_location);
                         String r_time=fields.getString("r_time");
                         String time=alter(r_time);
+
+
                         if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
                             people++;
 
@@ -502,6 +528,11 @@ public class reservationimformation extends AppCompatActivity {
                 Log.e("Hot Text:", statusCode + " " + e.getMessage());
             }
         });
+        String a = String.valueOf(isrepeat);
+        Toast toast =  Toast.makeText(reservationimformation.this,
+                a, Toast.LENGTH_LONG);
+        //顯示Toast
+        toast.show();
         return isrepeat;
     }
     public  String alter(String a){

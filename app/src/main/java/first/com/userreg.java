@@ -1,26 +1,12 @@
 package first.com;
 
-import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Button;
-import android.view.View;
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.Toast;
-import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 
 public class userreg extends AppCompatActivity {
-    MyAPIService myAPIService;
+    /*MyAPIService myAPIService;
     ArrayList<records> array = new ArrayList<>();
 
     EditText name;
@@ -28,14 +14,14 @@ public class userreg extends AppCompatActivity {
     EditText bir;
     EditText phone;
     EditText passWord;
-    EditText checkPass;
+    EditText checkPass;*/
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userreg);
         Button submit = (Button) findViewById(R.id.reg);
-        submit.setOnClickListener(new Button.OnClickListener() {
+        /*submit.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 name = (EditText) findViewById(R.id.name);
@@ -80,10 +66,10 @@ public class userreg extends AppCompatActivity {
                     toast.show();
                 }
             }
-        });
+        });*/
     }
 
-    public void postUser(String bir, String name, String passWord, String phone, String id){
+    /*public void postUser(String bir, String name, String passWord, String phone, String id){
         myAPIService = RetrofitManager.getInstance().getAPI();
         Call<records> call= myAPIService.postRecords(new userPost(new fields(bir, name, passWord, phone, id)));
         call.enqueue(new Callback<records>(){
@@ -97,8 +83,8 @@ public class userreg extends AppCompatActivity {
                 toast.show();
             }
 
-            @Override
-            public void onFailure(Call<records> call, Throwable t) {
+            @Override*/
+          /*  public void onFailure(Call<records> call, Throwable t) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(userreg.this,
                         "註冊失敗", Toast.LENGTH_LONG);
@@ -143,7 +129,7 @@ public class userreg extends AppCompatActivity {
 
         }
         return "1";
-    }
+    }*/
 
     public void intent(){
         Intent intent = new Intent();
