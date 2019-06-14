@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF0F5"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-171dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#33CCFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="47dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/ic_launcher_lastpage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:text="       病史分享"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/button"
+                android:layout_width="44dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_input_add"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_launcher_home" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_blue"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文章列表"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="382dp"
+            android:layout_height="600dp"
+            android:layout_marginLeft="15dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="382dp"
+                android:layout_height="300dp"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="110dp"
+                        android:layout_height="125dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/userfamily" />
+
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="140dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="250dp"
+                            android:layout_height="29dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="30dp"
+                            android:text="病友姓名:山田阿明"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="250dp"
+                            android:layout_height="29dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="病史分類:氣喘"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="350dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="病史分享:要避免一個人獨處，當發生氣喘症狀時才能馬上求救，如果遇到嚴重的氣喘發作症狀要馬上就醫。飲食要注意避免氣泡飲料，均衡攝取六大類食物，肥胖會加重氣喘症狀要多運動維持體重。"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="382dp"
+                android:layout_height="300dp"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="110dp"
+                        android:layout_height="125dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/userfamily" />
+
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="140dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="250dp"
+                            android:layout_height="29dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="30dp"
+                            android:text="病友姓名:王大明"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="250dp"
+                            android:layout_height="29dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="病史分類:胃潰瘍"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="350dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="病史分享:起初經常腹痛，經醫生建議之下調整了飲食，例如不要攝取乳製品，也不要抽菸喝酒，均衡的飲食，還有不要有太多壓力，休養一段時間後身體就恢復了。"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

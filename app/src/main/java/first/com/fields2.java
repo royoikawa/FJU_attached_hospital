@@ -1,14 +1,15 @@
 package first.com;
 
 
+
 import java.util.ArrayList;
 
-public class fields {
+public class fields2 {
     private ArrayList<String> r_patient;
     private ArrayList<String> r_doctor;
     private ArrayList<String> r_location;
     private ArrayList<String> r_time;
-    public fields(ArrayList<String> pat, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time) {
+    public fields2(ArrayList<String> pat, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time) {
         r_patient = pat;
         r_doctor = doc;
         r_location = loc;
@@ -58,6 +59,28 @@ public class fields {
 
 
 /*
+=======
+public class fields {
+    private String Borned;
+    private String Name;
+    private String Password;
+    private String Phone_number;
+    private String ID;
+    public fields(String borned, String name, String password, String phone_number, String id) {
+
+        Borned = borned;
+        Name = name;
+        Password = password;
+        Phone_number = phone_number;
+        ID = id;
+
+    }
+
+
+
+
+
+>>>>>>> 0d5d96509de9b87c14755e777a2ca8f8c566eea2
     public String getName() {
 
         return Name;
@@ -100,5 +123,6 @@ public class fields {
     public void setID(String id){
         ID = id;
     }
+<<<<<<< HEAD
 */
 }

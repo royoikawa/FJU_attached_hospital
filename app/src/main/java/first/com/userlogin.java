@@ -14,12 +14,12 @@ public class userlogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
         Button nextPageBtn = (Button)findViewById(R.id.register);
-                nextPageBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent();
-                        intent.setClass(userlogin.this , userreg.class);
-                        startActivity(intent);
+        nextPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlogin.this , userreg.class);
+                startActivity(intent);
 
             }
         });

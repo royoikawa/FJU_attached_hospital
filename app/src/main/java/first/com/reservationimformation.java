@@ -426,13 +426,13 @@ public class reservationimformation extends AppCompatActivity {
 
     //post傳值格式連結其他java檔
     public void postUser(final ArrayList<String> userid, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
-        myAPIService = RetrofitManager.getInstance().getAPI();
+        myAPIService = RetrofitManager2.getInstance().getAPI();
         //myAPIService = RetrofitManager.getInstance().getAPI()
-        Call<records> call= myAPIService.postRecords(new userPost(new fields(userid, docid,location,timesery)));
-        call.enqueue(new Callback<records>(){
+        Call<records2> call= myAPIService.postRecords(new userPost2(new fields2(userid, docid,location,timesery)));
+        call.enqueue(new Callback<records2>(){
 
             @Override
-            public void onResponse(Call<records> call, Response<records> response) {
+            public void onResponse(Call<records2> call, Response<records2> response) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(reservationimformation.this,
                         "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);
@@ -443,7 +443,7 @@ public class reservationimformation extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<records> call, Throwable t) {
+            public void onFailure(Call<records2> call, Throwable t) {
                 //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(reservationimformation.this,
                         "Failed", Toast.LENGTH_LONG);

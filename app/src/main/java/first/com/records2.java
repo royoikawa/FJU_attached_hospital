@@ -1,18 +1,21 @@
 package first.com;
 
-public class records {
-    private records[] records;
+public class records2 {
+    private records2[] records2;
     private String id ;
-    private fields fields;
+    private fields2 fields2;
     private String createTime;
 
-    public records(String id, fields fields, String createTime) {
+    public records2(String id, fields2 fields, String createTime) {
         this.id = id;
-        this.fields = fields;
+        this.fields2 = fields;
         this.createTime = createTime;
     }
 
+
 /*
+=======
+>>>>>>> 0d5d96509de9b87c14755e777a2ca8f8c566eea2
     public records[] getRecords(){
         return records;
     }
@@ -46,30 +49,23 @@ public class records {
     public String getFieldsPass(int i){
         return records[i].getFields().getPass();
     }
+<<<<<<< HEAD
 
     public String getFieldsName(){
         return fields.getName();
     }*/
     /*public String getFieldsPhone(){
-
-        return fields.getPhone();
-
-    }
-    public String getFieldsBorned(){
-
-        return fields.getBorned();
-
-    }
-    public String getFieldsPass(){
-
-        return fields.getPass();
-
-    }
+=======
+    /*
+    public String getFieldsName(){
+        return fields.getName();
+    }*/
 
 
-    public fields getFields() {
 
-        return fields;
+    public fields2 getFields() {
+
+        return fields2;
 
     }
 
@@ -78,6 +74,5 @@ public class records {
     public String getCreateTime() {
 
         return createTime;
-
-    }*/
+    }
 }
