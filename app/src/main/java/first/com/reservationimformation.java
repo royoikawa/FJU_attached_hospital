@@ -1,5 +1,8 @@
 package first.com;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -102,7 +105,6 @@ public class reservationimformation extends AppCompatActivity {
 
 
     MyAPIService myAPIService;
-    ArrayList<records> array = new ArrayList<>();
     String getId="";
     String getdocId="";
     String getNUM="";
@@ -333,8 +335,6 @@ public class reservationimformation extends AppCompatActivity {
         infor2.addView(relative);
 
 
-
-
         loadData();
         loadData2(docname);
         loadData3(clinic);
@@ -353,44 +353,34 @@ public class reservationimformation extends AppCompatActivity {
                 docinfor.add(getdocId);
                 locinfor.add(getNUM);
                 timeinfor.add(gettimeid);
+                //建立彈出視窗
+                AlertDialog.Builder builder = new AlertDialog.Builder(reservationimformation.this);
+                builder.setMessage("確定送出預約紀錄?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 按鈕方法
+                                try {
+                                    //把資料加到資料庫
+                                    postUser(patinfor, docinfor,locinfor,timeinfor);
+                                }
+                                catch (Exception e){
+
+                                }
+                            }
+
+                        });
+                        
+                AlertDialog con_dialog = builder.create();
+                con_dialog.show();
                 //String userid = getId;
                 //String  docid=  getdocId;
                 //String location = getNUM;
                 //String timesery = gettimeid;
 
-                    try {
-                        postUser(patinfor, docinfor,locinfor,timeinfor);
-
-                    } catch (Exception e) {
-
-                        Log.e("MainActivity", e.getMessage());
-
-                    }
 
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
