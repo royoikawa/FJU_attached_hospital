@@ -359,6 +359,8 @@ public class reservationimformation extends AppCompatActivity {
         infor2.addView(relative);
 
         getId = "recBDTGG9VTzJ45i0";
+
+        final boolean isre=isoverlimit();
         //使用者
         //loadData();
 
@@ -393,8 +395,16 @@ public class reservationimformation extends AppCompatActivity {
                                 // 按鈕方法
                                 try {
                                     //把資料加到資料庫
-                                    isoverlimit();
-                                    postUser(patinfor, docinfor,locinfor,timeinfor);
+
+                                    if(isre==true){
+                                        postUser(patinfor, docinfor,locinfor,timeinfor);
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(),
+                                                "人數已滿!" ,Toast.LENGTH_LONG).show();
+                                        //postUser(patinfor, docinfor,locinfor,timeinfor);
+
+                                    }
                                 }
                                 catch (Exception e){
 
@@ -468,16 +478,16 @@ public class reservationimformation extends AppCompatActivity {
                         String time=alter(r_time);
                         if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
                             people++;
-                            if(people>Integer.valueOf(limit)){
-                                Toast.makeText(getApplicationContext(),
-                                        "人數已滿!" ,Toast.LENGTH_LONG).show();
-                            }
+
 
 
                             //Toast.makeText(getApplicationContext(),
                             // gettimeid ,Toast.LENGTH_LONG).show();
                         }
 
+                    }
+                    if(people+1>Integer.valueOf(limit)){
+                        isrepeat=true;
                     }
 
                 } catch (JSONException e) {
