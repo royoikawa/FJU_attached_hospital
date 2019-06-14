@@ -27,8 +27,6 @@ import java.util.Date;
 import cz.msebera.android.httpclient.Header;
 
 public class chooseoption extends AppCompatActivity {
-    //要先知道醫生上班日期,才能顯示選項
-   // private String[] data={"4/18","4/22","4/24","4/26","4/27","4/29","4/30","5/1"};
     Date currentd = new Date(new Date().getTime()+1*24*60*60*1000);
 
     //當周
@@ -45,6 +43,7 @@ public class chooseoption extends AppCompatActivity {
     String ini2 = takeinidate.format(nextweek2).substring(4);
     String end2 = takeenddate.format(nextweek3).substring(4);
     String option2="下週("+ini2+"~"+end2+")";
+
     //顯示醫生姓名
     ArrayList data = new ArrayList<String>();
     ArrayList doctorname=new ArrayList<String>();
@@ -56,6 +55,14 @@ public class chooseoption extends AppCompatActivity {
     String open="";
     String sellweek="";
     int clicknum=0;
+    String docid;
+    String[] timerec;
+    String trec;
+    ArrayList<String> docrec = new ArrayList<String>();
+    ArrayList<Integer> docmax = new ArrayList<Integer>();
+    String clinicrec;
+
+
     public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
@@ -73,15 +80,15 @@ public class chooseoption extends AppCompatActivity {
                     selected_type = bundle.getString("name");
                     selectnum.setText(selected_type);
                     //接所選order
-                    String selected_num = bundle.getString("order");
 
                     JSONArray Array = response.getJSONArray("records");
 
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject fields = userdata.getJSONObject("fields");
-                        String id = fields.getString("Divisions_number");
+                        String id = userdata.getString("id");
                         String name = fields.getString("Doctor_name");
+                        int maximum=fields.getInt("Maxnum_of_people");
                         String name_of_div=fields.getString("Name_of_div");
                         //刪掉" "
                         String open2 = name_of_div.replace("\"", "");
@@ -90,78 +97,29 @@ public class chooseoption extends AppCompatActivity {
                         //刪掉]
                         String open4 = open3.replace("]", "");
 
-                       // nameoftime = fields.getString("Name_of_time");
-                        /*if(selected_num.equals(id)){
-                            String docname = fields.getString("Doctor_name");
-                            Toast.makeText(getApplicationContext(),
-                                   docname, Toast.LENGTH_LONG).show();
-                        }*/
-                        //Toast.makeText(getApplicationContext(),
-                               // id, Toast.LENGTH_LONG).show();
-                         //data.add(id);
-
 
                         //列出所選擇科別的醫生
                         if(selected_type.equals(open4)) {
-                            LinearLayout ll = findViewById(R.id.testll);
-                           /* LinearLayout ll1 = new LinearLayout(chooseoption.this);
-                            ll1.setOrientation(LinearLayout.HORIZONTAL);
-                            Resources res = getResources();
-                            ll1.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
-                            ll1.setMinimumHeight(450);*/
-                           // ll2.setDividerPadding(350);
-                            //取得風格
-                            //樣式
-                            //ll2放圖
-                            /*LinearLayout ll2 = new LinearLayout(chooseoption.this);
-                            ll2.setOrientation(LinearLayout.HORIZONTAL);
-                            ll2.setMinimumWidth(200);ll2.setMinimumHeight(350);*/
-                           //ll2.addView(tt);ll.addView(ll2);
-                            //適當排版印出資料
-                            /*LinearLayout ll3=new LinearLayout(chooseoption.this);
-                            ll3.setOrientation(LinearLayout.VERTICAL);
-                            ll3.setMinimumWidth(400);
-                            ll3.setMinimumHeight(350);
-                            LinearLayout ll4=new LinearLayout(chooseoption.this);
-                            ll4.setOrientation(LinearLayout.VERTICAL);
-                            ll4.setMinimumWidth(300);
-                            ll4.setMinimumHeight(150);
-                            ll4.setPadding(450,0,0,0);
-                            //TextView tt = new TextView(chooseoption.this);
-                            //tt.setWidth(300);tt.setHeight(80);
-                            //tt.setPadding(450,10,0,0);
-                           // tt.setText("醫生姓名:"+name);
-                            TextView tt = new TextView(chooseoption.this);
-                            tt.setWidth(300);tt.setHeight(130);
-                            tt.setPadding(20,40,0,0);
-                            tt.setText("醫生姓名:"+name);
-                            tt.setTextSize(17);
-                            ll4.addView(tt);ll3.addView(ll4);*/
+                            docid = id;
+                            docrec.add(docid);
                             doctorname.add(name);
-                            /*LinearLayout ll5=new LinearLayout(chooseoption.this);
-                            ll5.setOrientation(LinearLayout.VERTICAL);
-                            ll5.setMinimumWidth(1000);
-                            ll5.setMinimumHeight(140);
-                            ll5.setPadding(450,10,0,0);
-                            TextView time = new TextView(chooseoption.this);
-                            time.setWidth(200);time.setHeight(140);
-                            time.setPadding(20,0,0,0);
-                            time.setText("開診時段:");
-                            time.setTextSize(17);*/
-                           // Spinner choosetime=new Spinner(chooseoption.this);
+                            docmax.add(maximum);
+
+                            LinearLayout ll = findViewById(R.id.testll);
                             seldoc=findViewById(R.id.select_doc);
-                           // choosetime.setMinimumWidth(20);choosetime.setMinimumHeight(70);
-                           // choosetime.setPadding(250,0,0,0);
                             final ArrayAdapter<String> nameList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,doctorname);
                             seldoc.setAdapter(nameList);
+                            Toast.makeText(getApplicationContext(),
+                                    "選",
+                                    Toast.LENGTH_LONG).show();
                             seldoc.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
                                 @Override
                                 public void onItemSelected(AdapterView parent, View v, int position, long id) {
                                     String n1=doctorname.get(position).toString();
-                                    //Toast.makeText(getApplicationContext(),
-                                         //  "選"+n1,
-                                           // Toast.LENGTH_LONG).show();
-                                    timeData(n1);
+                                    String docrec2 = docrec.get(position);
+
+                                    int doc_max=docmax.get(position);
+                                    timeData(n1,docrec2,doc_max);
 
 
                                     // parent = 事件發生的母體 spinner_items
@@ -188,7 +146,7 @@ public class chooseoption extends AppCompatActivity {
             }
         });
         }
-    public void timeData(final String getname){
+    public void timeData(final String getname, final  String docrec, final int doc_max){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -204,6 +162,14 @@ public class chooseoption extends AppCompatActivity {
                         JSONObject fields = userdata.getJSONObject("fields");
                         String name = fields.getString("Doctor_name");
                         if(getname.equals(name)){
+                            trec=fields.getString("Number_of_time");
+                            //刪掉" "
+                            String trec2 =trec.replace("\"", "");
+                            //刪掉[
+                            String trec3 = trec2.replace("[", "");
+                            //刪掉]
+                            String trec4 = trec3.replace("]", "");
+                            timerec=trec4.split(",");
                             nameoftime = fields.getString("Name_of_time");
                             final String clinicnum1=fields.getString("Name_of_clinic");
                             //刪掉" "
@@ -212,6 +178,14 @@ public class chooseoption extends AppCompatActivity {
                             String clinic1 = clinic.replace("[", "");
                             //刪掉]
                             final String clinicnum= clinic1.replace("]", "");
+                            clinicrec=fields.getString("Clinic_number");
+                            //刪掉" "
+                            String clinicrec1 =clinicrec.replace("\"", "");
+                            //刪掉[
+                            String clinicrec2 = clinicrec1.replace("[", "");
+                            //刪掉]
+                            final String clinicrec3= clinicrec2.replace("]", "");
+                            //clirec=clinicrec3.split(";");
                             open = nameoftime;
                             //刪掉" "
                             String open2 = open.replace("\"", "");
@@ -236,6 +210,11 @@ public class chooseoption extends AppCompatActivity {
                                     bundle.putString("week",sellweek);
                                     bundle.putString("clinic",clinicnum);
                                     bundle.putString("time", decided);
+                                    bundle.putString("timerec",timerec[position]);
+                                    bundle.putString("docid",docrec);
+                                    //bundle.putString("limit",doc_max);
+                                    bundle.putInt("limit",doc_max);
+                                    bundle.putString("clirec",clinicrec3);
                                    // bundle.putString("order", position + 1 + "");
                                     intent.putExtras(bundle);
                                     startActivity(intent);
@@ -281,58 +260,5 @@ public class chooseoption extends AppCompatActivity {
             }
         });
         loadData();
-        //ll5.addView(time);ll5.addView(choosetime);ll3.addView(ll5);
-                           /* LinearLayout ll6=new LinearLayout(chooseoption.this);
-                            ll6.setOrientation(LinearLayout.VERTICAL);
-                           ll6.setMinimumWidth(260); ll6.setMinimumHeight(100);
-                           ll6.setPadding(510,0,0,0);*/
-                           /* Button getoption=new Button(chooseoption.this);
-                            getoption.setMinimumWidth(230);getoption.setMinimumHeight(100);
-                            getoption.setBackgroundColor(Color.RED);
-                            getoption.setPadding(10,0,0,0);
-                            getoption.setText("預約");
-                            getoption.setTextSize(16);
-                            getoption.setTextColor(Color.WHITE);
-                            ll6.addView(getoption);*/
-                           /* LinearLayout ll4=new LinearLayout(chooseoption.this);
-                            ll4.setOrientation(LinearLayout.HORIZONTAL);
-                            ll4.setMinimumHeight(100);
-                            TextView timetext = new TextView(chooseoption.this);
-                            timetext.setWidth(300);timetext.setHeight(100);
-                            timetext.setPadding(450,0,0,0);
-                            timetext.setText("開診時段:");
-                            Spinner choosetime=new Spinner(chooseoption.this);
-                            choosetime.setPadding(30,0,0,0);
-                            final ArrayAdapter<String> timeList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,opening);
-                            choosetime.setAdapter(timeList);
-                            ll4.addView(timetext);ll4.addView(choosetime);ll2.addView(ll4);
-                            LinearLayout ll5=new LinearLayout(chooseoption.this);
-                            ll5.setOrientation(LinearLayout.HORIZONTAL);
-                            ll5.setMinimumHeight(100);
-                            Button getoption=new Button(chooseoption.this);
-                            getoption.setMinimumWidth(150);getoption.setMinimumHeight(100);
-                            getoption.setBackgroundColor(Color.WHITE);
-                            getoption.setPadding(470,0,0,0);
-                            getoption.setText("預約");
-                            ll5.addView(getoption);
-                            ll2.addView(ll5);*/
-
-
-        //LinearLayout ll3=new LinearLayout(chooseoption.this);
-        //ll3.setOrientation(LinearLayout.HORIZONTAL);
-                           /* TextView timetext = new TextView(chooseoption.this);
-                            timetext.setWidth(1200);timetext.setHeight(100);
-                            timetext.setPadding(500,30,0,0);
-                            timetext.setText("開診時段:");
-                            ll3.addView(timetext);
-                            ll.addView(ll3);*/
-
-
-
-        /*ArrayAdapter<String> adapter=new ArrayAdapter<String>(chooseoption.this,android.R.layout.simple_list_item_1,data);
-        ListView listview=(ListView)findViewById(R.id.frank);
-        listview.setAdapter(adapter);  */
-        //點選時段換頁
-
     }
         }

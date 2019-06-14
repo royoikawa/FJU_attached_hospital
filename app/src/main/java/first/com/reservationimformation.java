@@ -2,7 +2,6 @@ package first.com;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -103,13 +102,19 @@ public class reservationimformation extends AppCompatActivity {
     }
 
 
-
+    //post
+    //各值全域變數
     MyAPIService myAPIService;
     String getId="";
-    String getdocId="";
     String getNUM="";
     String gettimeid="";
-      public void loadData(){
+    String docid;
+    String clinic;
+    String timerec;
+    String clirec;
+    int limit;
+      //抓使用者ID
+      /*public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -147,12 +152,12 @@ public class reservationimformation extends AppCompatActivity {
             }
         });
     }
+    */
 
 
 
-
-
-    public void loadData2(final String name){
+    //抓醫生ID
+    /*public void loadData2(final String name){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -190,12 +195,13 @@ public class reservationimformation extends AppCompatActivity {
             }
         });
     }
+    */
 
 
 
 
 
-
+    //抓診間ID
     public void loadData3(final String clinic){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/Clinic?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
@@ -237,7 +243,7 @@ public class reservationimformation extends AppCompatActivity {
 
 
 
-
+    //抓時間ID
     public void loadData4(final String decided){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/Time?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
@@ -285,34 +291,48 @@ public class reservationimformation extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String docname = bundle.getString("name");
         String Select_type=bundle.getString("type");
-        final String clinic=bundle.getString("clinic");
+        clinic=bundle.getString("clinic");
         String decidetime=bundle.getString("time");
+        docid = bundle.getString("docid");
+        timerec=bundle.getString("timerec");
+        limit=bundle.getInt("limit");
+        clirec=bundle.getString("clirec");
         String getweek=bundle.getString("week").substring(0,2);
         //inferdate(decidetime);
+
+
         TextView printname=new TextView(this);
         printname.setWidth(600);printname.setHeight(150);
         printname.setPadding(5,5,0,0);
         printname.setText(" 醫生姓名:"+docname);
         printname.setTextSize(24);
         infor.addView(printname);
+
+
         TextView printdiv=new TextView(this);
         printdiv.setWidth(500);printname.setHeight(150);
         printdiv.setPadding(5,30,0,0);
         printdiv.setText(" 所屬科別:"+Select_type);
         printdiv.setTextSize(24);
         infor.addView(printdiv);
+
+
         TextView printtime=new TextView(this);
         printtime.setWidth(500);printname.setHeight(150);
         printtime.setPadding(5,30,0,0);
         printtime.setText(" 看診時間:"+decidetime);
         printtime.setTextSize(24);
         infor.addView(printtime);
+
+
         TextView printloc=new TextView(this);
         printloc.setWidth(500);printname.setHeight(100);
         printloc.setPadding(5,30,0,0);
         printloc.setText("   診間:"+clinic);
         printloc.setTextSize(24);
         infor.addView(printloc);
+
+
         LinearLayout infor1= findViewById(R.id.printdate);
         TextView gotodoc=new TextView(this);
         gotodoc.setWidth(1000);gotodoc.setHeight(280);
@@ -321,6 +341,8 @@ public class reservationimformation extends AppCompatActivity {
         gotodoc.setText("   就診日期:  "+Date_of_visit);
         gotodoc.setTextSize(28);
         infor1.addView(gotodoc);
+
+
         LinearLayout infor2= findViewById(R.id.printperson);
         TextView gotname=new TextView(this);
         gotname.setWidth(1000);gotname.setHeight(280);
@@ -328,31 +350,41 @@ public class reservationimformation extends AppCompatActivity {
         gotname.setText("   就診者姓名:");
         gotname.setTextSize(28);
         infor2.addView(gotname);
+
+
         Spinner relative=new Spinner(this);
         relative.setMinimumWidth(200);
         relative.setMinimumHeight(80);
         relative.setPadding(170,80,0,0);
         infor2.addView(relative);
 
+        getId = "recBDTGG9VTzJ45i0";
+        //使用者
+        //loadData();
 
-        loadData();
-        loadData2(docname);
+        //醫生
+        //loadData2(docname);
+
+        //診間
         loadData3(clinic);
-        loadData4(decidetime);
 
+        //時間
+        //loadData4(decidetime);
 
+        //定義傳值的格式
         final ArrayList<String> patinfor=new ArrayList<String>();
         final ArrayList<String> docinfor=new ArrayList<String>();
         final ArrayList<String> locinfor=new ArrayList<String>();
         final ArrayList<String> timeinfor=new ArrayList<String>();
 
+        //按下預約按鈕開始動作
         Button submit=findViewById(R.id.complete);
         submit.setOnClickListener(new  Button.OnClickListener(){
             public void onClick(View v) {
                 patinfor.add("recBDTGG9VTzJ45i0");
-                docinfor.add(getdocId);
+                docinfor.add(docid);
                 locinfor.add(getNUM);
-                timeinfor.add(gettimeid);
+                timeinfor.add(timerec);
                 //建立彈出視窗
                 AlertDialog.Builder builder = new AlertDialog.Builder(reservationimformation.this);
                 builder.setMessage("確定送出預約紀錄?")
@@ -361,6 +393,7 @@ public class reservationimformation extends AppCompatActivity {
                                 // 按鈕方法
                                 try {
                                     //把資料加到資料庫
+                                    isoverlimit();
                                     postUser(patinfor, docinfor,locinfor,timeinfor);
                                 }
                                 catch (Exception e){
@@ -369,31 +402,19 @@ public class reservationimformation extends AppCompatActivity {
                             }
 
                         });
-                        
                 AlertDialog con_dialog = builder.create();
                 con_dialog.show();
                 //String userid = getId;
                 //String  docid=  getdocId;
                 //String location = getNUM;
                 //String timesery = gettimeid;
-
-
             }
         });
     }
 
 
 
-        // final String[] name = {"廖品鈞", "廖子維", "林承鴻", "王冠文", "林育賢", "陳建甫"};
-        //ArrayAdapter<String> nameList = new ArrayAdapter<>(MainActivity.this,
-        //       android.R.layout.simple_spinner_dropdown_item,
-        //       name);
-        //spinner.setAdapter(nameList);
-
-
-
-
-
+    //post傳值格式連結其他java檔
     public void postUser(final ArrayList<String> userid, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
         myAPIService = RetrofitManager.getInstance().getAPI();
         //myAPIService = RetrofitManager.getInstance().getAPI()
@@ -420,5 +441,65 @@ public class reservationimformation extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+    boolean isrepeat=false;
+    public boolean isoverlimit(){
+        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.get(urlString, new JsonHttpResponseHandler() {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.d("Hot Text:", response.toString());
+                //ListView kindview =(ListView)findViewById(R.id.kindview);
+                //TextView tview =(TextView)findViewById(R.id.tview);
+                String Json = response.toString();
+                try {
+                    int people=0;
+                    JSONArray Array = response.getJSONArray("records");
+
+                    for (int i = 0; i < Array.length(); i++) {
+                        JSONObject userdata = Array.getJSONObject(i);;
+                        JSONObject fields = userdata.getJSONObject("fields");
+                        //String patient=fields.getString("patient");
+                        String r_doctor=fields.getString("r_doctor");
+                        String doc=alter(r_doctor);
+                        String r_location=fields.getString("r_location");
+                        String loc=alter(r_location);
+                        String r_time=fields.getString("r_time");
+                        String time=alter(r_time);
+                        if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
+                            people++;
+                            if(people>Integer.valueOf(limit)){
+                                Toast.makeText(getApplicationContext(),
+                                        "人數已滿!" ,Toast.LENGTH_LONG).show();
+                            }
+
+
+                            //Toast.makeText(getApplicationContext(),
+                            // gettimeid ,Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+
+                } catch (JSONException e) {
+
+                }
+            }
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
+                Toast.makeText(getApplicationContext(),
+                        "Error: " + statusCode + " " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                // Log error message
+                Log.e("Hot Text:", statusCode + " " + e.getMessage());
+            }
+        });
+        return isrepeat;
+    }
+    public  String alter(String a){
+        String open2 = a.replace("\"", "");
+        //刪掉[
+        String open3 = open2.replace("[", "");
+        //刪掉]
+        String open4 = open3.replace("]", "");
+        return  open4;
     }
 }
