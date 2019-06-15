@@ -49,62 +49,62 @@ public class reservationimformation extends AppCompatActivity {
         for(int i=0;i<day_of_week.length;i++){
             if(dayresult.equals(day_of_week[i])){dayindex=i;}
         }
-           if(compare.equals("星期一")){
-               godocindex = 1;
-               if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);}
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-           }
-         else if(compare.equals("星期二")){
-             godocindex = 2;
-               if(dayindex<=godocindex)
-              gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-          }
-           else if(compare.equals("星期三")){
-               godocindex = 3;
-               if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-           }
-           else if(compare.equals("星期四")){
-               godocindex = 4;
-               if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-           }
-           else if(compare.equals("星期五")){
-               godocindex = 5;
-               if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-           }
-           else if(compare.equals("星期六")){
-               godocindex = 6;
-               if(dayindex<=godocindex)
-                   gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
-               else {
-                   gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
-               }
-           }
+        if(compare.equals("星期一")){
+            godocindex = 1;
+            if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);}
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
+        else if(compare.equals("星期二")){
+            godocindex = 2;
+            if(dayindex<=godocindex)
+                gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
+        else if(compare.equals("星期三")){
+            godocindex = 3;
+            if(dayindex<=godocindex)
+                gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
+        else if(compare.equals("星期四")){
+            godocindex = 4;
+            if(dayindex<=godocindex)
+                gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
+        else if(compare.equals("星期五")){
+            godocindex = 5;
+            if(dayindex<=godocindex)
+                gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
+        else if(compare.equals("星期六")){
+            godocindex = 6;
+            if(dayindex<=godocindex)
+                gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
+            else {
+                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+            }
+        }
         SimpleDateFormat day= new SimpleDateFormat("MMdd");
-           String get_go_doc_day=day.format(gotodoc);
+        String get_go_doc_day=day.format(gotodoc);
         return get_go_doc_day ;
     }
 
 
     //post
     //各值全域變數
-    MyAPIService myAPIService;
+    MyAPIService2 myAPIService2;
     String getId="";
     String getNUM="";
     String gettimeid="";
@@ -113,7 +113,7 @@ public class reservationimformation extends AppCompatActivity {
     String timerec;
     String clirec;
     int limit;
-      //抓使用者ID
+    //抓使用者ID
       /*public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
@@ -125,7 +125,6 @@ public class reservationimformation extends AppCompatActivity {
                 String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
-
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         JSONObject id=userdata.getJSONObject("id");
@@ -133,14 +132,11 @@ public class reservationimformation extends AppCompatActivity {
                         String Name = fields.getString("ID");
                         getId = "recBDTGG9VTzJ45i0";
                         if (Name.equals(getId)) {
-
                             //Toast.makeText(getApplicationContext(),
                                     //getId ,Toast.LENGTH_LONG).show();
                         }
-
                     }
                 } catch (JSONException e) {
-
                 }
             }
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
@@ -168,7 +164,6 @@ public class reservationimformation extends AppCompatActivity {
                 String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
-
                     for (int i = 0; i < Array.length(); i++) {
                         JSONObject userdata = Array.getJSONObject(i);
                         String id=userdata.getString("id");
@@ -180,10 +175,8 @@ public class reservationimformation extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),
                                     //getdocId,Toast.LENGTH_LONG).show();
                         }
-
                     }
                 } catch (JSONException e) {
-
                 }
             }
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
@@ -222,8 +215,8 @@ public class reservationimformation extends AppCompatActivity {
                         if (clinic.equals(getloc)) {
                             getNUM=id;
                             break;
-                           // Toast.makeText(getApplicationContext(),
-                                   // getNUM ,Toast.LENGTH_LONG).show();
+                            // Toast.makeText(getApplicationContext(),
+                            // getNUM ,Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -244,7 +237,7 @@ public class reservationimformation extends AppCompatActivity {
 
 
     //抓時間ID
-    public void loadData4(final String decided){
+    /*public void loadData4(final String decided){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/Time?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
@@ -265,7 +258,7 @@ public class reservationimformation extends AppCompatActivity {
                             gettimeid=id;
                             break;
                             //Toast.makeText(getApplicationContext(),
-                                   // gettimeid ,Toast.LENGTH_LONG).show();
+                            // gettimeid ,Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -281,7 +274,7 @@ public class reservationimformation extends AppCompatActivity {
                 Log.e("Hot Text:", statusCode + " " + e.getMessage());
             }
         });
-    }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -359,7 +352,6 @@ public class reservationimformation extends AppCompatActivity {
         infor2.addView(relative);
 
         getId = "recBDTGG9VTzJ45i0";
-
         //使用者
         //loadData();
 
@@ -393,42 +385,9 @@ public class reservationimformation extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 // 按鈕方法
                                 try {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     //把資料加到資料庫
-                                    final boolean isre=isoverlimit();
-                                    if(isre==true){
-                                        postUser(patinfor, docinfor,locinfor,timeinfor);
-                                    }
-                                    else {
-                                        Toast.makeText(getApplicationContext(),
-                                                "人數已滿!" ,Toast.LENGTH_LONG).show();
-                                        //postUser(patinfor, docinfor,locinfor,timeinfor);
-
-                                    }
+                                    isoverlimit();
+                                    postUser(patinfor, docinfor,locinfor,timeinfor);
                                 }
                                 catch (Exception e){
 
@@ -450,9 +409,9 @@ public class reservationimformation extends AppCompatActivity {
 
     //post傳值格式連結其他java檔
     public void postUser(final ArrayList<String> userid, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
-        myAPIService = RetrofitManager2.getInstance().getAPI();
+        myAPIService2 = RetrofitManager2.getInstance().getAPI();
         //myAPIService = RetrofitManager.getInstance().getAPI()
-        Call<records2> call= myAPIService.postRecords(new userPost2(new fields2(userid, docid,location,timesery)));
+        Call<records2> call= myAPIService2.postRecords(new userPost2(new fields2(userid, docid,location,timesery)));
         call.enqueue(new Callback<records2>(){
 
             @Override
@@ -500,20 +459,18 @@ public class reservationimformation extends AppCompatActivity {
                         String loc=alter(r_location);
                         String r_time=fields.getString("r_time");
                         String time=alter(r_time);
-
-
                         if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
                             people++;
-
+                            if(people>Integer.valueOf(limit)){
+                                Toast.makeText(getApplicationContext(),
+                                        "人數已滿!" ,Toast.LENGTH_LONG).show();
+                            }
 
 
                             //Toast.makeText(getApplicationContext(),
                             // gettimeid ,Toast.LENGTH_LONG).show();
                         }
 
-                    }
-                    if(people+1>Integer.valueOf(limit)){
-                        isrepeat=true;
                     }
 
                 } catch (JSONException e) {
@@ -528,11 +485,6 @@ public class reservationimformation extends AppCompatActivity {
                 Log.e("Hot Text:", statusCode + " " + e.getMessage());
             }
         });
-        String a = String.valueOf(isrepeat);
-        Toast toast =  Toast.makeText(reservationimformation.this,
-                a, Toast.LENGTH_LONG);
-        //顯示Toast
-        toast.show();
         return isrepeat;
     }
     public  String alter(String a){

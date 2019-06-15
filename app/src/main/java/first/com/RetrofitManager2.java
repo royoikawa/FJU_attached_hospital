@@ -7,7 +7,7 @@ public class RetrofitManager2 {
     // 以Singleton模式建立
     private static RetrofitManager2 mInstance = new RetrofitManager2();
 
-    private MyAPIService myAPIService;
+    private MyAPIService2 myAPIService;
 
     private RetrofitManager2() {
 
@@ -17,16 +17,14 @@ public class RetrofitManager2 {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        myAPIService = retrofit.create(MyAPIService.class);
+        myAPIService = retrofit.create(MyAPIService2.class);
     }
 
     public static RetrofitManager2 getInstance() {
         return mInstance;
     }
 
-    public MyAPIService getAPI() {
+    public MyAPIService2 getAPI() {
         return myAPIService;
     }
 }
-
-

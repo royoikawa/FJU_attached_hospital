@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
-public interface MyAPIService {
+public interface MyAPIService2 {
     @GET("reservation?api_key=keygkXy0a4GuCXh7p")
     Call<records2> getRecords();
 
