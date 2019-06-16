@@ -116,6 +116,7 @@ public class reservationimformation extends AppCompatActivity {
     int limit;
     int check = 0;
     int people=0;
+    String dt;
     //抓使用者ID
       /*public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
@@ -333,6 +334,7 @@ public class reservationimformation extends AppCompatActivity {
         gotodoc.setWidth(1000);gotodoc.setHeight(280);
         gotodoc.setPadding(5,100,0,0);
         String Date_of_visit =inferdate(decidetime, getweek);
+        dt = Date_of_visit;
         gotodoc.setText("   就診日期:  "+Date_of_visit);
         gotodoc.setTextSize(28);
         infor1.addView(gotodoc);
@@ -398,7 +400,7 @@ public class reservationimformation extends AppCompatActivity {
                                     {
                                         //領號碼
                                         Integer num = people + 1;
-                                        postUser(patinfor, num, docinfor,locinfor,timeinfor);
+                                        postUser(patinfor, num, docinfor,locinfor,timeinfor,dt);
                                         Toast toast = Toast.makeText(reservationimformation.this,
                                                 "預約成功", Toast.LENGTH_LONG);
                                         toast.show();
@@ -428,10 +430,10 @@ public class reservationimformation extends AppCompatActivity {
 
 
     //post傳值格式連結其他java檔
-    public void postUser(final ArrayList<String> userid, Integer num, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
+    public void postUser(final ArrayList<String> userid, Integer num, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery, String dt){
         myAPIService2 = RetrofitManager2.getInstance().getAPI();
         //myAPIService = RetrofitManager.getInstance().getAPI()
-        Call<records2> call= myAPIService2.postRecords(new userPost2(new fields2(userid, num, docid,location,timesery)));
+        Call<records2> call= myAPIService2.postRecords(new userPost2(new fields2(userid, num, docid,location,timesery,dt)));
         call.enqueue(new Callback<records2>(){
 
             @Override
@@ -477,7 +479,8 @@ public class reservationimformation extends AppCompatActivity {
                         String loc=alter(r_location);
                         String r_time=fields.getString("r_time");
                         String time=alter(r_time);
-                        if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
+                        String datatime = fields.getString("r_date");
+                        if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)&&datatime.equals(dt)) {
                             people++;
 
 

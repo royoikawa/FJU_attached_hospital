@@ -9,12 +9,14 @@ public class fields2 {
     private ArrayList<String> r_doctor;
     private ArrayList<String> r_location;
     private ArrayList<String> r_time;
-    public fields2(ArrayList<String> pat, Integer n, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time) {
+    private String r_date;
+    public fields2(ArrayList<String> pat, Integer n, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time,String dt) {
         r_patient = pat;
         r_number = n;
         r_doctor = doc;
         r_location = loc;
         r_time = time;
+        r_date = dt;
 
 
     }
