@@ -2,6 +2,7 @@ package first.com;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -113,6 +114,8 @@ public class reservationimformation extends AppCompatActivity {
     String timerec;
     String clirec;
     int limit;
+    int check = 0;
+    int people=0;
     //抓使用者ID
       /*public void loadData(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
@@ -291,7 +294,6 @@ public class reservationimformation extends AppCompatActivity {
         limit=bundle.getInt("limit");
         clirec=bundle.getString("clirec");
         String getweek=bundle.getString("week").substring(0,2);
-        //inferdate(decidetime);
 
 
         TextView printname=new TextView(this);
@@ -370,6 +372,12 @@ public class reservationimformation extends AppCompatActivity {
         final ArrayList<String> locinfor=new ArrayList<String>();
         final ArrayList<String> timeinfor=new ArrayList<String>();
 
+        //檢查人數
+        loadDatacheck();
+
+
+
+
         //按下預約按鈕開始動作
         Button submit=findViewById(R.id.complete);
         submit.setOnClickListener(new  Button.OnClickListener(){
@@ -386,8 +394,24 @@ public class reservationimformation extends AppCompatActivity {
                                 // 按鈕方法
                                 try {
                                     //把資料加到資料庫
-                                    isoverlimit();
-                                    postUser(patinfor, docinfor,locinfor,timeinfor);
+                                    if(check == 0)
+                                    {
+                                        //領號碼
+                                        Integer num = people + 1;
+                                        postUser(patinfor, num, docinfor,locinfor,timeinfor);
+                                        Toast toast = Toast.makeText(reservationimformation.this,
+                                                "預約成功", Toast.LENGTH_LONG);
+                                        toast.show();
+                                        Intent intent = new Intent();
+                                        intent.setClass(reservationimformation.this , userlist.class);
+                                        startActivity(intent);
+                                    }
+                                    else
+                                    {
+                                        Toast toast = Toast.makeText(reservationimformation.this,
+                                                "人數已滿", Toast.LENGTH_LONG);
+                                        toast.show();
+                                    }
                                 }
                                 catch (Exception e){
 
@@ -397,10 +421,6 @@ public class reservationimformation extends AppCompatActivity {
                         });
                 AlertDialog con_dialog = builder.create();
                 con_dialog.show();
-                //String userid = getId;
-                //String  docid=  getdocId;
-                //String location = getNUM;
-                //String timesery = gettimeid;
             }
         });
     }
@@ -408,19 +428,19 @@ public class reservationimformation extends AppCompatActivity {
 
 
     //post傳值格式連結其他java檔
-    public void postUser(final ArrayList<String> userid, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
+    public void postUser(final ArrayList<String> userid, Integer num, final ArrayList<String> docid, final ArrayList<String> location, final ArrayList<String> timesery){
         myAPIService2 = RetrofitManager2.getInstance().getAPI();
         //myAPIService = RetrofitManager.getInstance().getAPI()
-        Call<records2> call= myAPIService2.postRecords(new userPost2(new fields2(userid, docid,location,timesery)));
+        Call<records2> call= myAPIService2.postRecords(new userPost2(new fields2(userid, num, docid,location,timesery)));
         call.enqueue(new Callback<records2>(){
 
             @Override
             public void onResponse(Call<records2> call, Response<records2> response) {
                 //利用Toast的靜態函式makeText來建立Toast物件
-                Toast toast = Toast.makeText(reservationimformation.this,
-                        "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);
+                /*Toast toast = Toast.makeText(reservationimformation.this,
+                        "Success"+userid+" "+docid+" "+location+" "+timesery, Toast.LENGTH_LONG);*/
                 //顯示Toast
-                toast.show();
+                /*toast.show();*/
 
 
             }
@@ -435,18 +455,16 @@ public class reservationimformation extends AppCompatActivity {
             }
         });
     }
-    boolean isrepeat=false;
-    public boolean isoverlimit(){
+
+    //檢查現在預約人數是否達到上限
+    public void loadDatacheck(){
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
         final AsyncHttpClient client = new AsyncHttpClient();
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("Hot Text:", response.toString());
-                //ListView kindview =(ListView)findViewById(R.id.kindview);
-                //TextView tview =(TextView)findViewById(R.id.tview);
                 String Json = response.toString();
                 try {
-                    int people=0;
                     JSONArray Array = response.getJSONArray("records");
 
                     for (int i = 0; i < Array.length(); i++) {
@@ -461,16 +479,16 @@ public class reservationimformation extends AppCompatActivity {
                         String time=alter(r_time);
                         if (doc.equals(docid)&& loc.equals(clirec)&& time.equals(timerec)) {
                             people++;
-                            if(people>Integer.valueOf(limit)){
-                                Toast.makeText(getApplicationContext(),
-                                        "人數已滿!" ,Toast.LENGTH_LONG).show();
-                            }
 
 
                             //Toast.makeText(getApplicationContext(),
                             // gettimeid ,Toast.LENGTH_LONG).show();
                         }
 
+
+                    }
+                    if(people>=Integer.valueOf(limit)){
+                        check = 1;
                     }
 
                 } catch (JSONException e) {
@@ -485,7 +503,6 @@ public class reservationimformation extends AppCompatActivity {
                 Log.e("Hot Text:", statusCode + " " + e.getMessage());
             }
         });
-        return isrepeat;
     }
     public  String alter(String a){
         String open2 = a.replace("\"", "");

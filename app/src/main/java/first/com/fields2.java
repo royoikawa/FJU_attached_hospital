@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 public class fields2 {
     private ArrayList<String> r_patient;
+    private Integer r_number;
     private ArrayList<String> r_doctor;
     private ArrayList<String> r_location;
     private ArrayList<String> r_time;
-    public fields2(ArrayList<String> pat, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time) {
+    public fields2(ArrayList<String> pat, Integer n, ArrayList<String> doc, ArrayList<String> loc, ArrayList<String> time) {
         r_patient = pat;
+        r_number = n;
         r_doctor = doc;
         r_location = loc;
         r_time = time;

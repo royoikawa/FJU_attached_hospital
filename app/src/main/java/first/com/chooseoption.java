@@ -69,8 +69,6 @@ public class chooseoption extends AppCompatActivity {
         client.get(urlString, new JsonHttpResponseHandler() {
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         Log.d("Hot Text:", response.toString());
-                        //ListView kindview =(ListView)findViewById(R.id.kindview);
-                        //TextView tview =(TextView)findViewById(R.id.tview);
                         String Json = response.toString();
                 try {
 
@@ -109,9 +107,6 @@ public class chooseoption extends AppCompatActivity {
                             seldoc=findViewById(R.id.select_doc);
                             final ArrayAdapter<String> nameList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,doctorname);
                             seldoc.setAdapter(nameList);
-                            Toast.makeText(getApplicationContext(),
-                                    "選",
-                                    Toast.LENGTH_LONG).show();
                             seldoc.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
                                 @Override
                                 public void onItemSelected(AdapterView parent, View v, int position, long id) {
@@ -152,8 +147,6 @@ public class chooseoption extends AppCompatActivity {
         client.get(urlString, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("Hot Text:", response.toString());
-                //ListView kindview =(ListView)findViewById(R.id.kindview);
-                //TextView tview =(TextView)findViewById(R.id.tview);
                 String Json = response.toString();
                 try {
                     JSONArray Array = response.getJSONArray("records");
@@ -212,10 +205,8 @@ public class chooseoption extends AppCompatActivity {
                                     bundle.putString("time", decided);
                                     bundle.putString("timerec",timerec[position]);
                                     bundle.putString("docid",docrec);
-                                    //bundle.putString("limit",doc_max);
                                     bundle.putInt("limit",doc_max);
                                     bundle.putString("clirec",clinicrec3);
-                                   // bundle.putString("order", position + 1 + "");
                                     intent.putExtras(bundle);
                                     startActivity(intent);
                                 }
@@ -251,7 +242,7 @@ public class chooseoption extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 sellweek=dateList.getItem(position);
-                //Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(chooseoption.this,"您選擇的月份是："+dateList.getItem(position),Toast.LENGTH_SHORT).show();
             }
 
             @Override
