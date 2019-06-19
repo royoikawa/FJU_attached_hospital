@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class userlist extends AppCompatActivity {
+    private Button meteach;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist);
@@ -28,6 +29,17 @@ public class userlist extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(userlist.this , viewclinicnumber.class);
                 startActivity(intent);
+            }
+        });
+
+        meteach =(Button) findViewById(R.id.meteach);
+        meteach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlist.this , meteach_fields.class);
+                startActivity(intent);
+
             }
         });
     }
