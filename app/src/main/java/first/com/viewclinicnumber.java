@@ -33,10 +33,12 @@ public class viewclinicnumber extends AppCompatActivity {
     private Button btn1;
     private EditText txt1;
     static ArrayList<String> r_data = new ArrayList<>();
-    //static ArrayList<String> division = new ArrayList<>();
     private LinearLayout linearLayout;//创建对象
     private RadioGroup rg;
     static String person;
+    static int clinicnumber=0;
+    final ArrayList<clinicnumber> clinicnums=new ArrayList<>();
+    clinicnumber theNode;
 
     private void loadResData() {
         String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/reservation?api_key=keycNoUjTn05xspUe";
@@ -75,7 +77,6 @@ public class viewclinicnumber extends AppCompatActivity {
                         r_data.add(item5);
                     }
 
-                    //loadDivision();
                     printResData(person);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -91,46 +92,7 @@ public class viewclinicnumber extends AppCompatActivity {
         });
     }
 
-    /*private void loadDivision(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of divisions?view=Grid%20view&api_key=keycNoUjTn05xspUe";
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                Log.d("Hot Text:", response.toString());
-                try {
-                    JSONArray dArray = response.getJSONArray("records");
-                    for (int i = 0; i < dArray.length(); i++) {
-                        JSONObject userdata = dArray.getJSONObject(i);
-                        JSONObject fields = userdata.getJSONObject("fields");
-
-                        final String item = fields.getString("Divisions_name");
-                        String dname=item.replace("\"","");
-                        division.add(dname);
-                        //Toast.makeText(getApplicationContext(), "123456789!", Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + statusCode + " " + e.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                // Log error message
-                Log.e("Hot Text:", statusCode + " " + e.getMessage());
-            }
-        });
-    }*/
-
     private void printResData(String person){
-        /*division.add("胸腔內科");
-        division.add("腎臟內科");
-        division.add("眼科");
-        division.add("骨科");
-        division.add("皮膚科");*/
         ArrayList<Integer> list=new ArrayList<>();
         for(int i=2;i<r_data.size();i+=6){
             if(r_data.get(i).equals(person))
@@ -144,12 +106,6 @@ public class viewclinicnumber extends AppCompatActivity {
                  ll0.setOrientation(LinearLayout.VERTICAL);
                  ll0.setBackground(res.getDrawable(R.drawable.rectangle_blue));
                  TextView tt0=new TextView(viewclinicnumber.this);
-                 /*if(division.size()!=0){
-                     String num=r_data.get(list.get(i)-2);
-                     int n=Integer.parseInt(num)-1;
-                     tt0.setText(division.get(n));
-                 }
-                 else*/
                  tt0.setText(r_data.get(list.get(i)-2));
                  tt0.setTextColor(Color.WHITE);
                  tt0.setTextSize(32);
@@ -195,7 +151,6 @@ public class viewclinicnumber extends AppCompatActivity {
                          tt2.setText("夜間診");
                          break;
                  }
-                 //tt2.setText(r_data.get(list.get(i)-1));
                  tt2.setTextColor(Color.GREEN);
                  tt2.setTextSize(28);
                  ll4.addView(tt2);
@@ -335,8 +290,13 @@ public class viewclinicnumber extends AppCompatActivity {
                  ll19.setMinimumHeight(40);
                  ll19.setMinimumWidth(200);
                  TextView tt12=new TextView(viewclinicnumber.this);
-                 int number=(int)(Math.random()*50+1);
-                 tt12.setText(number+"");
+                 clinicnumber=(int)(Math.random()*50+1-10);
+                 theNode=new clinicnumber(r_data.get(list.get(i)-2),clinicnumber);
+                 clinicnums.add(theNode);
+                 if(clinicnumber<=0)
+                     tt12.setText("尚未看診");
+                 else
+                     tt12.setText(theNode.getNum() +"");
                  tt12.setTextColor(Color.BLUE);
                  tt12.setTextSize(30);
                  ll19.addView(tt12);
@@ -360,8 +320,6 @@ public class viewclinicnumber extends AppCompatActivity {
         r_data.clear();
         person="周捷倫";
         loadResData();
-        //loadDivision();
-        //printData(person);
 
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
         txt1 = (EditText) findViewById(R.id.searchbar); //取得EditText
@@ -408,7 +366,6 @@ public class viewclinicnumber extends AppCompatActivity {
                                                tt0.setGravity(Gravity.CENTER);
                                                ll0.addView(tt0);
 
-                                               //LinearLayout ll=findViewById(R.id.llview);
                                                LinearLayout ll1=new LinearLayout(viewclinicnumber.this);
                                                ll1.setOrientation(LinearLayout.VERTICAL);
 
@@ -447,7 +404,6 @@ public class viewclinicnumber extends AppCompatActivity {
                                                        tt2.setText("夜間診");
                                                        break;
                                                }
-                                               //tt2.setText(r_data.get(index+1));
                                                tt2.setTextColor(Color.GREEN);
                                                tt2.setTextSize(28);
                                                ll4.addView(tt2);
@@ -587,8 +543,10 @@ public class viewclinicnumber extends AppCompatActivity {
                                                ll19.setMinimumHeight(40);
                                                ll19.setMinimumWidth(200);
                                                TextView tt12=new TextView(viewclinicnumber.this);
-                                               int number=(int)(Math.random()*50+1);
-                                               tt12.setText(number+"");
+                                               if(clinicnums.get(i).getNum()<1)
+                                                   tt12.setText("尚未看診");
+                                               else
+                                                   tt12.setText(clinicnums.get(i).getNum()+"");
                                                tt12.setTextColor(Color.BLUE);
                                                tt12.setTextSize(30);
                                                ll19.addView(tt12);
