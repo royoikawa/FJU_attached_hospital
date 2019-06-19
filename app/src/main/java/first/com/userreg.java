@@ -89,19 +89,16 @@ public class userreg extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<records> call, Response<records> response) {
-                //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(userreg.this,
                         "註冊成功", Toast.LENGTH_LONG);
-                //顯示Toast
                 toast.show();
+
             }
 
             @Override
             public void onFailure(Call<records> call, Throwable t) {
-                //利用Toast的靜態函式makeText來建立Toast物件
                 Toast toast = Toast.makeText(userreg.this,
                         "註冊失敗", Toast.LENGTH_LONG);
-                //顯示Toast
                 toast.show();
             }
         });
@@ -129,7 +126,7 @@ public class userreg extends AppCompatActivity {
                 }
                 else{
                     postUser(bir, name, passWord, phone, id);
-                    intent();
+                    getUser(id);
                 }
             }
 
@@ -140,11 +137,44 @@ public class userreg extends AppCompatActivity {
         });
 
     }
+    public void getUser(final String id){
+        myAPIService = RetrofitManager.getInstance().getAPI();
+        Call<records> call = myAPIService.getRecords();
+        call.enqueue(new Callback<records>(){
 
-    public void intent() {
+            @Override
+            public void onResponse(Call<records> call, Response<records> response) {
+                String recordsId = null;    //註冊者fields外面的id
+                String userName = null;     //註冊者的名字
+                for (int i = 0; i < response.body().getRecords().length; i++) {
+                    String ID = response.body().getFieldsID(i);
+                    if(id.equals(ID)){
+                        recordsId = response.body().getId(i);
+                        userName = response.body().getFieldsName(i);
+                        break;
+                    }
+                }
+                if(recordsId!=null){
+                    sendUserList(userName, recordsId);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<records> call, Throwable t) {
+
+            }
+        });
+    }
+
+    //切換至主畫面
+    public void sendUserList(String name, String recordsId) {
         Intent intent = new Intent();
-        intent.setClass(userreg.this, userlist.class); //告訴它從哪邊切換到哪邊
-        startActivity(intent);//切換
+        Bundle bundle = new Bundle();
+        bundle.putString("name",name);
+        bundle.putString("recordsId",recordsId);
+        intent.setClass(userreg.this, userlist.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 
