@@ -1,14 +1,15 @@
 package first.com;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Manager {
+public class RetrofitManager2 {
     // 以Singleton模式建立
-    private static Manager mInstance = new Manager();
+    private static RetrofitManager2 mInstance = new RetrofitManager2();
 
-    private MyAPIServiceres myAPIServiceres;
+    private MyAPIService2 myAPIService;
 
-    private Manager() {
+    private RetrofitManager2() {
 
         // 設置baseUrl即要連的網站，addConverterFactory用Gson作為資料處理Converter
         Retrofit retrofit = new Retrofit.Builder()
@@ -16,14 +17,14 @@ public class Manager {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        myAPIServiceres = retrofit.create(MyAPIServiceres.class);
+        myAPIService = retrofit.create(MyAPIService2.class);
     }
 
-    public static Manager getInstance() {
+    public static RetrofitManager2 getInstance() {
         return mInstance;
     }
 
-    public MyAPIServiceres getAPI() {
-        return myAPIServiceres;
+    public MyAPIService2 getAPI() {
+        return myAPIService;
     }
 }

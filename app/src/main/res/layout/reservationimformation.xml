@@ -110,7 +110,21 @@
             android:layout_marginHorizontal="2dp"
             android:layout_marginBottom="2dp"
             android:background="#ffff"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="15dp"
+                android:text="就診者姓名:"
+                android:textSize="28dp"/>
+            <Spinner
+                android:id="@+id/famillyspi"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"></Spinner>
+        </LinearLayout>
     </LinearLayout>
 
 
