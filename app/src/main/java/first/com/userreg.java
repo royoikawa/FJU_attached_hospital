@@ -68,9 +68,9 @@ public class userreg extends AppCompatActivity {
         }
     }
 
-    public void postUser(String bir, String name, String passWord, String phone, String id) {
+    public void postUser(String bir, String name, String passWord, String phone, final String id) {
         myAPIService = RetrofitManager.getInstance().getAPI();
-        Call<records> call = myAPIService.postRecords(new userPost(new fields(bir, name, passWord, phone, id)));
+        Call<records> call = myAPIService.postRecords(new userPost(new fields(id, name, passWord, phone, bir)));
         call.enqueue(new Callback<records>() {
 
             @Override
