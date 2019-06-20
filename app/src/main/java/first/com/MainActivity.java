@@ -23,6 +23,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button mandgedlogin = (Button) findViewById(R.id.mandgedlogin);
+        mandgedlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, adminlogin.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
 

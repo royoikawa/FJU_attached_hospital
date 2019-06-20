@@ -1,0 +1,70 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF0F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:background="#33CCFF"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_launcher_list"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="110dp"
+            android:text="衛教資訊"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_launcher_home"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center"
+            android:background="@drawable/rectangle_blue"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="心導管手術免除開心之苦"
+                android:textColor="#FFFFFF"
+                android:textSize="18pt" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="輔大醫院投入24小時全天候的人力及足夠的設備，這一年來完成52例緊急心導管手術，順利成功完成20例高度困難心導管手術。然而，對於穩定性心絞痛的病人而言，大部分的氣球擴張術或支架治療僅能暫時性地紓解胸痛，無法預防心肌梗塞、減少死亡率，治本之道還是要控制三高（高血脂、高血壓、高血糖）、戒菸、節酒、規律運動，以及定期健康檢查。"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

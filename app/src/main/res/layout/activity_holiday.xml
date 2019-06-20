@@ -1,0 +1,78 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF0F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:background="#33CCFF"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_launcher_list"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="110dp"
+            android:text="衛教資訊"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_launcher_home"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="15dp"
+            android:gravity="center"
+            android:background="@drawable/rectangle_blue"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="端午節連假輔大醫院服務時間"
+                android:textColor="#FFFFFF"
+                android:textSize="18pt" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="●6/7（五）
+開設上午特別門診－內科．蕭福慶
+　　　　　　　　　外科．陳勇璋
+檢驗醫學科抽血－早上8點至中午12點
+接駁車－「輔大捷運線」上午8:30至中午12:30 每半小時一班，其他路線停駛
+
+●6/8（六）
+門診、各項檢查及接駁車－照一般週六時段服務
+"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

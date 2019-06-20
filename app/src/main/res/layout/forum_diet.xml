@@ -34,20 +34,22 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/ic_launcher_home"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rectangle_blue"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:text="文章列表"
             android:textColor="#FFFFFF"
-            android:text="文章列表"/>
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
