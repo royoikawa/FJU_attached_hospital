@@ -103,10 +103,10 @@
                 android:layout_marginTop="20dp"/>
             <Spinner
                 android:id="@+id/select_doc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="30dp"> </Spinner>
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"> </Spinner>
         </LinearLayout>
         <LinearLayout
             android:layout_width="382dp"

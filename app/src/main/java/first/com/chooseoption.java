@@ -102,7 +102,6 @@ public class chooseoption extends AppCompatActivity {
                             docrec.add(docid);
                             doctorname.add(name);
                             docmax.add(maximum);
-
                             LinearLayout ll = findViewById(R.id.testll);
                             seldoc=findViewById(R.id.select_doc);
                             final ArrayAdapter<String> nameList = new ArrayAdapter<>(chooseoption.this,android.R.layout.simple_spinner_dropdown_item,doctorname);

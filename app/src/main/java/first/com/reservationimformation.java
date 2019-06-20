@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -54,7 +55,7 @@ public class reservationimformation extends AppCompatActivity {
             godocindex = 1;
             if(dayindex<=godocindex){gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);}
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         else if(compare.equals("星期二")){
@@ -62,7 +63,7 @@ public class reservationimformation extends AppCompatActivity {
             if(dayindex<=godocindex)
                 gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         else if(compare.equals("星期三")){
@@ -70,7 +71,7 @@ public class reservationimformation extends AppCompatActivity {
             if(dayindex<=godocindex)
                 gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         else if(compare.equals("星期四")){
@@ -78,7 +79,7 @@ public class reservationimformation extends AppCompatActivity {
             if(dayindex<=godocindex)
                 gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         else if(compare.equals("星期五")){
@@ -86,7 +87,7 @@ public class reservationimformation extends AppCompatActivity {
             if(dayindex<=godocindex)
                 gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         else if(compare.equals("星期六")){
@@ -94,7 +95,7 @@ public class reservationimformation extends AppCompatActivity {
             if(dayindex<=godocindex)
                 gotodoc= new Date(new Date().getTime()+(godocindex-dayindex+1+next)*24*60*60*1000);
             else {
-                gotodoc= new Date(new Date().getTime()+(7-(godocindex-dayindex)+1+next)*24*60*60*1000);
+                gotodoc= new Date(new Date().getTime()+(7-(dayindex-godocindex)+1+next)*24*60*60*1000);
             }
         }
         SimpleDateFormat day= new SimpleDateFormat("MMdd");
@@ -106,6 +107,7 @@ public class reservationimformation extends AppCompatActivity {
     //post
     //各值全域變數
     MyAPIService2 myAPIService2;
+    ArrayList<String> family =new ArrayList();
     String getId="";
     String getNUM="";
     String gettimeid="";
@@ -335,27 +337,19 @@ public class reservationimformation extends AppCompatActivity {
         gotodoc.setPadding(5,100,0,0);
         String Date_of_visit =inferdate(decidetime, getweek);
         dt = Date_of_visit;
-        gotodoc.setText("   就診日期:  "+Date_of_visit);
+        gotodoc.setText("   就診日期:     "+Date_of_visit);
         gotodoc.setTextSize(28);
         infor1.addView(gotodoc);
 
 
         LinearLayout infor2= findViewById(R.id.printperson);
-        TextView gotname=new TextView(this);
-        gotname.setWidth(1000);gotname.setHeight(280);
-        gotname.setPadding(5,10,0,0);
-        gotname.setText("   就診者姓名:");
-        gotname.setTextSize(28);
-        infor2.addView(gotname);
 
-
-        Spinner relative=new Spinner(this);
-        relative.setMinimumWidth(200);
-        relative.setMinimumHeight(80);
-        relative.setPadding(170,80,0,0);
-        infor2.addView(relative);
-
-        getId = "recBDTGG9VTzJ45i0";
+        //getId = "recBDTGG9VTzJ45i0";
+        getId = "廖品鈞";
+        family.add(getId);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(reservationimformation.this, android.R.layout.simple_list_item_1, family);
+        Spinner family=findViewById(R.id.famillyspi);
+       family.setAdapter(adapter);
         //使用者
         //loadData();
 
