@@ -11,6 +11,9 @@ public class userlist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist);
 
+        Bundle namebundle=getIntent().getExtras();
+        final String regname=namebundle.getString("name");
+
         Button nextPageBtn = (Button)findViewById(R.id.reservation);
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,8 +30,10 @@ public class userlist extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(userlist.this , viewclinicnumber.class);
+                intent.putExtra("reg_name",regname);
                 startActivity(intent);
             }
         });
+
     }
 }
