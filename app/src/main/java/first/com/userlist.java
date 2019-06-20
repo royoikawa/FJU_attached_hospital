@@ -15,7 +15,18 @@ public class userlist extends AppCompatActivity {
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //從userreg接值
+                Bundle bundlefrom = getIntent().getExtras();
+                String name = bundlefrom.getString("name");
+                String recordsId = bundlefrom.getString("recordsId");
+
+                //傳值到reservation
                 Intent intent = new Intent();
+                Bundle bundleto = new Bundle();
+                bundleto.putString("name",name);
+                bundleto.putString("recordsId",recordsId);
+                intent.putExtras(bundleto);
                 intent.setClass(userlist.this , reservation.class);
                 startActivity(intent);
             }

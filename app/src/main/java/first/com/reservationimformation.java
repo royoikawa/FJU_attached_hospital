@@ -108,6 +108,7 @@ public class reservationimformation extends AppCompatActivity {
     //各值全域變數
     MyAPIService2 myAPIService2;
     ArrayList<String> family =new ArrayList();
+    String recordsId;
     String getId="";
     String getNUM="";
     String gettimeid="";
@@ -119,84 +120,6 @@ public class reservationimformation extends AppCompatActivity {
     int check = 0;
     int people=0;
     String dt;
-    //抓使用者ID
-      /*public void loadData(){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/User?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
-        final AsyncHttpClient client = new AsyncHttpClient();
-        client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d("Hot Text:", response.toString());
-                //ListView kindview =(ListView)findViewById(R.id.kindview);
-                //TextView tview =(TextView)findViewById(R.id.tview);
-                String Json = response.toString();
-                try {
-                    JSONArray Array = response.getJSONArray("records");
-                    for (int i = 0; i < Array.length(); i++) {
-                        JSONObject userdata = Array.getJSONObject(i);
-                        JSONObject id=userdata.getJSONObject("id");
-                        JSONObject fields = userdata.getJSONObject("fields");
-                        String Name = fields.getString("ID");
-                        getId = "recBDTGG9VTzJ45i0";
-                        if (Name.equals(getId)) {
-                            //Toast.makeText(getApplicationContext(),
-                                    //getId ,Toast.LENGTH_LONG).show();
-                        }
-                    }
-                } catch (JSONException e) {
-                }
-            }
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + statusCode + " " + e.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                // Log error message
-                Log.e("Hot Text:", statusCode + " " + e.getMessage());
-            }
-        });
-    }
-    */
-
-
-
-    //抓醫生ID
-    /*public void loadData2(final String name){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/List of doctor?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
-        final AsyncHttpClient client = new AsyncHttpClient();
-        client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d("Hot Text:", response.toString());
-                //ListView kindview =(ListView)findViewById(R.id.kindview);
-                //TextView tview =(TextView)findViewById(R.id.tview);
-                String Json = response.toString();
-                try {
-                    JSONArray Array = response.getJSONArray("records");
-                    for (int i = 0; i < Array.length(); i++) {
-                        JSONObject userdata = Array.getJSONObject(i);
-                        String id=userdata.getString("id");
-                        JSONObject fields = userdata.getJSONObject("fields");
-                        String docn=fields.getString("Doctor_name");
-                        if (name.equals(docn)){
-                            getdocId = id;
-                            break;
-                            //Toast.makeText(getApplicationContext(),
-                                    //getdocId,Toast.LENGTH_LONG).show();
-                        }
-                    }
-                } catch (JSONException e) {
-                }
-            }
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + statusCode + " " + e.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                // Log error message
-                Log.e("Hot Text:", statusCode + " " + e.getMessage());
-            }
-        });
-    }
-    */
-
-
 
 
 
@@ -242,61 +165,25 @@ public class reservationimformation extends AppCompatActivity {
 
 
 
-    //抓時間ID
-    /*public void loadData4(final String decided){
-        String urlString = "https://api.airtable.com/v0/appgPqAWrw2xTWKdx/Time?view=Grid%20view&api_key=keygkXy0a4GuCXh7p";
-        final AsyncHttpClient client = new AsyncHttpClient();
-        client.get(urlString, new JsonHttpResponseHandler() {
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Log.d("Hot Text:", response.toString());
-                //ListView kindview =(ListView)findViewById(R.id.kindview);
-                //TextView tview =(TextView)findViewById(R.id.tview);
-                String Json = response.toString();
-                try {
-                    JSONArray Array = response.getJSONArray("records");
-
-                    for (int i = 0; i < Array.length(); i++) {
-                        JSONObject userdata = Array.getJSONObject(i);
-                        String id=userdata.getString("id");
-                        JSONObject fields = userdata.getJSONObject("fields");
-                        String getTime = fields.getString("Name_of_time");
-                        if (decided.equals(getTime)) {
-                            gettimeid=id;
-                            break;
-                            //Toast.makeText(getApplicationContext(),
-                            // gettimeid ,Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                } catch (JSONException e) {
-
-                }
-            }
-            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject error) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + statusCode + " " + e.getMessage(),
-                        Toast.LENGTH_LONG).show();
-                // Log error message
-                Log.e("Hot Text:", statusCode + " " + e.getMessage());
-            }
-        });
-    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservationimformation);
 
+
         LinearLayout infor = findViewById(R.id.printinfor);
-        Bundle bundle = getIntent().getExtras();
-        String docname = bundle.getString("name");
-        String Select_type=bundle.getString("type");
-        clinic=bundle.getString("clinic");
-        String decidetime=bundle.getString("time");
-        docid = bundle.getString("docid");
-        timerec=bundle.getString("timerec");
-        limit=bundle.getInt("limit");
-        clirec=bundle.getString("clirec");
-        String getweek=bundle.getString("week").substring(0,2);
+        Bundle bundlefrom = getIntent().getExtras();
+        String name = bundlefrom.getString("name");
+        recordsId = bundlefrom.getString("recordsId");
+        String docname = bundlefrom.getString("docname");
+        String Select_type=bundlefrom.getString("type");
+        clinic=bundlefrom.getString("clinic");
+        String decidetime=bundlefrom.getString("time");
+        docid = bundlefrom.getString("docid");
+        timerec=bundlefrom.getString("timerec");
+        limit=bundlefrom.getInt("limit");
+        clirec=bundlefrom.getString("clirec");
+        String getweek=bundlefrom.getString("week").substring(0,2);
 
 
         TextView printname=new TextView(this);
@@ -345,11 +232,10 @@ public class reservationimformation extends AppCompatActivity {
         LinearLayout infor2= findViewById(R.id.printperson);
 
         //getId = "recBDTGG9VTzJ45i0";
-        getId = "廖品鈞";
-        family.add(getId);
+        family.add(name);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(reservationimformation.this, android.R.layout.simple_list_item_1, family);
         Spinner family=findViewById(R.id.famillyspi);
-       family.setAdapter(adapter);
+        family.setAdapter(adapter);
         //使用者
         //loadData();
 
@@ -378,7 +264,7 @@ public class reservationimformation extends AppCompatActivity {
         Button submit=findViewById(R.id.complete);
         submit.setOnClickListener(new  Button.OnClickListener(){
             public void onClick(View v) {
-                patinfor.add("recBDTGG9VTzJ45i0");
+                patinfor.add(recordsId);
                 docinfor.add(docid);
                 locinfor.add(getNUM);
                 timeinfor.add(timerec);
