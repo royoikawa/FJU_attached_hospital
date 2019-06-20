@@ -159,6 +159,7 @@ public class userreg extends AppCompatActivity {
     public void sendUserList(String name, String recordsId) {
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
+
         bundle.putString("name",name);
         bundle.putString("recordsId",recordsId);
         intent.setClass(userreg.this, userlist.class);

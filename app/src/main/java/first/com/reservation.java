@@ -69,7 +69,7 @@ public class reservation extends AppCompatActivity{
                                         String divname = searchdata.get(position).toString();
                                         bundleto.putString("name",name);
                                         bundleto.putString("recordsId",recordsId);
-                                        bundleto.putString("name", divname);
+                                        bundleto.putString("divname", divname);
                                         intent.putExtras(bundleto);
                                         intent.setClass(reservation.this, chooseoption.class);
                                         startActivity(intent);

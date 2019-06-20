@@ -108,6 +108,7 @@ public class reservationimformation extends AppCompatActivity {
     //各值全域變數
     MyAPIService2 myAPIService2;
     ArrayList<String> family =new ArrayList();
+    String name;
     String recordsId;
     String getId="";
     String getNUM="";
@@ -173,7 +174,7 @@ public class reservationimformation extends AppCompatActivity {
 
         LinearLayout infor = findViewById(R.id.printinfor);
         Bundle bundlefrom = getIntent().getExtras();
-        String name = bundlefrom.getString("name");
+        name = bundlefrom.getString("name");
         recordsId = bundlefrom.getString("recordsId");
         String docname = bundlefrom.getString("docname");
         String Select_type=bundlefrom.getString("type");
@@ -285,6 +286,10 @@ public class reservationimformation extends AppCompatActivity {
                                                 "預約成功", Toast.LENGTH_LONG);
                                         toast.show();
                                         Intent intent = new Intent();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("name",name);
+                                        bundle.putString("recordsId",recordsId);
+                                        intent.putExtras(bundle);
                                         intent.setClass(reservationimformation.this , userlist.class);
                                         startActivity(intent);
                                     }
