@@ -298,6 +298,13 @@ public class reservationimformation extends AppCompatActivity {
                                         Toast toast = Toast.makeText(reservationimformation.this,
                                                 "人數已滿", Toast.LENGTH_LONG);
                                         toast.show();
+                                        Intent intent = new Intent();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("name",name);
+                                        bundle.putString("recordsId",recordsId);
+                                        intent.putExtras(bundle);
+                                        intent.setClass(reservationimformation.this , reservation.class);
+                                        startActivity(intent);
                                     }
                                 }
                                 catch (Exception e){
