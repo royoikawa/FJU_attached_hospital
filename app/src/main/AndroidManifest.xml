@@ -19,6 +19,8 @@
         <activity android:name=".smoking" />
         <activity android:name=".social" />
         <activity android:name=".meteach_fields" />
+        <activity android:name=".adminreg"/>
+        <activity android:name=".adminlogin"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

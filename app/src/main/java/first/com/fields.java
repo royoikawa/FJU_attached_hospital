@@ -2,18 +2,18 @@ package first.com;
 
 
 public class fields {
-    private String Borned;
+    private String ID;
+
     private String Name;
     private String Password;
     private String Phone_number;
-    private String ID;
-    public fields(String borned, String name, String password, String phone_number, String id) {
-
-        Borned = borned;
-        Name = name;
-        Password = password;
-        Phone_number = phone_number;
-        ID = id;
+    private String Borned;
+    public fields(String id, String name, String password, String phone_number, String borned) {
+        this.ID = id;
+        this.Name = name;
+        this.Password = password;
+        this.Phone_number = phone_number;
+        this.Borned = borned;
 
     }
 
