@@ -318,7 +318,9 @@ public class viewclinicnumber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
         r_data.clear();
-        person="周捷倫";
+        //person="周捷倫";
+        Intent intent=this.getIntent();
+        person=intent.getStringExtra("reg_name");
         loadResData();
 
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button

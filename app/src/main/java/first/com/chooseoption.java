@@ -75,7 +75,7 @@ public class chooseoption extends AppCompatActivity {
                     //顯示所選擇科別
                     TextView selectnum = (TextView)findViewById(R.id.selectnum);
                     Bundle bundle = getIntent().getExtras();
-                    selected_type = bundle.getString("name");
+                    selected_type = bundle.getString("divname");
                     selectnum.setText(selected_type);
                     //接所選order
 
@@ -192,21 +192,27 @@ public class chooseoption extends AppCompatActivity {
                             timeview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView arg0, View arg1, int position, long arg3) {
+                                    //從userlist接值
+                                    Bundle bundlefrom = getIntent().getExtras();
+                                    String name = bundlefrom.getString("name");
+                                    String recordsId = bundlefrom.getString("recordsId");
                                     Intent intent = new Intent();
-                                    intent.setClass(chooseoption.this, reservationimformation.class);
-                                    Bundle bundle = new Bundle();
+                                    Bundle bundleto = new Bundle();
                                     String decided = opening[position];
                                     String docname = getname;
-                                    bundle.putString("name", docname);
-                                    bundle.putString("type",selected_type);
-                                    bundle.putString("week",sellweek);
-                                    bundle.putString("clinic",clinicnum);
-                                    bundle.putString("time", decided);
-                                    bundle.putString("timerec",timerec[position]);
-                                    bundle.putString("docid",docrec);
-                                    bundle.putInt("limit",doc_max);
-                                    bundle.putString("clirec",clinicrec3);
-                                    intent.putExtras(bundle);
+                                    bundleto.putString("name",name);
+                                    bundleto.putString("recordsId",recordsId);
+                                    bundleto.putString("docname", docname);
+                                    bundleto.putString("type",selected_type);
+                                    bundleto.putString("week",sellweek);
+                                    bundleto.putString("clinic",clinicnum);
+                                    bundleto.putString("time", decided);
+                                    bundleto.putString("timerec",timerec[position]);
+                                    bundleto.putString("docid",docrec);
+                                    bundleto.putInt("limit",doc_max);
+                                    bundleto.putString("clirec",clinicrec3);
+                                    intent.putExtras(bundleto);
+                                    intent.setClass(chooseoption.this, reservationimformation.class);
                                     startActivity(intent);
                                 }
                             });

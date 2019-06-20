@@ -42,7 +42,6 @@ public class reservation extends AppCompatActivity{
                             JSONObject userdata = Array.getJSONObject(i);
                             JSONObject fields = userdata.getJSONObject("fields");
                             String id = fields.getString("Divisions_name");
-                            int sortid = fields.getInt("Divisions_number");
                             data.add(id);
                             boolean isser = false;
                             EditText ser = findViewById(R.id.ser);
@@ -60,13 +59,19 @@ public class reservation extends AppCompatActivity{
                                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView arg0, View arg1, int position, long arg3) {
+                                        //從userlist接值
+                                        Bundle bundlefrom = getIntent().getExtras();
+                                        String name = bundlefrom.getString("name");
+                                        String recordsId = bundlefrom.getString("recordsId");
+                                        //傳值到chooseoption
                                         Intent intent = new Intent();
-                                        intent.setClass(reservation.this, chooseoption.class);
-                                        Bundle bundle = new Bundle();
+                                        Bundle bundleto = new Bundle();
                                         String divname = searchdata.get(position).toString();
-                                        bundle.putString("name", divname);
-                                        //bundle.putString("order",position+1+"");
-                                        intent.putExtras(bundle);
+                                        bundleto.putString("name",name);
+                                        bundleto.putString("recordsId",recordsId);
+                                        bundleto.putString("divname", divname);
+                                        intent.putExtras(bundleto);
+                                        intent.setClass(reservation.this, chooseoption.class);
                                         startActivity(intent);
                                     }
                                 });
@@ -78,13 +83,19 @@ public class reservation extends AppCompatActivity{
                                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView arg0, View arg1, int position, long arg3) {
+                                        //從userlist接值
+                                        Bundle bundlefrom = getIntent().getExtras();
+                                        String name = bundlefrom.getString("name");
+                                        String recordsId = bundlefrom.getString("recordsId");
+                                        //傳值到chooseoption
                                         Intent intent = new Intent();
-                                        intent.setClass(reservation.this, chooseoption.class);
-                                        Bundle bundle = new Bundle();
+                                        Bundle bundleto = new Bundle();
                                         String divname = data.get(position).toString();
-                                        bundle.putString("name", divname);
-                                        //bundle.putString("order",position+1+"");
-                                        intent.putExtras(bundle);
+                                        bundleto.putString("name",name);
+                                        bundleto.putString("recordsId",recordsId);
+                                        bundleto.putString("divname", divname);
+                                        intent.putExtras(bundleto);
+                                        intent.setClass(reservation.this, chooseoption.class);
                                         startActivity(intent);
                                     }
                                 });
