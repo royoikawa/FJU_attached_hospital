@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -256,5 +257,21 @@ public class chooseoption extends AppCompatActivity {
             }
         });
         loadData();
+        Button submit = (Button) findViewById(R.id.button9);
+        submit.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundleFrom = getIntent().getExtras();
+                String name = bundleFrom.getString("name");
+                String recordsId = bundleFrom.getString("recordsId");
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("recordsId",recordsId);
+                intent.setClass(chooseoption.this, userlist.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
         }
