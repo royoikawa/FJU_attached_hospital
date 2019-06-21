@@ -38,6 +38,16 @@ public class adminreg extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminregistered);
 
+        Button back = (Button) findViewById(R.id.test);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(adminreg.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         name = (EditText) findViewById(R.id.name);
         id = (EditText) findViewById(R.id.id);
         borned = (EditText) findViewById(R.id.borned);
@@ -55,7 +65,7 @@ public class adminreg extends AppCompatActivity {
                 String aphone = phone.getText().toString().trim();
                 String apassword = password.getText().toString().trim();
                 String apassword2 = password2.getText().toString().trim();
-                myAPIService = RetrofitManager.getInstance().getAPI();
+                myAPIService = RetrofitManager3.getInstance().getAPI();
                 Call<records> call = myAPIService.postRecords1(new userPost(new fields(aid, aname, apassword, aphone, aborned)));
                 call.enqueue(new Callback<records>() {
                     @Override
