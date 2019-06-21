@@ -258,6 +258,22 @@ public class reservationimformation extends AppCompatActivity {
         //檢查人數
         loadDatacheck();
 
+        Button submit2 = (Button) findViewById(R.id.toList);
+        submit2.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundleFrom = getIntent().getExtras();
+                String name = bundleFrom.getString("name");
+                String recordsId = bundleFrom.getString("recordsId");
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("recordsId",recordsId);
+                intent.setClass(reservationimformation.this, userlist.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
 
 
