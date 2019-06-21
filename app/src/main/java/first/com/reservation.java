@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -128,6 +129,22 @@ public class reservation extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reservation);
         loadData();
+        Button submit = (Button) findViewById(R.id.toUserList);
+        submit.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundleFrom = getIntent().getExtras();
+                String name = bundleFrom.getString("name");
+                String recordsId = bundleFrom.getString("recordsId");
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("recordsId",recordsId);
+                intent.setClass(reservation.this, userlist.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 }
