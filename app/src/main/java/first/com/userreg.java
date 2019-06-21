@@ -24,6 +24,21 @@ public class userreg extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userreg);
+
+        //返回
+        Button backb = (Button) findViewById(R.id.back);
+        backb.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backs = new Intent();
+                backs.setClass(userreg.this,MainActivity.class);
+                startActivity(backs);
+            }
+        });
+
+
+
+
         Button submit = (Button) findViewById(R.id.reg);
         submit.setOnClickListener(new Button.OnClickListener() {
             @Override
