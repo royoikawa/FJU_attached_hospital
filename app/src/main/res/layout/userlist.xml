@@ -1,120 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFF0F5">
+    android:background="#FFF0F5"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:gravity="center_vertical"
         android:background="#33CCFF"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp"
             android:layout_marginLeft="150dp"
             android:text="主功能列表"
-            android:textStyle="bold"/>
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
         <Button
             android:layout_width="35dp"
             android:layout_height="40dp"
             android:layout_marginLeft="100dp"
-            android:background="@drawable/ic_launcher_person"/>
+            android:background="@drawable/ic_launcher_person" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@drawable/fju_logoforuser">
-    </LinearLayout>
-    <LinearLayout
+        android:background="@drawable/fju_logoforuser"></LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XXX您好"
-            android:textSize="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/reservation"
-                android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/usern"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="12dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="預約掛號"
-                android:textSize="24dp"
-                android:paddingLeft="5dp"
-                android:textStyle="bold"
-                android:background="@drawable/btn_userlist"
-                android:textColor="#555555"
-                android:drawableRight= "@drawable/ic_launcher_foreground" />
-            <Button
-                android:layout_width="0dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="查詢掛號"
-                android:textSize="24dp"
-                android:textColor="#555555"
-                android:textStyle="bold"
-                android:paddingLeft="5dp"
-                android:background="@drawable/btn_userlist"
-                android:drawableRight="@drawable/ic_launcher_usersearch" />
+                android:text=""
+                android:textSize="32dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/reservation"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_userlist"
+                    android:drawableRight="@drawable/ic_launcher_foreground"
+                    android:paddingLeft="5dp"
+                    android:text="預約掛號"
+                    android:textColor="#555555"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_userlist"
+                    android:drawableRight="@drawable/ic_launcher_usersearch"
+                    android:paddingLeft="5dp"
+                    android:text="查詢掛號"
+                    android:textColor="#555555"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/viewclinicnumber"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_userlist"
+                    android:drawableRight="@drawable/ic_launcher_regnum"
+                    android:paddingLeft="5dp"
+                    android:text="診間號碼"
+                    android:textColor="#555555"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_userlist"
+                    android:drawableRight="@drawable/ic_launcher_userrecords"
+                    android:paddingLeft="5dp"
+                    android:text="親友資料"
+                    android:textColor="#555555"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/meteach"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="217dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_userlist"
+                    android:drawableRight="@drawable/ic_launcher_meteach"
+                    android:paddingLeft="5dp"
+                    android:text="衛教資訊"
+                    android:textColor="#555555"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/viewclinicnumber"
-                android:layout_width="0dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="診間號碼"
-                android:textSize="24dp"
-                android:paddingLeft="5dp"
-                android:textStyle="bold"
-                android:background="@drawable/btn_userlist"
-                android:textColor="#555555"
-                android:drawableRight= "@drawable/ic_launcher_regnum" />
-            <Button
-                android:layout_width="0dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="親友資料"
-                android:textSize="24dp"
-                android:textColor="#555555"
-                android:textStyle="bold"
-                android:paddingLeft="5dp"
-                android:background="@drawable/btn_userlist"
-                android:drawableRight="@drawable/ic_launcher_userrecords" />
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

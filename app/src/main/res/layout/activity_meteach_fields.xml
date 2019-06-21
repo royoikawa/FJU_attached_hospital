@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF0F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical"
+        android:background="#33CCFF"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_launcher_list"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:layout_marginHorizontal="110dp"
+            android:text="衛教資訊"
+            android:textStyle="bold"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_launcher_home"/>
+      </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/meteach_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="社區醫療/職業健檢"
+                android:textSize="16pt" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_smoking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="用好，用滿，戒菸達標!-戒菸面面觀"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="輔大醫院六月新增門診"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_holiday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="端午節連假輔大醫院服務時間"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="輔大醫院六月份門診時間表"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_surgery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="心導管手術免除開心之苦"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#FFC8B4"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/meteach_microfilm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle"
+                android:text="「我的爸爸是超級英雄」公益微電影"
+                android:textSize="16pt" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+

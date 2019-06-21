@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="first.com">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".microfilm"></activity>
+        <activity android:name=".surgery" />
+        <activity android:name=".table" />
+        <activity android:name=".holiday" />
+        <activity android:name=".menew" />
+        <activity android:name=".smoking" />
+        <activity android:name=".social" />
+        <activity android:name=".meteach_fields" />
+        <activity android:name=".adminreg"/>
+        <activity android:name=".adminlogin"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,32 +30,25 @@
         </activity>
         <activity
             android:name=".userlogin"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".userreg"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".reservation"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".userlist"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".viewclinicnumber"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".chooseoption"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".reservationimformation"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

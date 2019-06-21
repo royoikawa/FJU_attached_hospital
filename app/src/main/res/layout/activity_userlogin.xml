@@ -40,17 +40,19 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/userId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:text="身分證字號"
+            android:hint="身分證字號"
             android:textColor="#AAAAAA" />
 
         <EditText
+            android:id="@+id/userPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:text="密碼"
+            android:hint="密碼"
             android:textColor="#AAAAAA" />
 
         <TextView
@@ -58,7 +60,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/userlist1"
+            android:id="@+id/userList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
@@ -80,6 +82,7 @@
             android:textSize="18dp" />
 
         <TextView
+            android:id="@+id/hi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="130dp"
