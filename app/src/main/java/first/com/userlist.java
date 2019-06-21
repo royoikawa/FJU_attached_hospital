@@ -32,9 +32,6 @@ public class userlist extends AppCompatActivity {
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 //傳值到reservation
                 Intent intent = new Intent();
                 intent.putExtras(bundleto);
@@ -48,8 +45,18 @@ public class userlist extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                intent.putExtras(bundleto);
                 intent.setClass(userlist.this , viewclinicnumber.class);
-                intent.putExtra("reg_name",regname);
+                startActivity(intent);
+            }
+        });
+
+        Button backtomain=(Button)findViewById(R.id.logout) ;
+        backtomain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(userlist.this , MainActivity.class);
                 startActivity(intent);
             }
         });
