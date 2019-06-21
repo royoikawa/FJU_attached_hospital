@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,7 +26,12 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import cz.msebera.android.httpclient.Header;
 
 
@@ -36,6 +42,7 @@ public class viewclinicnumber extends AppCompatActivity {
     private LinearLayout linearLayout;//创建对象
     private RadioGroup rg;
     static String person;
+    static String userid;
     static int clinicnumber=0;
     final ArrayList<clinicnumber> clinicnums=new ArrayList<>();
     clinicnumber theNode;
@@ -75,6 +82,7 @@ public class viewclinicnumber extends AppCompatActivity {
                         JSONArray itemLocation = fields.getJSONArray("location");
                         String item5 = (String) itemLocation.get(0);
                         r_data.add(item5);
+
                     }
 
                     printResData(person);
@@ -101,212 +109,212 @@ public class viewclinicnumber extends AppCompatActivity {
 
          if(list.size()>0){
               for(int i=0;i<list.size();i++){
-                 Resources res=getResources();
-                 LinearLayout ll0=new LinearLayout(viewclinicnumber.this);
-                 ll0.setOrientation(LinearLayout.VERTICAL);
-                 ll0.setBackground(res.getDrawable(R.drawable.rectangle_blue));
-                 TextView tt0=new TextView(viewclinicnumber.this);
-                 tt0.setText(r_data.get(list.get(i)-2));
-                 tt0.setTextColor(Color.WHITE);
-                 tt0.setTextSize(32);
-                 tt0.setGravity(Gravity.CENTER);
-                 ll0.addView(tt0);
+                  Resources res=getResources();
+                  LinearLayout ll0=new LinearLayout(viewclinicnumber.this);
+                  ll0.setOrientation(LinearLayout.VERTICAL);
+                  ll0.setBackground(res.getDrawable(R.drawable.rectangle_blue));
+                  TextView tt0=new TextView(viewclinicnumber.this);
+                  tt0.setText(r_data.get(list.get(i)-2));
+                  tt0.setTextColor(Color.WHITE);
+                  tt0.setTextSize(32);
+                  tt0.setGravity(Gravity.CENTER);
+                  ll0.addView(tt0);
 
-                 LinearLayout ll=findViewById(R.id.llview);
-                 LinearLayout ll1=new LinearLayout(viewclinicnumber.this);
-                 ll1.setOrientation(LinearLayout.VERTICAL);
+                  LinearLayout ll=findViewById(R.id.llview);
+                  LinearLayout ll1=new LinearLayout(viewclinicnumber.this);
+                  ll1.setOrientation(LinearLayout.VERTICAL);
 
-                 ll1.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
-                 ll1.setMinimumHeight(200);
+                  ll1.setBackgroundDrawable(res.getDrawable(R.drawable.rectangle));
+                  ll1.setMinimumHeight(200);
 
-                 LinearLayout ll2=new LinearLayout(viewclinicnumber.this);
-                 ll2.setOrientation(LinearLayout.HORIZONTAL);
-                 ll2.setMinimumHeight(40);
+                  LinearLayout ll2=new LinearLayout(viewclinicnumber.this);
+                  ll2.setOrientation(LinearLayout.HORIZONTAL);
+                  ll2.setMinimumHeight(40);
 
-                 LinearLayout ll3=new LinearLayout(viewclinicnumber.this);
-                 ll3.setOrientation(LinearLayout.VERTICAL);
-                 ll3.setMinimumHeight(40);
-                 ll3.setMinimumWidth(200);
-                 TextView tt1=new TextView(viewclinicnumber.this);
-                 tt1.setText("看診時段 : ");
-                 tt1.setTextColor(Color.BLACK);
-                 tt1.setTextSize(28);
-                 ll3.addView(tt1);
+                  LinearLayout ll3=new LinearLayout(viewclinicnumber.this);
+                  ll3.setOrientation(LinearLayout.VERTICAL);
+                  ll3.setMinimumHeight(40);
+                  ll3.setMinimumWidth(200);
+                  TextView tt1=new TextView(viewclinicnumber.this);
+                  tt1.setText("看診時段 : ");
+                  tt1.setTextColor(Color.BLACK);
+                  tt1.setTextSize(28);
+                  ll3.addView(tt1);
 
-                 LinearLayout ll4=new LinearLayout(viewclinicnumber.this);
-                 ll4.setOrientation(LinearLayout.VERTICAL);
-                 ll4.setMinimumHeight(40);
-                 ll4.setMinimumWidth(200);
-                 TextView tt2=new TextView(viewclinicnumber.this);
-                 String time=r_data.get(list.get(i)-1);
-                 String time1=time.substring(3,8);
-                 switch (time1){
-                     case "9:00~":
-                         tt2.setText("上午診");
-                         break;
-                     case "13:30":
-                         tt2.setText("下午診");
-                         break;
-                     case "18:00":
-                         tt2.setText("夜間診");
-                         break;
-                 }
-                 tt2.setTextColor(Color.GREEN);
-                 tt2.setTextSize(28);
-                 ll4.addView(tt2);
+                  LinearLayout ll4=new LinearLayout(viewclinicnumber.this);
+                  ll4.setOrientation(LinearLayout.VERTICAL);
+                  ll4.setMinimumHeight(40);
+                  ll4.setMinimumWidth(200);
+                  TextView tt2=new TextView(viewclinicnumber.this);
+                  String time=r_data.get(list.get(i)-1);
+                  String time1=time.substring(3,8);
+                  switch (time1){
+                      case "9:00~":
+                          tt2.setText("上午診");
+                          break;
+                      case "13:30":
+                          tt2.setText("下午診");
+                          break;
+                      case "18:00":
+                          tt2.setText("夜間診");
+                          break;
+                  }
+                  tt2.setTextColor(Color.GREEN);
+                  tt2.setTextSize(28);
+                  ll4.addView(tt2);
 
-                 ll2.addView(ll3);
-                 ll2.addView(ll4);
-                 ll1.addView(ll2);
+                  ll2.addView(ll3);
+                  ll2.addView(ll4);
+                  ll1.addView(ll2);
 
-                 LinearLayout ll5=new LinearLayout(viewclinicnumber.this);
-                 ll5.setOrientation(LinearLayout.HORIZONTAL);
-                 ll5.setMinimumHeight(40);
+                  LinearLayout ll5=new LinearLayout(viewclinicnumber.this);
+                  ll5.setOrientation(LinearLayout.HORIZONTAL);
+                  ll5.setMinimumHeight(40);
 
-                 LinearLayout ll6=new LinearLayout(viewclinicnumber.this);
-                 ll6.setOrientation(LinearLayout.VERTICAL);
-                 ll6.setMinimumHeight(40);
-                 ll6.setMinimumWidth(200);
-                 TextView tt3=new TextView(viewclinicnumber.this);
-                 tt3.setText("看診病人 : ");
-                 tt3.setTextColor(Color.BLACK);
-                 tt3.setTextSize(28);
-                 ll6.addView(tt3);
+                  LinearLayout ll6=new LinearLayout(viewclinicnumber.this);
+                  ll6.setOrientation(LinearLayout.VERTICAL);
+                  ll6.setMinimumHeight(40);
+                  ll6.setMinimumWidth(200);
+                  TextView tt3=new TextView(viewclinicnumber.this);
+                  tt3.setText("看診病人 : ");
+                  tt3.setTextColor(Color.BLACK);
+                  tt3.setTextSize(28);
+                  ll6.addView(tt3);
 
-                 LinearLayout ll7=new LinearLayout(viewclinicnumber.this);
-                 ll7.setOrientation(LinearLayout.VERTICAL);
-                 ll7.setMinimumHeight(40);
-                 ll7.setMinimumWidth(200);
-                 TextView tt4=new TextView(viewclinicnumber.this);
-                 tt4.setText(r_data.get(list.get(i)));
-                 tt4.setTextColor(Color.GREEN);
-                 tt4.setTextSize(28);
-                 ll7.addView(tt4);
+                  LinearLayout ll7=new LinearLayout(viewclinicnumber.this);
+                  ll7.setOrientation(LinearLayout.VERTICAL);
+                  ll7.setMinimumHeight(40);
+                  ll7.setMinimumWidth(200);
+                  TextView tt4=new TextView(viewclinicnumber.this);
+                  tt4.setText(r_data.get(list.get(i)));
+                  tt4.setTextColor(Color.GREEN);
+                  tt4.setTextSize(28);
+                  ll7.addView(tt4);
 
-                 ll5.addView(ll6);
-                 ll5.addView(ll7);
-                 ll1.addView(ll5);
+                  ll5.addView(ll6);
+                  ll5.addView(ll7);
+                  ll1.addView(ll5);
 
-                 LinearLayout ll8=new LinearLayout(viewclinicnumber.this);
-                 ll8.setOrientation(LinearLayout.HORIZONTAL);
-                 ll8.setMinimumHeight(40);
+                  LinearLayout ll8=new LinearLayout(viewclinicnumber.this);
+                  ll8.setOrientation(LinearLayout.HORIZONTAL);
+                  ll8.setMinimumHeight(40);
 
-                 LinearLayout ll9=new LinearLayout(viewclinicnumber.this);
-                 ll9.setOrientation(LinearLayout.VERTICAL);
-                 ll9.setMinimumHeight(40);
-                 ll9.setMinimumWidth(200);
-                 TextView tt5=new TextView(viewclinicnumber.this);
-                 tt5.setText("掛號號碼 : ");
-                 tt5.setTextColor(Color.BLACK);
-                 tt5.setTextSize(28);
-                 ll9.addView(tt5);
+                  LinearLayout ll9=new LinearLayout(viewclinicnumber.this);
+                  ll9.setOrientation(LinearLayout.VERTICAL);
+                  ll9.setMinimumHeight(40);
+                  ll9.setMinimumWidth(200);
+                  TextView tt5=new TextView(viewclinicnumber.this);
+                  tt5.setText("掛號號碼 : ");
+                  tt5.setTextColor(Color.BLACK);
+                  tt5.setTextSize(28);
+                  ll9.addView(tt5);
 
-                 LinearLayout ll10=new LinearLayout(viewclinicnumber.this);
-                 ll10.setOrientation(LinearLayout.VERTICAL);
-                 ll10.setMinimumHeight(40);
-                 ll10.setMinimumWidth(200);
-                 TextView tt6=new TextView(viewclinicnumber.this);
-                 tt6.setText(r_data.get(list.get(i)+1));
-                 tt6.setTextColor(Color.GREEN);
-                 tt6.setTextSize(28);
-                 ll10.addView(tt6);
+                  LinearLayout ll10=new LinearLayout(viewclinicnumber.this);
+                  ll10.setOrientation(LinearLayout.VERTICAL);
+                  ll10.setMinimumHeight(40);
+                  ll10.setMinimumWidth(200);
+                  TextView tt6=new TextView(viewclinicnumber.this);
+                  tt6.setText(r_data.get(list.get(i)+1));
+                  tt6.setTextColor(Color.GREEN);
+                  tt6.setTextSize(28);
+                  ll10.addView(tt6);
 
-                 ll8.addView(ll9);
-                 ll8.addView(ll10);
-                 ll1.addView(ll8);
+                  ll8.addView(ll9);
+                  ll8.addView(ll10);
+                  ll1.addView(ll8);
 
-                 LinearLayout ll11=new LinearLayout(viewclinicnumber.this);
-                 ll11.setOrientation(LinearLayout.HORIZONTAL);
-                 ll11.setMinimumHeight(40);
+                  LinearLayout ll11=new LinearLayout(viewclinicnumber.this);
+                  ll11.setOrientation(LinearLayout.HORIZONTAL);
+                  ll11.setMinimumHeight(40);
 
-                 LinearLayout ll12=new LinearLayout(viewclinicnumber.this);
-                 ll12.setOrientation(LinearLayout.VERTICAL);
-                 ll12.setMinimumHeight(40);
-                 ll12.setMinimumWidth(200);
-                 TextView tt7=new TextView(viewclinicnumber.this);
-                 tt7.setText("看診醫師 : ");
-                 tt7.setTextColor(Color.BLACK);
-                 tt7.setTextSize(28);
-                 ll12.addView(tt7);
+                  LinearLayout ll12=new LinearLayout(viewclinicnumber.this);
+                  ll12.setOrientation(LinearLayout.VERTICAL);
+                  ll12.setMinimumHeight(40);
+                  ll12.setMinimumWidth(200);
+                  TextView tt7=new TextView(viewclinicnumber.this);
+                  tt7.setText("看診醫師 : ");
+                  tt7.setTextColor(Color.BLACK);
+                  tt7.setTextSize(28);
+                  ll12.addView(tt7);
 
-                 LinearLayout ll13=new LinearLayout(viewclinicnumber.this);
-                 ll13.setOrientation(LinearLayout.VERTICAL);
-                 ll13.setMinimumHeight(40);
-                 ll13.setMinimumWidth(200);
-                 TextView tt8=new TextView(viewclinicnumber.this);
-                 tt8.setText(r_data.get(list.get(i)+2));
-                 tt8.setTextColor(Color.GREEN);
-                 tt8.setTextSize(28);
-                 ll13.addView(tt8);
+                  LinearLayout ll13=new LinearLayout(viewclinicnumber.this);
+                  ll13.setOrientation(LinearLayout.VERTICAL);
+                  ll13.setMinimumHeight(40);
+                  ll13.setMinimumWidth(200);
+                  TextView tt8=new TextView(viewclinicnumber.this);
+                  tt8.setText(r_data.get(list.get(i)+2));
+                  tt8.setTextColor(Color.GREEN);
+                  tt8.setTextSize(28);
+                  ll13.addView(tt8);
 
-                 ll11.addView(ll12);
-                 ll11.addView(ll13);
-                 ll1.addView(ll11);
+                  ll11.addView(ll12);
+                  ll11.addView(ll13);
+                  ll1.addView(ll11);
 
-                 LinearLayout ll14=new LinearLayout(viewclinicnumber.this);
-                 ll14.setOrientation(LinearLayout.HORIZONTAL);
-                 ll14.setMinimumHeight(40);
+                  LinearLayout ll14=new LinearLayout(viewclinicnumber.this);
+                  ll14.setOrientation(LinearLayout.HORIZONTAL);
+                  ll14.setMinimumHeight(40);
 
-                 LinearLayout ll15=new LinearLayout(viewclinicnumber.this);
-                 ll15.setOrientation(LinearLayout.VERTICAL);
-                 ll15.setMinimumHeight(40);
-                 ll15.setMinimumWidth(200);
-                 TextView tt9=new TextView(viewclinicnumber.this);
-                 tt9.setText("門診位置 : ");
-                 tt9.setTextColor(Color.BLACK);
-                 tt9.setTextSize(28);
-                 ll15.addView(tt9);
+                  LinearLayout ll15=new LinearLayout(viewclinicnumber.this);
+                  ll15.setOrientation(LinearLayout.VERTICAL);
+                  ll15.setMinimumHeight(40);
+                  ll15.setMinimumWidth(200);
+                  TextView tt9=new TextView(viewclinicnumber.this);
+                  tt9.setText("門診位置 : ");
+                  tt9.setTextColor(Color.BLACK);
+                  tt9.setTextSize(28);
+                  ll15.addView(tt9);
 
-                 LinearLayout ll16=new LinearLayout(viewclinicnumber.this);
-                 ll16.setOrientation(LinearLayout.VERTICAL);
-                 ll16.setMinimumHeight(40);
-                 ll16.setMinimumWidth(200);
-                 TextView tt10=new TextView(viewclinicnumber.this);
-                 tt10.setText(r_data.get(list.get(i)+3));
-                 tt10.setTextColor(Color.GREEN);
-                 tt10.setTextSize(28);
-                 ll16.addView(tt10);
+                  LinearLayout ll16=new LinearLayout(viewclinicnumber.this);
+                  ll16.setOrientation(LinearLayout.VERTICAL);
+                  ll16.setMinimumHeight(40);
+                  ll16.setMinimumWidth(200);
+                  TextView tt10=new TextView(viewclinicnumber.this);
+                  tt10.setText(r_data.get(list.get(i)+3));
+                  tt10.setTextColor(Color.GREEN);
+                  tt10.setTextSize(28);
+                  ll16.addView(tt10);
 
-                 ll14.addView(ll15);
-                 ll14.addView(ll16);
-                 ll1.addView(ll14);
+                  ll14.addView(ll15);
+                  ll14.addView(ll16);
+                  ll1.addView(ll14);
 
-                 LinearLayout ll17=new LinearLayout(viewclinicnumber.this);
-                 ll17.setOrientation(LinearLayout.HORIZONTAL);
-                 ll17.setMinimumHeight(40);
+                  LinearLayout ll17=new LinearLayout(viewclinicnumber.this);
+                  ll17.setOrientation(LinearLayout.HORIZONTAL);
+                  ll17.setMinimumHeight(40);
 
-                 LinearLayout ll18=new LinearLayout(viewclinicnumber.this);
-                 ll18.setOrientation(LinearLayout.VERTICAL);
-                 ll18.setMinimumHeight(40);
-                 ll18.setMinimumWidth(200);
-                 TextView tt11=new TextView(viewclinicnumber.this);
-                 tt11.setText("目前門診號碼 : ");
-                 tt11.setTextColor(Color.BLACK);
-                 tt11.setTextSize(28);
-                 ll18.addView(tt11);
+                  LinearLayout ll18=new LinearLayout(viewclinicnumber.this);
+                  ll18.setOrientation(LinearLayout.VERTICAL);
+                  ll18.setMinimumHeight(40);
+                  ll18.setMinimumWidth(200);
+                  TextView tt11=new TextView(viewclinicnumber.this);
+                  tt11.setText("目前門診號碼 : ");
+                  tt11.setTextColor(Color.BLACK);
+                  tt11.setTextSize(28);
+                  ll18.addView(tt11);
 
-                 LinearLayout ll19=new LinearLayout(viewclinicnumber.this);
-                 ll19.setOrientation(LinearLayout.VERTICAL);
-                 ll19.setMinimumHeight(40);
-                 ll19.setMinimumWidth(200);
-                 TextView tt12=new TextView(viewclinicnumber.this);
-                 clinicnumber=(int)(Math.random()*50+1-10);
-                 theNode=new clinicnumber(r_data.get(list.get(i)-2),clinicnumber);
-                 clinicnums.add(theNode);
-                 if(clinicnumber<=0)
-                     tt12.setText("尚未看診");
-                 else
-                     tt12.setText(theNode.getNum() +"");
-                 tt12.setTextColor(Color.BLUE);
-                 tt12.setTextSize(30);
-                 ll19.addView(tt12);
+                  LinearLayout ll19=new LinearLayout(viewclinicnumber.this);
+                  ll19.setOrientation(LinearLayout.VERTICAL);
+                  ll19.setMinimumHeight(40);
+                  ll19.setMinimumWidth(200);
+                  TextView tt12=new TextView(viewclinicnumber.this);
+                  clinicnumber=(int)(Math.random()*50+1-10);
+                  theNode=new clinicnumber(r_data.get(list.get(i)-2),clinicnumber);
+                  clinicnums.add(theNode);
+                  if(clinicnumber<=0)
+                      tt12.setText("尚未看診");
+                  else
+                      tt12.setText(theNode.getNum() +"");
+                  tt12.setTextColor(Color.BLUE);
+                  tt12.setTextSize(30);
+                  ll19.addView(tt12);
 
-                 ll17.addView(ll18);
-                 ll17.addView(ll19);
-                 ll1.addView(ll17);
+                  ll17.addView(ll18);
+                  ll17.addView(ll19);
+                  ll1.addView(ll17);
 
-                 ll.addView(ll0);
-                 ll.addView(ll1);
+                  ll.addView(ll0);
+                  ll.addView(ll1);
              }
          }
          else
@@ -317,10 +325,12 @@ public class viewclinicnumber extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewclinicnumber);
+
         r_data.clear();
         //person="周捷倫";
         Intent intent=this.getIntent();
-        person=intent.getStringExtra("reg_name");
+        person=intent.getStringExtra("name");
+        userid=intent.getStringExtra("recordsid");
         loadResData();
 
         btn1 = (Button) findViewById(R.id.searchbtn);  //取得Button
@@ -801,6 +811,23 @@ public class viewclinicnumber extends AppCompatActivity {
                 }
             }
 
+        });
+
+        Button outtohome = (Button)findViewById(R.id.backtouserlist);
+        outtohome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundleFrom = getIntent().getExtras();
+                String name = bundleFrom.getString("name");
+                String recordsId = bundleFrom.getString("recordsId");
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("recordsId",recordsId);
+                intent.setClass(viewclinicnumber.this, userlist.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
         });
     }
 }
