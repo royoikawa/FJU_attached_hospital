@@ -1,29 +1,15 @@
 package first.com;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Button;
-import android.view.View;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Header;
-import retrofit2.http.QueryMap;
 
 public class adminreg extends AppCompatActivity {
     MyAPIService myAPIService;
@@ -65,7 +51,7 @@ public class adminreg extends AppCompatActivity {
                 String aphone = phone.getText().toString().trim();
                 String apassword = password.getText().toString().trim();
                 String apassword2 = password2.getText().toString().trim();
-                myAPIService = RetrofitManager3.getInstance().getAPI();
+                myAPIService = RetrofitManager.getInstance().getAPI();
                 Call<records> call = myAPIService.postRecords1(new userPost(new fields(aid, aname, apassword, aphone, aborned)));
                 call.enqueue(new Callback<records>() {
                     @Override
